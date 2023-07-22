@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="csapp的简单摸索" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>coding life | </title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/waline.css">
+
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">coding life</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            csapp的简单摸索
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-%E4%BF%A1%E6%81%AF%E5%B0%B1%E6%98%AF%E4%BD%8D%E5%8A%A0%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="post-toc-text">1 信息就是位加上下文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E7%A8%8B%E5%BA%8F%E8%A2%AB%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E6%88%90%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">2 程序被其他程序翻译成不同的格式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-%E8%BF%90%E8%A1%8Chello%E7%A8%8B%E5%BA%8F"><span class="post-toc-text">3 运行hello程序</span></a></li></ol>
+        
+        <p>这是我学习csapp所做的笔记<br>如有错误请评论或邮箱告知<br><code>2567031030@qq.com</code></p>
+<p>会按照书上的讲写笔记(因为我也从头开始看的)，但只会记录我觉得重要的</p>
+<h1 id="1-信息就是位加上下文"><a href="#1-信息就是位加上下文" class="headerlink" title="1 信息就是位加上下文"></a>1 信息就是位加上下文</h1><p>对于一个hello.c 文件</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()&#123;
+    printf(&quot;hello,world\n&quot;);
+    return 0;
+&#125;
+</code></pre>
+<p>使用<code>od -t d1 hello.c</code><br>可以将<code>hello.c</code>以10进制看到</p>
+<pre><code>0000000   35  105  110   99  108  117  100  101   32   60  115  116  100  105  111   46
+0000020  104   62   10   10  105  110  116   32  109   97  105  110   40   41   32  123
+0000040   10   32   32  112  114  105  110  116  102   40   34  104  101  108  108  111
+0000060   32  119  111  114  108  100   33   92  110   34   41   59   10   32   32  114
+0000100  101  116  117  114  110   32   48   59   10  125   10
+0000113
+</code></pre>
+<p>在计算机眼中</p>
+<blockquote>
+<p>系统中的所有信息，都是由<strong>一串比特</strong>表示的(说到底都是01)。<br>区分不同数据的唯一方法是我们读到这些数据的上下文<br>例如:<br>在不同的上下文中，一个同样的字节序列可以表示一个整数，浮点数，字符串，或着机器指令</p>
+</blockquote>
+<p>有一个例子可以证明<br>新建一个1.ppm</p>
+<pre><code>P3
+4 4
+255
+0  0  0   100 0  0       0  0  0    255   0 255
+0  0  0    0 255 175     0  0  0     0    0  0
+0  0  0    0  0  0       0 15 175    0    0  0
+255 0 255  0  0  0       0  0  0    255  255 255
+</code></pre>
+<p>这是一种图片格式.ppm</p>
+<hr>
+<h1 id="2-程序被其他程序翻译成不同的格式"><a href="#2-程序被其他程序翻译成不同的格式" class="headerlink" title="2 程序被其他程序翻译成不同的格式"></a>2 程序被其他程序翻译成不同的格式</h1><p>可以看一下图片</p>
+<p>![从hello.c到hello](<a target="_blank" rel="noopener" href="https://i.ibb.co/tpj2GLV/Deepin-Screenshot-select-area-20230722110544.png">https://i.ibb.co/tpj2GLV/Deepin-Screenshot-select-area-20230722110544.png</a> &#x3D; 100x50)</p>
+<p>由hello.c-&gt;hello.i<br>可以使用<code>gcc -E</code> 进行<strong>预处理</strong><br><code>gcc -E hello.c -o hello.i</code><br>也可以使用<code>cpp</code></p>
+<p>hello.i-&gt;hello.s<br>可以使用<code>gcc -S</code> 进行<strong>编译</strong>，生成汇编代码<br><code>gcc -S hello.i -o hello.i</code><br>在这一阶段中编译器会进行优化,会发现汇编与C的语言代码不能一一对应<br>当然gcc 可以指定是否优化</p>
+<p>hello.s-&gt;hello.o<br>使用<code>gcc -c</code>进行<strong>汇编</strong>，生成目标文件<br><code>gcc -c hello.s -o hello.o</code></p>
+<p>hello.o-&gt;hello<br><strong>链接</strong>生成可执行文件<br><code>gcc hello.o -o hello</code></p>
+<p>这上面<br>可以用一句话<br><code>gcc hello.c -o hello</code></p>
+<ul>
+<li>预处理阶段<br>预处理(cpp)根据<code>#</code>字符开头的命令</li>
+</ul>
+<ol>
+<li>如<code>#include&lt;stdio.h&gt;</code>把这个<code>stdio.h</code>的文件直接插入</li>
+<li>如<code>#define</code>这种宏进行处理</li>
+</ol>
+<ul>
+<li><p>编译阶段<br>就是将c的代码转换为汇编的代码</p>
+</li>
+<li><p>汇编阶段<br>将汇编代码转换为机器语言的指令,把这些指令打包成一种叫<strong>可重定位目标程序</strong>(relocatable object program)的格式</p>
+</li>
+<li><p>链接阶段<br><code>hello</code>程序调用了<code>printf</code>函数,<code>printf</code>函数是标准C库中的函数，<code>printf</code>函数存在与一个名为<code>printf.o</code>的<br>一个预预编译好了的目标文件中,链接器(ld)就处理这种合并</p>
+</li>
+</ul>
+<p>（如果想要更多的查询关于gcc)<br>可以使用<code>man gcc</code> 进行观看<br>使用<code>man gcc | vim -</code>可以使用管道将<code>man gcc</code>传入<code>vim</code>进行观看</p>
+<hr>
+<h1 id="3-运行hello程序"><a href="#3-运行hello程序" class="headerlink" title="3 运行hello程序"></a>3 运行hello程序</h1><p> 未完待续.。。</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-22</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/csapp/'>
+                            csapp
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        以上。 
+    </div>
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://apple115-github-aheo54k7t-apple115.vercel.app/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '正确的邮箱地址，回复将能得到邮件通知。', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+    </div>
+
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
