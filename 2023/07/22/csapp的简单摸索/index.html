@@ -88,18 +88,19 @@
 
     <div class="post-md">
         
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-%E4%BF%A1%E6%81%AF%E5%B0%B1%E6%98%AF%E4%BD%8D%E5%8A%A0%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="post-toc-text">1 信息就是位加上下文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E7%A8%8B%E5%BA%8F%E8%A2%AB%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E6%88%90%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">2 程序被其他程序翻译成不同的格式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-%E8%BF%90%E8%A1%8Chello%E7%A8%8B%E5%BA%8F"><span class="post-toc-text">3 运行hello程序</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BF%A1%E6%81%AF%E5%B0%B1%E6%98%AF%E4%BD%8D%E5%8A%A0%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="post-toc-text">信息就是位加上下文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E7%A8%8B%E5%BA%8F%E8%A2%AB%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E6%88%90%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">2 程序被其他程序翻译成不同的格式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8Chello%E7%A8%8B%E5%BA%8F"><span class="post-toc-text">运行hello程序</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8%E8%AE%BE%E9%85%8D%E7%9A%84"><span class="post-toc-text">关于存储设配的</span></a></li></ol>
         
         <p>这是我学习csapp所做的笔记<br>如有错误请评论或邮箱告知<br><code>2567031030@qq.com</code></p>
 <p>会按照书上的讲写笔记(因为我也从头开始看的)，但只会记录我觉得重要的</p>
-<h1 id="1-信息就是位加上下文"><a href="#1-信息就是位加上下文" class="headerlink" title="1 信息就是位加上下文"></a>1 信息就是位加上下文</h1><p>对于一个hello.c 文件</p>
+<h1 id="信息就是位加上下文"><a href="#信息就是位加上下文" class="headerlink" title="信息就是位加上下文"></a>信息就是位加上下文</h1><p>对于一个hello.c 文件</p>
 <pre><code>#include&lt;stdio.h&gt;
 int main()&#123;
     printf(&quot;hello,world\n&quot;);
     return 0;
 &#125;
 </code></pre>
-<p>使用<code>od -t d1 hello.c</code><br>可以将<code>hello.c</code>以10进制看到</p>
+<p>使用<code>od -t d1 hello.c</code></p>
+<p>可以将<code>hello.c</code>以10进制看到</p>
 <pre><code>0000000   35  105  110   99  108  117  100  101   32   60  115  116  100  105  111   46
 0000020  104   62   10   10  105  110  116   32  109   97  105  110   40   41   32  123
 0000040   10   32   32  112  114  105  110  116  102   40   34  104  101  108  108  111
@@ -108,10 +109,12 @@ int main()&#123;
 0000113
 </code></pre>
 <p>在计算机眼中</p>
-<blockquote>
-<p>系统中的所有信息，都是由<strong>一串比特</strong>表示的(说到底都是01)。<br>区分不同数据的唯一方法是我们读到这些数据的上下文<br>例如:<br>在不同的上下文中，一个同样的字节序列可以表示一个整数，浮点数，字符串，或着机器指令</p>
-</blockquote>
-<p>有一个例子可以证明<br>新建一个1.ppm</p>
+<ol>
+<li>系统中的所有信息，都是由<strong>一串比特</strong>表示的(说到底都是01)。</li>
+<li>区分不同数据的唯一方法是我们读到这些数据的上下文</li>
+</ol>
+<p>例如:<br>在不同的上下文中，一个同样的字节序列可以表示一个整数，浮点数，字符串，或着机器指令</p>
+<p>有一个例子可以证明，新建一个1.ppm</p>
 <pre><code>P3
 4 4
 255
@@ -121,32 +124,184 @@ int main()&#123;
 255 0 255  0  0  0       0  0  0    255  255 255
 </code></pre>
 <p>这是一种图片格式.ppm</p>
+<p>你可以看看这张图</p>
 <hr>
 <h1 id="2-程序被其他程序翻译成不同的格式"><a href="#2-程序被其他程序翻译成不同的格式" class="headerlink" title="2 程序被其他程序翻译成不同的格式"></a>2 程序被其他程序翻译成不同的格式</h1><p>可以看一下图片</p>
 <p>![从hello.c到hello](<a target="_blank" rel="noopener" href="https://i.ibb.co/tpj2GLV/Deepin-Screenshot-select-area-20230722110544.png">https://i.ibb.co/tpj2GLV/Deepin-Screenshot-select-area-20230722110544.png</a> &#x3D; 100x50)</p>
-<p>由hello.c-&gt;hello.i<br>可以使用<code>gcc -E</code> 进行<strong>预处理</strong><br><code>gcc -E hello.c -o hello.i</code><br>也可以使用<code>cpp</code></p>
-<p>hello.i-&gt;hello.s<br>可以使用<code>gcc -S</code> 进行<strong>编译</strong>，生成汇编代码<br><code>gcc -S hello.i -o hello.i</code><br>在这一阶段中编译器会进行优化,会发现汇编与C的语言代码不能一一对应<br>当然gcc 可以指定是否优化</p>
-<p>hello.s-&gt;hello.o<br>使用<code>gcc -c</code>进行<strong>汇编</strong>，生成目标文件<br><code>gcc -c hello.s -o hello.o</code></p>
-<p>hello.o-&gt;hello<br><strong>链接</strong>生成可执行文件<br><code>gcc hello.o -o hello</code></p>
-<p>这上面<br>可以用一句话<br><code>gcc hello.c -o hello</code></p>
+<p>由hello.c-&gt;hello.i</p>
+<p>可以使用<code>gcc -E</code> 进行<strong>预处理</strong></p>
+<p><code>gcc -E hello.c -o hello.i</code></p>
+<p>也可以使用<code>cpp</code></p>
+<p>hello.i-&gt;hello.s</p>
+<p>可以使用<code>gcc -S</code> 进行<strong>编译</strong>，生成汇编代码</p>
+<p><code>gcc -S hello.i -o hello.i</code></p>
+<p>在这一阶段中编译器会进行优化,会发现汇编与C的语言代码不能一一对应</p>
+<p>当然gcc 可以指定是否优化</p>
+<p>hello.s-&gt;hello.o</p>
+<p>使用<code>gcc -c</code>进行<strong>汇编</strong>，生成目标文件</p>
+<p><code>gcc -c hello.s -o hello.o</code></p>
+<p>hello.o-&gt;hello</p>
+<p><strong>链接</strong>生成可执行文件</p>
+<p><code>gcc hello.o -o hello</code></p>
+<p>这上面</p>
+<p>可以用一句话</p>
+<p><code>gcc hello.c -o hello</code></p>
 <ul>
-<li>预处理阶段<br>预处理(cpp)根据<code>#</code>字符开头的命令</li>
+<li>预处理阶段</li>
 </ul>
+<p>预处理(cpp)根据<code>#</code>字符开头的命令</p>
 <ol>
-<li>如<code>#include&lt;stdio.h&gt;</code>把这个<code>stdio.h</code>的文件直接插入</li>
-<li>如<code>#define</code>这种宏进行处理</li>
+<li><p>如<code>#include&lt;stdio.h&gt;</code>把这个<code>stdio.h</code>的文件直接插入</p>
+</li>
+<li><p>如<code>#define</code>这种宏进行处理</p>
+</li>
 </ol>
 <ul>
-<li><p>编译阶段<br>就是将c的代码转换为汇编的代码</p>
-</li>
-<li><p>汇编阶段<br>将汇编代码转换为机器语言的指令,把这些指令打包成一种叫<strong>可重定位目标程序</strong>(relocatable object program)的格式</p>
-</li>
-<li><p>链接阶段<br><code>hello</code>程序调用了<code>printf</code>函数,<code>printf</code>函数是标准C库中的函数，<code>printf</code>函数存在与一个名为<code>printf.o</code>的<br>一个预预编译好了的目标文件中,链接器(ld)就处理这种合并</p>
-</li>
+<li>编译阶段</li>
 </ul>
-<p>（如果想要更多的查询关于gcc)<br>可以使用<code>man gcc</code> 进行观看<br>使用<code>man gcc | vim -</code>可以使用管道将<code>man gcc</code>传入<code>vim</code>进行观看</p>
+<p>就是将c的代码转换为汇编的代码</p>
+<ul>
+<li>汇编阶段</li>
+</ul>
+<p>将汇编代码转换为机器语言的指令,把这些指令打包成一种叫<strong>可重定位目标程序</strong>(relocatable object program)的格式</p>
+<ul>
+<li>链接阶段</li>
+</ul>
+<p><code>hello</code>程序调用了<code>printf</code>函数,<code>printf</code>函数是标准C库中的函数，</p>
+<p><code>printf</code>函数存在与一个名为<code>printf.o</code>的一个预预编译好了的目标文件中,</p>
+<p>链接器(ld)就处理这种合并</p>
+<p>(如果想要更多的查询关于gcc)</p>
+<p>可以使用<code>man gcc</code> 进行观看</p>
+<p>使用<code>man gcc | vim -</code>可以使用管道将<code>man gcc</code>传入<code>vim</code>进行观看</p>
 <hr>
-<h1 id="3-运行hello程序"><a href="#3-运行hello程序" class="headerlink" title="3 运行hello程序"></a>3 运行hello程序</h1><p> 未完待续.。。</p>
+<h1 id="运行hello程序"><a href="#运行hello程序" class="headerlink" title="运行hello程序"></a>运行hello程序</h1><p>未完待续.。。<br>date: 2023-07-23 18:31:00</p>
+<p>一图抵万字,哈哈哈！</p>
+<p><img src="https://i.ibb.co/hWjgTh7/Deepin-Screenshot-select-area-20230723172447.png" alt="系统结构图"><br>可以将硬件分：</p>
+<ol>
+<li><p>总线<br>贯穿整个系统的电子管道，称为总线.它携带信息字体并负责在各个部件间传输</p>
+</li>
+<li><p>I&#x2F;O 设备</p>
+</li>
+</ol>
+<p>就是除了总线，主存，处理器以外的都是(例如：键盘，鼠标，磁盘，显示器等网络是种特殊的I&#x2F;O设配)</p>
+<ol start="3">
+<li>主存</li>
+</ol>
+<p>是一个临时存储设配，在处理器执行期间，用来存放程序和程序处理的数据</p>
+<p>可以从两方面视角来看计算机:计算机视角和用户视角(物理视角和逻辑视角)<br>物理视角:主存是由一组动态随机存取存储器(DRAM)芯片组成的<br>逻辑视角:存储器是一个线性的字节数组,每个字节都有其唯一的地址(数组索引)</p>
+<ol start="4">
+<li>处理器</li>
+</ol>
+<p>就写一个概念吧<br>中央处理单元(cpu),是解释(或执行)存储在主存中的指令引擎<br>在shell上运行<code>./hello</code><br>这个<code>hello</code> 是<code>./hello</code><br><code>shell</code>是一个命令行解释器，它输出一个提示符，等待输入一个命令行，然后执行这个命令<br>是用来与系统交互的</p>
+<p><img src="https://i.ibb.co/whFGdcv/Deepin-Screenshot-select-area-20230723173257.png" alt="从键盘上读取hello的命令"></p>
+<p>这个使用了<strong>直接存储器存储</strong>(DMA)，数据可以不用通过处理器而直接从磁盘到达主存<br><img src="https://i.ibb.co/1JYbrkk/Deepin-Screenshot-select-area-20230723174001.png" alt="从磁盘加载可执行文件到主存上"></p>
+<p><img src="https://i.ibb.co/SKbNQVJ/Deepin-Screenshot-select-area-20230723174419.png" alt="将输出字符串从存储器写到显示器"></p>
+<p>来看看流程</p>
+<ol>
+<li><p>在shell 中输入<code>./hello</code>,shell程序将字符逐一读入寄存器,再将它存放在内存中(内存一般指的是主存)</p>
+</li>
+<li><p>在键盘上按回车时，shell 程序知道我们已经结束了命理的输入 </p>
+</li>
+<li><p>shell执行一系列指令来加载<strong>可执行的hello文件</strong>,这些指令将<strong>hello目标文件</strong>中的代码和数据从磁盘复制到主存</p>
+</li>
+<li><p>目标文件hello中的代码和数据加载到主存，处理器就开始执行hello程序的main程序中的机器语言指令</p>
+</li>
+<li><p>这些指令将<code>“hello,world\n</code>字符串中的字节从主存复制到寄存器文件，再从寄存器文件中复制到显示设配,最终显示到屏幕上</p>
+</li>
+</ol>
+<p>可以使用命令<code>strace ./hello</code></p>
+<p>在我的电脑上会显示</p>
+<pre><code>execve(&quot;./hello&quot;, [&quot;./hello&quot;], 0x7ffcdebfb7e0 /* 64 vars */) = 0
+brk(NULL)                               = 0x55eb43cde000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffe3bbb3000) = -1 EINVAL (Invalid argument)
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, &quot;/etc/ld.so.cache&quot;, O_RDONLY|O_CLOEXEC) = 3
+newfstatat(3, &quot;&quot;, &#123;st_mode=S_IFREG|0644, st_size=186503, ...&#125;, AT_EMPTY_PATH) = 0
+mmap(NULL, 186503, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fd7fa95a000
+close(3)                                = 0
+openat(AT_FDCWD, &quot;/usr/lib/libc.so.6&quot;, O_RDONLY|O_CLOEXEC) = 3
+read(3, &quot;\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0\20:\2\0\0\0\0\0&quot;..., 832) = 832
+pread64(3, &quot;\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0&quot;..., 784, 64) = 784
+newfstatat(3, &quot;&quot;, &#123;st_mode=S_IFREG|0755, st_size=1961632, ...&#125;, AT_EMPTY_PATH) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd7fa958000
+pread64(3, &quot;\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0&quot;..., 784, 64) = 784
+mmap(NULL, 2006640, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd7fa76e000
+mmap(0x7fd7fa790000, 1429504, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x22000) = 0x7fd7fa790000
+mmap(0x7fd7fa8ed000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17f000) = 0x7fd7fa8ed000
+mmap(0x7fd7fa945000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1d6000) = 0x7fd7fa945000
+mmap(0x7fd7fa94b000, 52848, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd7fa94b000
+close(3)                                = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd7fa76c000
+arch_prctl(ARCH_SET_FS, 0x7fd7fa959640) = 0
+set_tid_address(0x7fd7fa959910)         = 33357
+set_robust_list(0x7fd7fa959920, 24)     = 0
+rseq(0x7fd7fa959f60, 0x20, 0, 0x53053053) = 0
+mprotect(0x7fd7fa945000, 16384, PROT_READ) = 0
+mprotect(0x55eb42bba000, 4096, PROT_READ) = 0
+mprotect(0x7fd7fa9b9000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, &#123;rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY&#125;) = 0
+munmap(0x7fd7fa95a000, 186503)          = 0
+newfstatat(1, &quot;&quot;, &#123;st_mode=S_IFIFO|0600, st_size=0, ...&#125;, AT_EMPTY_PATH) = 0
+getrandom(&quot;\xb8\xd2\x6c\x88\x21\xbd\x4c\x5a&quot;, 8, GRND_NONBLOCK) = 8
+brk(NULL)                               = 0x55eb43cde000
+brk(0x55eb43cff000)                     = 0x55eb43cff000
+write(1, &quot;hello world!\n&quot;, 13)          = 13
+hello world!
+exit_group(0)                           = ?
++++ exited with 0 +++
+strace: Exit of unknown pid 33354 ignored
+</code></pre>
+<p>这是chatgpt所说</p>
+<pre><code>根据提供的跟踪信息，以下是对程序执行的步骤进行逐步解释:
+
+1. 尝试以读取方式打开文件 &quot;/etc/ld.so.preload&quot;，但该文件未找到（ENOENT - 没有此文件或目录）。
+
+2. 成功以只读方式（O_RDONLY|O_CLOEXEC）打开文件 &quot;/etc/ld.so.cache&quot;，并获取了文件描述符 3。
+
+3. 在文件描述符 3 上执行 &quot;newfstatat&quot; 系统调用，以获取有关文件的信息。获取到的信息表明该文件是一个具有读写权限的普通文件，大小为 186503 个字节。
+
+4. 然后，程序使用 &quot;mmap&quot; 系统调用将文件 &quot;/etc/ld.so.cache&quot;（186503 个字节）的内容映射到内存中，采用只读保护（PROT_READ），映射内存区域的起始地址为 0x7fd7fa95a000。
+
+5. 映射完成后，程序关闭了文件描述符 3，即 &quot;/etc/ld.so.cache&quot;。
+
+6. 程序打开了文件 &quot;/usr/lib/libc.so.6&quot;，即 C 库文件，以进行读取。
+
+7. 它将 C 库文件 (&quot;/usr/lib/libc.so.6&quot;) 的前 832 个字节读入内存。
+
+8. 使用 &quot;pread64&quot; 系统调用，程序从 libc 文件中读取 ELF 对象格式的内容表示。
+
+9. 在文件描述符 3 上执行 &quot;newfstatat&quot; 系统调用，程序获取到 libc 文件的信息。获取到的信息表明该文件是一个具有读写权限的普通文件，大小为 1961632 个字节。
+
+10. 程序使用 &quot;mmap&quot; 系统调用，将一个具有读写权限（PROT_READ|PROT_WRITE）的内存区域（8192 个字节）映射到内存中。映射内存区域的起始地址为 0x7fd7fa958000。
+
+11. 使用 &quot;pread64&quot;，程序再次从 libc 文件读取 ELF 对象格式的内容表示。
+
+12. 程序继续使用额外的 &quot;mmap&quot; 系统调用将 libc 文件的内容映射到不同权限的多个内存区域。
+
+13. 将 libc 文件的文件描述符设置为关闭（文件描述符 3）。
+
+14. 程序使用 &quot;mmap&quot; 系统调用分配一个新的具有读写权限的内存区域，大小为 8192 个字节。
+
+15. 还进行了一些设置线程特定属性和程序属性的系统调用。
+
+16. 程序使用 &quot;mprotect&quot; 系统调用在不同的内存区域上应用内存保护。
+
+17. 程序使用 &quot;getrandom&quot; 系统调用获取随机字节序列。
+
+18. 使用 &quot;brk&quot; 系统调用分配一个新的堆内存区域。
+
+19. 使用类似的 &quot;brk&quot; 系统调用扩展堆内存区域。
+
+20. 最后，程序向标准输出（文件描述符 1）写入字符串 &quot;hello world!\n&quot;。
+
+21. 程序通过调用 &quot;exit_group&quot; 结束，状态码为 0，表示执行成功。
+
+注意：跟踪还显示了一个未知进程（pid 33354）的退出被忽略，以及使用了 &quot;prlimit64&quot; 和 &quot;munmap&quot; 系统调用，这些与上述程序的行为无关。
+</code></pre>
+<p>我可以简单的看出是比较符合所说的</p>
+<p>从这个示例看出来，系统花费大量的时间把信息从一个地方挪到一个地方</p>
+<h1 id="关于存储设配的"><a href="#关于存储设配的" class="headerlink" title="关于存储设配的"></a>关于存储设配的</h1><p>好累 这个书是真的有意思但讲不清</p>
+<p> 未完待续.。。</p>
 
     </div>
 
