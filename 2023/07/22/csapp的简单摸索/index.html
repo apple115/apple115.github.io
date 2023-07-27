@@ -88,7 +88,7 @@
 
     <div class="post-md">
         
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BF%A1%E6%81%AF%E5%B0%B1%E6%98%AF%E4%BD%8D%E5%8A%A0%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="post-toc-text">信息就是位加上下文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E7%A8%8B%E5%BA%8F%E8%A2%AB%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E6%88%90%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">2 程序被其他程序翻译成不同的格式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8Chello%E7%A8%8B%E5%BA%8F"><span class="post-toc-text">运行hello程序</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8%E8%AE%BE%E9%85%8D%E7%9A%84"><span class="post-toc-text">关于存储设配的</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BF%A1%E6%81%AF%E5%B0%B1%E6%98%AF%E4%BD%8D%E5%8A%A0%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="post-toc-text">信息就是位加上下文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E7%A8%8B%E5%BA%8F%E8%A2%AB%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E6%88%90%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">2 程序被其他程序翻译成不同的格式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8Chello%E7%A8%8B%E5%BA%8F"><span class="post-toc-text">运行hello程序</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8%E8%AE%BE%E9%85%8D%E7%9A%84"><span class="post-toc-text">关于存储设配的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="post-toc-text">存储器层次结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="post-toc-text">操作系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="post-toc-text">进程</span></a></li></ol></li></ol>
         
         <p>这是我学习csapp所做的笔记<br>如有错误请评论或邮箱告知<br><code>2567031030@qq.com</code></p>
 <p>会按照书上的讲写笔记(因为我也从头开始看的)，但只会记录我觉得重要的</p>
@@ -301,7 +301,18 @@ strace: Exit of unknown pid 33354 ignored
 <p>我可以简单的看出是比较符合所说的</p>
 <p>从这个示例看出来，系统花费大量的时间把信息从一个地方挪到一个地方</p>
 <h1 id="关于存储设配的"><a href="#关于存储设配的" class="headerlink" title="关于存储设配的"></a>关于存储设配的</h1><p>好累 这个书是真的有意思但讲不清</p>
-<p> 未完待续.。。</p>
+<p> 未完待续.。。<br>date: 2023-07-27 22:53:00</p>
+<p>处理器从寄存器文件中读取数据比从主存读数度要快100倍以上,处理器与主存之间的距离速度还在增大<br>为了解决这些问题<br>系统设计者采用了更小更快的存储设备,称为<strong>高速缓存存储器(cache memory)</strong><br>作为暂时的集结区存放处理器近期可能需要的信息</p>
+<p>高速缓存的<strong>局部性</strong>原理,程序具有访问局部区域里的数据和代码的趋势,<br>通过让高速缓存存放可能经常访问的数据,大部分的内存操作都能在快速的高速缓存中完成</p>
+<h2 id="存储器层次结构"><a href="#存储器层次结构" class="headerlink" title="存储器层次结构"></a>存储器层次结构</h2><p>一图抵万字<br><img src="https://i.ibb.co/sKLmpjX/Deepin-Screenshot-select-area-20230727230659.png" alt="存储器层次结构"></p>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><p>shell运行hello程序时,hello 程序输出自己消息时,shell 和hello程序会通过<br>操作系统进行访问键盘,显示器,磁盘,主存<br>操作系统是应用程序和硬件之间的一层软件,所有程序对于硬件的尝试都必须通过<br>操作系统<br>基本作用</p>
+<ol>
+<li>防止硬件被失控的应用程序滥用</li>
+<li>向程序提供简单一致的机制来控制复杂而又通常大不想同的低级硬件设备</li>
+</ol>
+<p>操作系统通过几个基本的抽象概念(进程，虚拟内存和文件)来实现这两个功能<br><img src="https://i.ibb.co/5jLxsXP/Deepin-Screenshot-select-area-20230727231656.png" alt="计算机系统的分层视图和操作系统的抽象表示"></p>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p><strong>进程</strong>是操作系统对一个正在运行的程序的一种抽象<br>一个系统上可以运行多个进程,每个进程都好像认为自己在独占的使用硬件<br><strong>并发运行</strong> 是指一个进程的指令和另一个指令是交错运行的</p>
+<p>在大多数系统中,需要的进程数是多于可以运行它们的cpu个数的.<br>传统的系统在一个时刻只能运行一个程序,而先进的多核处理器可以执行多个程序</p>
 
     </div>
 
