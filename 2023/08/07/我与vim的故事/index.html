@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
-    <meta name="description" content="初试shell语言" />
+    <meta name="description" content="我与vim的故事" />
     <meta name="hexo-theme-A4" content="v1.6.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>coding life | </title>
@@ -81,47 +81,35 @@
 
     
         <div class="post-main-title">
-            初试shell语言
+            我与vim的故事
         </div>
       
     
 
     <div class="post-md">
         
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%9D%E5%A7%8Bshell%E8%AF%AD%E8%A8%80"><span class="post-toc-text">初始shell语言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFshell"><span class="post-toc-text">什么是shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFshell%E8%84%9A%E6%9C%AC"><span class="post-toc-text">什么是shell脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%8E%E6%89%93%E5%8D%B0%E2%80%99hello-world-%E2%80%99-%E5%BC%80%E5%A7%8B"><span class="post-toc-text">从打印’hello world!’ 开始</span></a></li></ol></li></ol></li></ol>
+            
         
-        <h1 id="初始shell语言"><a href="#初始shell语言" class="headerlink" title="初始shell语言"></a>初始shell语言</h1><h3 id="什么是shell"><a href="#什么是shell" class="headerlink" title="什么是shell"></a>什么是shell</h3><p>Shell 脚本编写是一种使用 shell 命令在 Unix&#x2F;Linux 系统中自动执行任务的方法。<br>shell 是一个命令行解释器，用于执行脚本中的命令。<br>Shell 脚本可以执行各种操作，例如文件操作、程序执行和打印文本。</p>
-<h3 id="什么是shell脚本"><a href="#什么是shell脚本" class="headerlink" title="什么是shell脚本"></a>什么是shell脚本</h3><p>Shell 脚本是用脚本语言编写的，例如 Bash (Bourne Again SHell),zsh,fish。<br>Shell 脚本是逐行执行的一系列命令。<br>Shell 脚本可以包含变量、控制结构（例如循环和条件）和函数。</p>
-<h3 id="从打印’hello-world-’-开始"><a href="#从打印’hello-world-’-开始" class="headerlink" title="从打印’hello world!’ 开始"></a>从打印’hello world!’ 开始</h3><p>新建一个’helloworld.sh’文件<br>写下</p>
-<pre><code>#!/usr/bin/env bash
-echo &quot;hello world!&quot;
-</code></pre>
-<p><code>#!</code>告诉系统其后路径所指定的程序即是解释此脚本文件的 Shell 程序。</p>
-<ol>
-<li>使用bash运行</li>
-</ol>
-<pre><code>&gt; bash helloworld.sh
-</code></pre>
-<ol start="2">
-<li>使用chmod添加权限</li>
-</ol>
-<pre><code>&gt; chmod +x helloworld.sh
-&gt; ./helloworld.sh
-</code></pre>
-<p>我们就会在shell上打印出hello world!<br><code>.</code>指的是当前的目录<br><code>./helloworld.sh</code><br>只是选择当前的目录下的文件<br>这时shell 会假设为一个可执行程序</p>
-<p>实际上shell 中运行</p>
-<pre><code>&gt; echo &quot;hello world!&quot;
-hello world!
-</code></pre>
-<p>shell 脚本相当于把在shell上运行命令放在一起</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell.html">菜鸟教程shell</a></p>
+        <p>前几天听闻vim的作者bram moolenaar去世，感到非常不可思议，原来vim<br>已经发展了这么久了</p>
+<p>我与vim的开始是来源于大一下使用linux系统写的实验，当时感觉vim是如此的<br>难用，最后是看到了一些视频才终于会了使用了一些，那是一个非常糟糕的使用<br>在windows上使用codeblock 写完代码才复制到linux上，很多报错，通过vim一行<br>一行的查找，改完了这个实验</p>
+<p>看到了哔哩哔哩upTheCW对我学习这些有着深刻的影响</p>
+<p>看到网上对于vim的一些看法我最终决定学习vim<br>我看到bram写下的哲学</p>
+<ul>
+<li>意识到低效</li>
+<li>找到更快的方法</li>
+<li>形成习惯</li>
+</ul>
+<p>我第一次感觉这是如此的有意思,对于之后的学习有着深刻影响</p>
+<p>当我配置vim的时候，接触到了开源精神，看到如此多的人维护免费开源的项目<br>同时感受到社区的力量，可以维护大型的软件<br>vim相当与一把钥匙，打开了我对于开源世界的认知</p>
+<p>现在我使用的nvim作为vim的分支，对于bram moolenaar创作者表示致敬<br>bram moolenaar拥有着真正的开源精神，他的精神永远存在！</p>
+<p>用了vim已经1年半了，这篇文章写于nvim中，位于宜都</p>
 
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2023-08-02</span>
+            <span>2023-08-07</span>
             
                 <span>该篇文章被 apple115</span>
             
@@ -129,8 +117,8 @@ hello world!
                 <span>打上标签:
                     
                     
-                        <a href='/tags/linux/'>
-                            linux
+                        <a href='/tags/Learning-Blog/'>
+                            Learning Blog
                         </a>
                     
                 </span>
