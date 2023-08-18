@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="C的调试宏" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>coding life | </title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/waline.css">
+
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">coding life</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            C的调试宏
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <p>我在学习其他语言中看到许多语言对于错误处理有着不错的处理<br>但我在C语言中几乎没法看到类似的用法（可能是我的见识短浅）<br>try catch等</p>
+<p>但当我看到&lt;&lt;笨办法学C&gt;&gt;(learn C The Hard Way)中Zed的调试宏给了我非常大的启发</p>
+<p>我用的环境是Linux + gcc<br>让我们来看看吧</p>
+<p>Zed 在书中写到</p>
+<blockquote>
+<p>这种机制可以检查现存的复杂代码中，你执行的东西是否发生错误。当你编写更多的C代码时，你应该按照下列模式：<br>1.调用函数。<br>2.如果返回值出现错误（每次都必须检查）。<br>3.清理创建的所有资源。<br>4.打印出所有可能有帮助的错误信息。</p>
+</blockquote>
+<p>我认为一个函数一定要有一个检测<br>没有测试的代码一定是错的</p>
+<p>zed </p>
+<pre><code>#ifndef __dbg_h__
+#define __dbg_h__
+
+#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;string.h&gt;
+
+#ifdef NDEBUG
+#define debug(M, ...)
+#else
+#define debug(M, ...) fprintf(stderr, &quot;DEBUG %s:%d: &quot; M &quot;\n&quot;, __FILE__, __LINE__, ##__VA_ARGS__)
+#endif
+
+#define clean_errno() (errno == 0 ? &quot;None&quot; : strerror(errno))
+
+#define log_err(M, ...) fprintf(stderr, &quot;[ERROR] (%s:%d: errno: %s) &quot; M &quot;\n&quot;, __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)
+
+#define log_warn(M, ...) fprintf(stderr, &quot;[WARN] (%s:%d: errno: %s) &quot; M &quot;\n&quot;, __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)
+
+#define log_info(M, ...) fprintf(stderr, &quot;[INFO] (%s:%d) &quot; M &quot;\n&quot;, __FILE__, __LINE__, ##__VA_ARGS__)
+
+#define check(A, M, ...) if(!(A)) &#123; log_err(M, ##__VA_ARGS__); errno=0; goto error; &#125;
+
+#define sentinel(M, ...)  &#123; log_err(M, ##__VA_ARGS__); errno=0; goto error; &#125;
+
+#define check_mem(A) check((A), &quot;Out of memory.&quot;)
+
+#define check_debug(A, M, ...) if(!(A)) &#123; debug(M, ##__VA_ARGS__); errno=0; goto error; &#125;
+
+#endif
+</code></pre>
+<p>让我来解读一下</p>
+<pre><code>#ifdef NDEBUG
+#define debug(M, ...)
+#else
+#define debug(M, ...) fprintf(stderr, &quot;DEBUG %s:%d: &quot; M &quot;\n&quot;, __FILE__, __LINE__, ##__VA_ARGS__)
+#endif
+</code></pre>
+<p><code>ifdef</code> 如果定义</p>
+<p><code>stderr</code> 全称<code>standard streams error</code> 标准错误流与这个相似的<code>stdin</code>,<code>stdout</code></p>
+<p><code>fprintf(stderr, &quot;DEBUG %s:%d: &quot; M &quot;\n&quot;, __FILE__, __LINE__, ##__VA_ARGS__)</code>这是宏的主体部分，它使用<code>fprintf</code>函数将信息输出到<code>stderr</code></p>
+<p><code>M</code>是传递给宏的第一个参数</p>
+<p><code>__FILE__</code> 当前文件名<code>__LINE__</code> 当前行号</p>
+<p><code>##__VA_ARGS__</code>是一个特殊的宏，它将被替换为传递给debug宏的所有参数（除了<code>M</code>）。</p>
+<pre><code>#define log_err(M, ...) fprintf(stderr, &quot;[ERROR] (%s:%d: errno: %s) &quot; M &quot;\n&quot;, __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)
+</code></pre>
+<p><code>clean_errno</code>宏用于获取errno的安全可读的版本</p>
+<pre><code>#define check(A, M, ...) if(!(A)) &#123; log_err(M, ##__VA_ARGS__); errno=0; goto error; &#125;
+</code></pre>
+<p><code>check</code>会保证条件<code>A</code>为真，否则会记录错误<code>M</code>（带着<code>log_err</code>的可变参数），之后跳到函数的<code>error:</code>区域来执行清理。<br>这是我见过最像try catch 用法的地方</p>
+<p>看看用法</p>
+<pre><code>#include &quot;dbg.h&quot;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+
+void test_debug()
+&#123;
+    // notice you don&#39;t need the \n
+    debug(&quot;I have Brown Hair.&quot;);
+
+    // passing in arguments like printf
+    debug(&quot;I am %d years old.&quot;, 37);
+&#125;
+
+void test_log_err()
+&#123;
+    log_err(&quot;I believe everything is broken.&quot;);
+    log_err(&quot;There are %d problems in %s.&quot;, 0, &quot;space&quot;);
+&#125;
+
+void test_log_warn()
+&#123;
+    log_warn(&quot;You can safely ignore this.&quot;);
+    log_warn(&quot;Maybe consider looking at: %s.&quot;, &quot;/etc/passwd&quot;);
+&#125;
+
+void test_log_info()
+&#123;
+    log_info(&quot;Well I did something mundane.&quot;);
+    log_info(&quot;It happened %f times today.&quot;, 1.3f);
+&#125;
+
+int test_check(char *file_name)
+&#123;
+    FILE *input = NULL;
+    char *block = NULL;
+
+    block = malloc(100);
+    check_mem(block); // should work
+
+    input = fopen(file_name,&quot;r&quot;);
+    check(input, &quot;Failed to open %s.&quot;, file_name);
+
+    free(block);
+    fclose(input);
+    return 0;
+
+error:
+    if(block) free(block);
+    if(input) fclose(input);
+    return -1;
+&#125;
+
+int test_sentinel(int code)
+&#123;
+    char *temp = malloc(100);
+    check_mem(temp);
+
+    switch(code) &#123;
+        case 1:
+            log_info(&quot;It worked.&quot;);
+            break;
+        default:
+            sentinel(&quot;I shouldn&#39;t run.&quot;);
+    &#125;
+
+    free(temp);
+    return 0;
+
+error:
+    if(temp) free(temp);
+    return -1;
+&#125;
+
+int test_check_mem()
+&#123;
+    char *test = NULL;
+    check_mem(test);
+
+    free(test);
+    return 1;
+
+error:
+    return -1;
+&#125;
+
+int test_check_debug()
+&#123;
+    int i = 0;
+    check_debug(i != 0, &quot;Oops, I was 0.&quot;);
+
+    return 0;
+error:
+    return -1;
+&#125;
+
+int main(int argc, char *argv[])
+&#123;
+    check(argc == 2, &quot;Need an argument.&quot;);
+
+    test_debug();
+    test_log_err();
+    test_log_warn();
+    test_log_info();
+
+    check(test_check(&quot;ex20.c&quot;) == 0, &quot;failed with ex20.c&quot;);
+    check(test_check(argv[1]) == -1, &quot;failed with argv&quot;);
+    check(test_sentinel(1) == 0, &quot;test_sentinel failed.&quot;);
+    check(test_sentinel(100) == -1, &quot;test_sentinel failed.&quot;);
+    check(test_check_mem() == -1, &quot;test_check_mem failed.&quot;);
+    check(test_check_debug() == -1, &quot;test_check_debug failed.&quot;);
+
+    return 0;
+
+error:
+    return 1;
+&#125;
+</code></pre>
+<p>输出</p>
+<pre><code>$ make ex20
+cc -Wall -g -DNDEBUG    ex20.c   -o ex20
+$ ./ex20 test
+[ERROR] (ex20.c:16: errno: None) I believe everything is broken.
+[ERROR] (ex20.c:17: errno: None) There are 0 problems in space.
+[WARN] (ex20.c:22: errno: None) You can safely ignore this.
+[WARN] (ex20.c:23: errno: None) Maybe consider looking at: /etc/passwd.
+[INFO] (ex20.c:28) Well I did something mundane.
+[INFO] (ex20.c:29) It happened 1.300000 times today.
+[ERROR] (ex20.c:38: errno: No such file or directory) Failed to open test.
+[INFO] (ex20.c:57) It worked.
+[ERROR] (ex20.c:60: errno: None) I shouldn&#39;t run.
+[ERROR] (ex20.c:74: errno: None) Out of memory.
+</code></pre>
+<p>真的是非常强大的zed的宏</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-08-18</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        以上。 
+    </div>
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://apple115-github-aheo54k7t-apple115.vercel.app/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '正确的邮箱地址，回复将能得到邮件通知。', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+    </div>
+
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
