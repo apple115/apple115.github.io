@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
-    <meta name="description" content="index" />
+    <meta name="description" content="archlinux下配置rime的输入法(双拼)" />
     <meta name="hexo-theme-A4" content="v1.6.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>coding life</title>
@@ -80,14 +80,73 @@
                         <div class="post-main">
 
     
+        <div class="post-main-title">
+            archlinux下配置rime的输入法(双拼)
+        </div>
+      
+    
 
     <div class="post-md">
         
+            
         
+        <ol>
+<li>下载这个rime-ice</li>
+</ol>
+<pre><code>yay -S rime-ice
+</code></pre>
+<ol start="2">
+<li>创建ice的配置文件</li>
+</ol>
+<pre><code>mkdir ~/.local/share/fcitx5/rime # 创建 rime 目录
+vim ~/.local/share/fcitx5/rime/default.custom.yaml
+</code></pre>
+<ol start="3">
+<li>在<code>default.custom.yaml</code>添加</li>
+</ol>
+<pre><code>patch:
+  &quot;menu/page_size&quot;: 5  #候选词
+  schema_list:
+    - schema: rime_ice
+</code></pre>
+<ol start="4">
+<li><p>右键输入法图标，重新启动或重新部署即可启用雾凇拼音输入法</p>
+</li>
+<li><p>需要添加其他方案可以(小鹤双拼为例)</p>
+</li>
+</ol>
+<pre><code>cp /usr/share/rime-data/double_pinyin_flypy.scheme.yaml ~/.local/share/fcitx5/rime/double_pinyin_flypy.scheme.yaml 
+</code></pre>
+<p>  修改<code>default.custom.yaml</code> 成</p>
+<pre><code>  patch:
+  &quot;menu/page_size&quot;: 5  #候选词
+  schema_list:
+    # - schema: rime_ice
+    - schema: double_pinyin_flypy
+</code></pre>
+<p>就可以使用了<br>6. 按照这个里面这个<br><img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/markdown/202312201028952.png" alt="image.png"><br>进行一些复制和移动从<code>/usr/share/rime-data/</code>中移到<code>~/.local/share/fcitx5/rime/</code></p>
+<p>我的大致目录就是这样了<br><img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/markdown/202312201031007.png" alt="image.png"></p>
+
     </div>
 
     <div class="post-meta">
         <i>
+        
+            <span>2023-12-20</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
         
         </i>
     </div>
