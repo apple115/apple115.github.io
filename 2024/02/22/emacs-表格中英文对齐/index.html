@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="emacs 表格中英文对齐" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>coding life</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/waline.css">
+
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">coding life</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            emacs 表格中英文对齐
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%8B%E8%BD%BD-inconsolate-%E4%B8%8E-lxgw-wenkai"><span class="post-toc-text">下载 inconsolate 与 lxgw-wenkai</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8M-x-set-frome-font"><span class="post-toc-text">可以使用M-x set-frome-font</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE-emacs%E7%9A%84"><span class="post-toc-text">设置 emacs的</span></a></li></ol>
+        
+        <ul>
+<li><a href="#org0460bb7">下载 inconsolate 与 lxgw-wenkai</a></li>
+<li><a href="#org235aa48">可以使用M-x set-frome-font</a></li>
+<li><a href="#org895dc8b">设置 emacs的</a></li>
+</ul>
+<p><a id="org0460bb7"></a></p>
+<h1 id="下载-inconsolate-与-lxgw-wenkai"><a href="#下载-inconsolate-与-lxgw-wenkai" class="headerlink" title="下载 inconsolate 与 lxgw-wenkai"></a>下载 inconsolate 与 lxgw-wenkai</h1><pre><code class="sh">yay -S ttf-inconsolate;
+yay -S ttf-lxgw-wenkai;
+</code></pre>
+<p>或者类似字体 可以达到一个中文字符的大小 与两个英文字符的大小</p>
+<p><a id="org235aa48"></a></p>
+<h1 id="可以使用M-x-set-frome-font"><a href="#可以使用M-x-set-frome-font" class="headerlink" title="可以使用M-x set-frome-font"></a>可以使用M-x set-frome-font</h1><p>查看emacs 可使用的字体</p>
+<p><a id="org895dc8b"></a></p>
+<h1 id="设置-emacs的"><a href="#设置-emacs的" class="headerlink" title="设置 emacs的"></a>设置 emacs的</h1><pre><code class="emacs-lisp">(set-face-attribute &#39;default nil :font (font-spec :family &quot;Inconsolata&quot; :size 18 :weight &#39;bold))
+ ;; (set-fontset-font t &#39;unicode (font-spec :family &quot;Noto Color Emoji&quot; :size 14))
+(set-fontset-font t &#39;(#x2ff0 . #x9ffc) (font-spec :family &quot;LXGW WenKai&quot; :size 18 :weight &#39;bold))
+;;测试一下这个
+</code></pre>
+<p>| 中文 |<br>| abcd |</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-02-22</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        以上。 
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://apple115-github-aheo54k7t-apple115.vercel.app/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '正确的邮箱地址，回复将能得到邮件通知。', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
