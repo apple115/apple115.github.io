@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="waybar-netease-lyrics-show的讲解" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>coding life</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/waline.css">
+
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">coding life</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            waybar-netease-lyrics-show的讲解
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%81%9A%E8%BF%99%E4%B8%AA"><span class="post-toc-text">为什么做这个</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%AD%8C%E8%AF%8D%E4%BB%8E%E4%BB%80%E4%B9%88%E5%9C%B0%E6%96%B9%E6%9D%A5"><span class="post-toc-text">歌词从什么地方来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%93%E5%AD%98%E6%80%9D%E8%B7%AF"><span class="post-toc-text">缓存思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%BE%97%E5%88%B0id"><span class="post-toc-text">如何得到id</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88"><span class="post-toc-text">学习到了什么</span></a></li></ol>
+        
+        <p><a target="_blank" rel="noopener" href="https://github.com/apple115/waybar-netease-lyrics-show">waybar-netease-lyrics-show</a><br>这个项目的大部分思路来自 <a target="_blank" rel="noopener" href="https://github.com/kangxiaoju/waybar-netease-music-lyrics">waybar-netease-music-lyrics</a><br>它是使用shell 写的 我使用python 做了一份适合自己的</p>
+<h1 id="为什么做这个"><a href="#为什么做这个" class="headerlink" title="为什么做这个"></a>为什么做这个</h1><p>因为想为waybar 写一个简单的歌词显示在bar上 会感觉很酷</p>
+<h2 id="歌词从什么地方来"><a href="#歌词从什么地方来" class="headerlink" title="歌词从什么地方来"></a>歌词从什么地方来</h2><p>当我开始关注歌词api 我发现最简单的获得歌词的地方是通过网易云的网站<br>通过这个<code>music.163.com/api/song/media?id=1379444316</code> 可以得到一个歌词地方 再使用 jq -r 进行处理</p>
+<pre><code>curl -s &quot;music.163.com/api/song/media?id=&#123;id&#125;&quot; | jq -r &quot;.lyric&quot;
+</code></pre>
+<h2 id="缓存思路"><a href="#缓存思路" class="headerlink" title="缓存思路"></a>缓存思路</h2><p>在文件目录下新建一个简单的Lyricsfiles的文件<br>文件名是歌词名+ 歌词id<br>从里面读取歌词 如果不行再通过api得到歌词 然后保存存在其中</p>
+<h2 id="如何得到id"><a href="#如何得到id" class="headerlink" title="如何得到id"></a>如何得到id</h2><p>通过 <a target="_blank" rel="noopener" href="https://github.com/altdesktop/playerctl">playerctl</a>得到 感谢开源<br>欢迎直接查看源码</p>
+<h1 id="学习到了什么"><a href="#学习到了什么" class="headerlink" title="学习到了什么"></a>学习到了什么</h1><p>对于一个实际需要使用的东西，跟学校中编程不一样，在学校的编程只需要面向老师的时候没有bug 就行了,而这个是我实际上要使用，使用时候测试的bug可太多<br>大概写了一周作用 是因为我对于python的脚本不太熟练，对于设计不太完善</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-18</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        以上。 
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://apple115-github-aheo54k7t-apple115.vercel.app/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '正确的邮箱地址，回复将能得到邮件通知。', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
