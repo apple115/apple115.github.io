@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="配置rime" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115 の blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">apple115 の blog</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            配置rime
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#archlinux%E4%B8%8B%E9%85%8D%E7%BD%AErime%E7%9A%84%E8%BE%93%E5%85%A5%E6%B3%95-%E5%8F%8C%E6%8B%BC"><span class="post-toc-text">archlinux下配置rime的输入法(双拼)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8B%E8%BD%BD%E8%BF%99%E4%B8%AArime-ice"><span class="post-toc-text">下载这个rime-ice</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BAice%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">创建ice的配置文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9C%A8default-custom-yaml%E6%B7%BB%E5%8A%A0"><span class="post-toc-text">在default.custom.yaml添加</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9C%80%E8%A6%81%E6%B7%BB%E5%8A%A0%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88%E5%8F%AF%E4%BB%A5-%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E4%B8%BA%E4%BE%8B"><span class="post-toc-text">需要添加其他方案可以(小鹤双拼为例)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8C%89%E7%85%A7%E8%BF%99%E4%B8%AA%E9%87%8C%E9%9D%A2%E8%BF%99%E4%B8%AA"><span class="post-toc-text">按照这个里面这个</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="archlinux下配置rime的输入法-双拼"><a href="#archlinux下配置rime的输入法-双拼" class="headerlink" title="archlinux下配置rime的输入法(双拼)"></a>archlinux下配置rime的输入法(双拼)</h1><h2 id="下载这个rime-ice"><a href="#下载这个rime-ice" class="headerlink" title="下载这个rime-ice"></a>下载这个rime-ice</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S rime-ice</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建ice的配置文件"><a href="#创建ice的配置文件" class="headerlink" title="创建ice的配置文件"></a>创建ice的配置文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.local/share/fcitx5/rime # 创建 rime 目录</span><br><span class="line">vim ~/.local/share/fcitx5/rime/default.custom.yaml</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="在default-custom-yaml添加"><a href="#在default-custom-yaml添加" class="headerlink" title="在default.custom.yaml添加"></a>在<code>default.custom.yaml</code>添加</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">patch:</span><br><span class="line">  &quot;menu/page_size&quot;: 5  #候选词</span><br><span class="line">  schema_list:</span><br><span class="line">    - schema: rime_ice</span><br></pre></td></tr></table></figure>
+
+
+<p>右键输入法图标，重新启动或重新部署即可启用雾凇拼音输入法</p>
+<h2 id="需要添加其他方案可以-小鹤双拼为例"><a href="#需要添加其他方案可以-小鹤双拼为例" class="headerlink" title="需要添加其他方案可以(小鹤双拼为例)"></a>需要添加其他方案可以(小鹤双拼为例)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/rime-data/double_pinyin_flypy.scheme.yaml ~/.local/share/fcitx5/rime/double_pinyin_flypy.scheme.yaml</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>default.custom.yaml</code> 成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">patch:</span><br><span class="line">&quot;menu/page_size&quot;: 5  #候选词</span><br><span class="line">schema_list:</span><br><span class="line">  # - schema: rime_ice</span><br><span class="line">  - schema: double_pinyin_flypy</span><br></pre></td></tr></table></figure>
+
+
+<p>就可以使用了</p>
+<h2 id="按照这个里面这个"><a href="#按照这个里面这个" class="headerlink" title="按照这个里面这个"></a>按照这个里面这个</h2><p><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/markdown/202312201028952.png" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/markdown/202312201028952.png" alt="image.png"></a><br>进行一些复制和移动从<code>/usr/share/rime-data/</code>中移到<code>~/.local/share/fcitx5/rime/</code></p>
+<p>我的大致目录就是这样了<br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/markdown/202312201031007.png" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/markdown/202312201031007.png" alt="image.png"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-12-20</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>
