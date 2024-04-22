@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="简明git使用流程2-管理本地" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115 の blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">apple115 の blog</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            简明git使用流程2-管理本地
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95git-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-text">简单git 使用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="post-toc-text">git 初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8Bgit-%E7%8A%B6%E6%80%81"><span class="post-toc-text">查看git 状态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8git-%E8%B7%9F%E8%B8%AA%E6%96%87%E4%BB%B6"><span class="post-toc-text">使用git 跟踪文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8git-%E5%8F%91%E8%B5%B7%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4-%E5%9C%A8git-add-%E6%B7%BB%E5%8A%A0%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B"><span class="post-toc-text">使用git 发起一次提交,在git add 添加的情况下</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8git-log-%E6%9F%A5%E7%9C%8B%E8%BF%99%E4%B8%AA%E5%8E%86%E5%8F%B2"><span class="post-toc-text">可以使用git log 查看这个历史</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="简单git-使用方法"><a href="#简单git-使用方法" class="headerlink" title="简单git 使用方法"></a>简单git 使用方法</h1><p>为什么害怕使用一个自己不知道的东西，最大的问题不知道如何撤销这个<br>所以这次的使用会从 使用这个命令 如何使这个命令返回成原来的状态，同时模拟 git 冲突 实践这个<br>目的是使用一个不会使用git的的人，快速可以使用git 与人合作</p>
+<h2 id="git-初始化"><a href="#git-初始化" class="headerlink" title="git 初始化"></a>git 初始化</h2><p><code>git init</code> 使一个文件夹 初始化<br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitinit-1.png" title="gitinit" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitinit-1.png" alt="gitinit"></a><br><em>取消这个<code>git init</code>如何不小心在一个文件中使用了这个git init 如何取消呢</em></p>
+<p>当我们使用这个<code>git init</code>初始化的时候<br>会在当前目录下有一个<code>.git</code> 文件夹,删除他就可以了</p>
+<p><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitremove.png" title="gitremove" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitremove.png" alt="gitremove"></a></p>
+<h2 id="查看git-状态"><a href="#查看git-状态" class="headerlink" title="查看git 状态"></a>查看git 状态</h2><p>使用<code>git status</code>,这个命令不会改变当前目录下的文件</p>
+<p><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitstatus.png" title="git status" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitstatus.png" alt="git status"></a></p>
+<h2 id="使用git-跟踪文件"><a href="#使用git-跟踪文件" class="headerlink" title="使用git 跟踪文件"></a>使用git 跟踪文件</h2><p>添加一个1.c文件<br>使用<code>git status</code>查看这<br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gittrace1.png" title="git add" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gittrace1.png" alt="git add"></a><br>发现当前文件夹git 没有跟踪这个文件</p>
+<p>我们使用<code>git add &lt;这个文件&gt;</code><br>将这个文件跟踪添加进去<br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitadd2.png" title="gitadd2" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitadd2.png" alt="gitadd2"></a></p>
+<p><em>如过我不小心添加来这个文件,想取消这个添加可以使用<code>git reset &lt;这个文件&gt;</code></em><br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitreset.png" title="gitreset" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitreset.png" alt="gitreset"></a></p>
+<h2 id="使用git-发起一次提交-在git-add-添加的情况下"><a href="#使用git-发起一次提交-在git-add-添加的情况下" class="headerlink" title="使用git 发起一次提交,在git add 添加的情况下"></a>使用git 发起一次提交,在git add 添加的情况下</h2><p>使用git进行一次提交<code>git commit -m &quot;&lt;提交的信息&gt;&quot;</code><br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitcommit.png" title="gitcommit" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitcommit.png" alt="gitcommit"></a></p>
+<p>这样就算一次提交</p>
+<p><em>如何我认为这个提交有问题，如何取消呢</em><br>有两种情况<br>第一：我的commit的信息有问题，我只是想修改一下信息<br>使用<code>git commit --amend</code><br>进入一个界面修改<br>在出来就可以<br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitcommit2.png" title="gitcommit" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitcommit2.png" alt="gitcommit"></a><br>第二：我想撤销这个commit,不想保留<br>使用<code>git reset --soft HEAD^</code><br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitreset3.png" title="gitreset2" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitreset3.png" alt="gitreset2"></a></p>
+<p>第三：保留这个commit，但我想回到我想回到的状态<br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitrevert.png" title="gitrevet" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitrevert.png" alt="gitrevet"></a></p>
+<p>你会保留这个但可以回到你想回到的地方</p>
+<h2 id="可以使用git-log-查看这个历史"><a href="#可以使用git-log-查看这个历史" class="headerlink" title="可以使用git log 查看这个历史"></a>可以使用git log 查看这个历史</h2><p><code>git log</code> 查看这个历史<br><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitlog.png" title="git log" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/gitlog.png" alt="git log"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-04-22</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>
