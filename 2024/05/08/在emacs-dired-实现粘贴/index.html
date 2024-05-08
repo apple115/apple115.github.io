@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
+    <meta name="description" content="在emacs dired 实现粘贴图片" />
     <meta name="hexo-theme-A4" content="v1.8.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>apple115 の blog</title>
@@ -104,46 +104,81 @@
 </div> 
         
                     
-                            <br>
-<span>📌<i>tags</i></span>
-<ul class="inline-ul" >
-
-  
-
-  
-
-  
-
-  
-  
-  
-  
-      
-        <li class="inline-li">
-            <a href="/tags/emacs">emacs</a>
-            <span><i>1</i></span>
-        </li>
-    
-        <li class="inline-li">
-            <a href="/tags/linux">linux</a>
-            <span><i>10</i></span>
-        </li>
-    
-        <li class="inline-li">
-            <a href="/tags/learn">learn</a>
-            <span><i>2</i></span>
-        </li>
-    
-    
-</ul>
-
-                    
                     
 
                     
                     
                     
                     <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            在emacs dired 实现粘贴图片
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%83%B3%E6%B3%95"><span class="post-toc-text">想法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">实现</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h1><p>可以在 emacs 的 dired 中将截图复制在当前的文件夹中</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我使用的archlinux wayland 的 wl-clipboard 作为wayland 剪切应用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Paste to a file:</span><br><span class="line">$ wl-paste &gt; clipboard.txt</span><br></pre></td></tr></table></figure>
+
+<p>所以在emacs写下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defun my-paste-to-dired ()</span><br><span class="line">&quot;使用wl-paste 命令复制在当前文件夹中&quot;</span><br><span class="line">(interactive)</span><br><span class="line">(let ((past-file-name (read-file-name &quot;Enter file name:&quot;) ))</span><br><span class="line">  (async-shell-command (format &quot;wl-paste &gt; %s&quot; past-file-name) )))</span><br></pre></td></tr></table></figure>
+
+<p>通过调用这个命令就可粘贴在这个的当前文件夹中</p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-05-08</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/emacs/'>
+                            emacs
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
                     
                     
                     <div class="footer">
