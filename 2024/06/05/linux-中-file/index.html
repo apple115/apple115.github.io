@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
+    <meta name="description" content="linux 中 file`/initramfs-linux-img&#39; not found 问题" />
     <meta name="hexo-theme-A4" content="v1.8.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>apple115 の blog</title>
@@ -107,121 +107,84 @@
                     
 
                     
-                            
-
-
-<div class="archive-list">
-  <ul class="archive">
-
-    
-    <span>📌<i>linux</i></span>
- 
-    
-
-    
-    
-
-    
-
-    
-  
-    
-        <li>
-        <span class="archive-date">2024-06-05</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2024/06/05/linux-%E4%B8%AD-file/">linux 中 file`/initramfs-linux-img&#39; not found 问题</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2024-04-28</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2024/04/28/%E7%AE%80%E6%98%8Egit%E4%BD%BF%E7%94%A82/">简明git使用2</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2024-04-22</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2024/04/22/%E7%AE%80%E6%98%8Egit%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B2/">简明git使用流程2-管理本地</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2024-03-31</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2024/03/31/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%8Envim%E6%8D%A2%E5%88%B0%E4%BA%86emacs/">为什么我从nvim换到了emacs</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2024-03-20</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2024/03/20/waybar-netease-lyrics-show%E7%9A%84%E8%AE%B2%E8%A7%A3/">waybar-netease-lyrics-show的讲解</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2023-12-20</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2023/12/20/%E9%85%8D%E7%BD%AErime-md/">配置rime</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2023-10-30</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2023/10/30/vim%E7%9A%84%E9%AB%98%E7%BA%A7%E6%9B%BF%E6%8D%A2/">vim的高级替换</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2023-08-01</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2023/08/01/%E6%88%91%E4%B8%8Evim%E7%9A%84%E6%95%85%E4%BA%8B/">我与vim的故事</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2023-08-01</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2023/08/01/linux%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/">linux简单入门</a>
-        </div>
-        </li>
-    
-  
-    
-        <li>
-        <span class="archive-date">2023-07-19</span>
-        <div class="archive-main">
-            <a class="archive-title" href="/2023/07/19/%E7%AE%80%E6%98%8Egit%E4%BD%BF%E7%94%A8-md/">简明git使用.md</a>
-        </div>
-        </li>
-    
-  
-  </ul>
-</div>
- 
-                    
                     
                     
                     <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            linux 中 file`/initramfs-linux-img&#39; not found 问题
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%99%BB%E5%BD%95Linux%E4%B8%AD"><span class="post-toc-text">登录Linux中</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%91%E7%8E%B0%E4%B8%8D%E5%AF%B9"><span class="post-toc-text">发现不对</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grub%E7%9A%84%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">grub的命令模式</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h3 id="登录Linux中"><a href="#登录Linux中" class="headerlink" title="登录Linux中"></a>登录Linux中</h3><p>出现如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Booting `Arch linux`</span><br><span class="line"></span><br><span class="line">Loading Linux linux ...</span><br><span class="line">Loading initial ramdisk ...</span><br><span class="line">error:file `/initramfs-linux.img&#x27; not found.</span><br><span class="line"></span><br><span class="line">Press any key to countinue</span><br></pre></td></tr></table></figure>
+
+<p>这个的问题就是简单的在这个&#x2F;boot 下没有找到 initramfs-linux.img<br>一般来说使用使用archlinux.iso livecd 挂载进入<br>使用<code>mkinitcpio -p linux</code><br>就会生成 initramfs-linux 这个</p>
+<h3 id="发现不对"><a href="#发现不对" class="headerlink" title="发现不对"></a>发现不对</h3><p>我的问题就在这个iso 中挂载到这个系统挂错了&#x2F;boot<br>其实挂错了识别出来是很简单<br>发现没有’grub&#x2F;grub.cfx’</p>
+<p>使用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; -name &quot;&lt;查找的(可以使用正则)&gt;&quot;</span><br><span class="line">find / -name grub.cfx</span><br></pre></td></tr></table></figure>
+
+<p>我以为是没有这个grub<br>我又使用grub-mkconfig 生成了这个</p>
+<p>哈哈哈</p>
+<p>那么我是如何发现的呢</p>
+<h3 id="grub的命令模式"><a href="#grub的命令模式" class="headerlink" title="grub的命令模式"></a>grub的命令模式</h3><p>我最后使用了 grub的命令模式<br>在grub的界面下 按 c 键就进入了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grub &gt; ls -al # 查看所有分区</span><br><span class="line">grub &gt; ls (hd0,1) / #可以查看这个目录下有什么</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后我发现在&#x2F;boot 目录下没有这个initramfs-Linux.img<br>发现没有<br>我意识到我挂载出现了问题</p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-06-05</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
                     
                     
                     <div class="footer">
