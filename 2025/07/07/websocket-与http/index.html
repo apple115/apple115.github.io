@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="websocket" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    websocket
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-15</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：4.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：23分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#websocket-%E7%9A%84%E6%9C%80%E5%A4%A7%E7%89%B9%E7%82%B9"><span class="post-toc-text">websocket 的最大特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#websocket%E7%9A%84%E4%BC%98%E7%82%B9"><span class="post-toc-text">websocket的优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#websocket-%E6%9C%89%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%E4%B8%8E%E5%9B%9B%E4%B8%AA%E4%BA%8B%E4%BB%B6"><span class="post-toc-text">websocket 有两个方法与四个事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="post-toc-text">两个方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9B%E4%B8%AA%E4%BA%8B%E4%BB%B6"><span class="post-toc-text">四个事件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#websocket-%E9%80%9A%E8%BF%87http%E5%8F%91%E8%B5%B7"><span class="post-toc-text">websocket 通过http发起</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8go%E8%AF%AD%E8%A8%80%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%8Bwebsocket%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="post-toc-text">使用go语言简单实现一下websocket服务端</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%86%E8%A7%A3websocket%E7%9A%84%E5%B8%A7%E7%BB%93%E6%9E%84"><span class="post-toc-text">了解websocket的帧结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%AC%AC1%E5%AD%97%E8%8A%82%EF%BC%88%E4%BD%8D0-7%EF%BC%89"><span class="post-toc-text">第1字节（位0-7）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Opcode-%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">Opcode 类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%AC%AC2%E5%AD%97%E8%8A%82%EF%BC%88%E4%BD%8D8-15%EF%BC%89"><span class="post-toc-text">第2字节（位8-15）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Payload-len-%E8%A7%A3%E9%87%8A"><span class="post-toc-text">Payload len 解释</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E6%8E%A9%E7%A0%81%E9%94%AE%EF%BC%88Masking-key%EF%BC%89"><span class="post-toc-text">掩码键（Masking-key）</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%B8%A7%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%90"><span class="post-toc-text">帧格式解析</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A9websocket%E6%96%AD%E7%BD%91%E9%87%8D%E8%BF%9E%E6%9B%B4%E5%BF%AB"><span class="post-toc-text">如何让websocket断网重连更快</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WebSocket%E9%87%8D%E8%BF%9E%E8%BF%87%E7%A8%8B%E6%8B%86%E8%A7%A3"><span class="post-toc-text">WebSocket重连过程拆解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="post-toc-text">源码解析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%88%91%E4%BB%AC%E5%85%88%E4%BB%8Ego-websocket%E7%9A%84%E7%A4%BA%E4%BE%8B%E4%BD%BF%E7%94%A8%E6%9D%A5%E8%AF%B4"><span class="post-toc-text">我们先从go-websocket的示例使用来说</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ping-pong"><span class="post-toc-text">ping pong</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#websocket-%E5%8D%87%E7%BA%A7%E7%BB%86%E8%8A%82"><span class="post-toc-text">websocket 升级细节</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#conn-struct"><span class="post-toc-text">conn struct</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="websocket-的最大特点"><a href="#websocket-的最大特点" class="headerlink" title="websocket 的最大特点"></a>websocket 的最大特点</h2><p>全双工</p>
+<h2 id="websocket的优点"><a href="#websocket的优点" class="headerlink" title="websocket的优点"></a>websocket的优点</h2><p>因为websocket定义了二进制帧，相对于http，可以更加轻松的处理二进制文件<br>因为全双工协议，更强的实时性<br>websocket可以定义扩展，可以更好的支持扩展</p>
+<h2 id="websocket-有两个方法与四个事件"><a href="#websocket-有两个方法与四个事件" class="headerlink" title="websocket 有两个方法与四个事件"></a>websocket 有两个方法与四个事件</h2><h3 id="两个方法"><a href="#两个方法" class="headerlink" title="两个方法"></a>两个方法</h3><ul>
+<li>close([code[, reason]])：该方法用于关闭 WebSocket 连接，如果连接已经关闭，则此方法不执行任何操作；</li>
+<li>send(data)：该方法将需要通过 WebSocket 链接传输至服务器的数据排入队列，并根据所需要传输的数据的大小来增加 bufferedAmount 的值 。若数据无法传输（比如数据需要缓存而缓冲区已满）时，套接字会自行关闭。</li>
+</ul>
+<h3 id="四个事件"><a href="#四个事件" class="headerlink" title="四个事件"></a>四个事件</h3><ul>
+<li>close：当一个 WebSocket 连接被关闭时触发，也可以通过 onclose 属性来设置；</li>
+<li>error：当一个 WebSocket 连接因错误而关闭时触发，也可以通过 onerror 属性来设置；</li>
+<li>message：当通过 WebSocket 收到数据时触发，也可以通过 onmessage 属性来设置；</li>
+<li>open：当一个 WebSocket 连接成功时触发，也可以通过 onopen 属性来设置。</li>
+</ul>
+<h2 id="websocket-通过http发起"><a href="#websocket-通过http发起" class="headerlink" title="websocket 通过http发起"></a>websocket 通过http发起</h2><p>通过 HTTP&#x2F;1.1 协议的 101 状态码进行握手。为了创建 WebSocket 连接，需要通过浏览器发出请求，之后服务器进行回应，这个过程通常称为 “握手”（Handshaking）。</p>
+<p>客户端请求</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET ws://echo.websocket.org/ HTTP/1.1</span><br><span class="line">Host: echo.websocket.org</span><br><span class="line">Origin: file://</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Sec-WebSocket-Version: 13</span><br><span class="line">Sec-WebSocket-Key: Zx8rNEkBE4xnwifpuh8DHQ==</span><br><span class="line">Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1.connection:希望客户端进行协议升级</li>
+<li>2.Upgrade:字段必须设置 websocket，表示希望升级到 WebSocket 协议；</li>
+<li>3.Sec-WebSocket-Version:表示支持的 WebSocket 版本</li>
+<li>4.Sec-WebSocket-Key:是随机的字符串，服务器端会用这些数据来构造出一个 SHA-1 的信息摘要；</li>
+<li>5.Sec-WebSocket-Extensions：用于协商本次连接要使用的 WebSocket 扩展：客户端发送支持的扩展，服务器通过返回相同的首部确认自己支持一个或多个扩展；</li>
+<li>6.Origin:字段是可选的，通常用来表示在浏览器中发起此 WebSocket 连接所在的页面，类似于 Referer。但是，与 Referer 不同的是，Origin 只包含了协议和主机名称。</li>
+</ul>
+<p>服务端响应</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 101 Web Socket Protocol Handshake</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Sec-WebSocket-Accept: 52Rg3vW4JQ1yWpkvFlsTsiezlqw=</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1.101 响应码确认升级到 WebSocket 协议；</li>
+<li>2.设置 Connection 头的值为 “Upgrade” 来指示这是一个升级请求（HTTP 协议提供了一种特殊的机制，这一机制允许将一个已建立的连接升级成新的、不相容的协议）；</li>
+<li>3.Upgrade 头指定一项或多项协议名，按优先级排序，以逗号分隔。这里表示升级为 WebSocket 协议；</li>
+<li><ol start="4">
+<li>签名的键值验证协议支持。</li>
+</ol>
+</li>
+</ul>
+<h2 id="使用go语言简单实现一下websocket服务端"><a href="#使用go语言简单实现一下websocket服务端" class="headerlink" title="使用go语言简单实现一下websocket服务端"></a>使用go语言简单实现一下websocket服务端</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;crypto/sha1&quot;</span></span><br><span class="line">	<span class="string">&quot;encoding/base64&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="string">&quot;:9999&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		w.Header().Set(<span class="string">&quot;content-Type&quot;</span>, <span class="string">&quot;text/plain;charset=utf-8&quot;</span>)</span><br><span class="line">		w.WriteHeader(http.StatusOK)</span><br><span class="line">		w.Write([]<span class="type">byte</span>(<span class="string">&quot;这个是一个测试websockt&quot;</span>))</span><br><span class="line">	&#125;)</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/ws&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> !strings.EqualFold(r.Header.Get(<span class="string">&quot;Upgrade&quot;</span>), <span class="string">&quot;websocket&quot;</span>) &#123;</span><br><span class="line">			http.Error(w, <span class="string">&quot;HTTP/1.1 400 Bad Request&quot;</span>, http.StatusBadRequest)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		secWsKey := r.Header.Get(<span class="string">&quot;Sec-WebSocket-Key&quot;</span>)</span><br><span class="line">		<span class="keyword">if</span> secWsKey == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">			http.Error(w, <span class="string">&quot;Missing Sec-WebSocket-Key&quot;</span>, http.StatusBadRequest)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 生成Accept值</span></span><br><span class="line">		acceptKey := generateAcceptValue(secWsKey)</span><br><span class="line">		hj, ok := w.(http.Hijacker)</span><br><span class="line">		<span class="keyword">if</span> !ok &#123;</span><br><span class="line">			http.Error(w, <span class="string">&quot;Webserver doesn&#x27;t support hijacking&quot;</span>, http.StatusInternalServerError)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		conn, bufrw, err := hj.Hijack()</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			http.Error(w, err.Error(), http.StatusInternalServerError)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">defer</span> conn.Close()</span><br><span class="line">		<span class="comment">// 构造握手响应</span></span><br><span class="line">		response := []<span class="type">string</span>&#123;</span><br><span class="line">			<span class="string">&quot;HTTP/1.1 101 Switching Protocols&quot;</span>,</span><br><span class="line">			<span class="string">&quot;Upgrade: websocket&quot;</span>,</span><br><span class="line">			<span class="string">&quot;Connection: Upgrade&quot;</span>,</span><br><span class="line">			<span class="string">&quot;Sec-WebSocket-Accept: &quot;</span> + acceptKey,</span><br><span class="line">			<span class="string">&quot;&quot;</span>, <span class="comment">// 空行分隔头与主体</span></span><br><span class="line">			<span class="string">&quot;&quot;</span>,</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> _, err := bufrw.WriteString(strings.Join(response, <span class="string">&quot;\r\n&quot;</span>)); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		bufrw.Flush()</span><br><span class="line">		<span class="comment">// 这里可以添加WebSocket数据帧处理逻辑</span></span><br><span class="line">		fmt.Println(<span class="string">&quot;WebSocket连接已建立&quot;</span>)</span><br><span class="line">		<span class="comment">// 简单保持连接（实际需要处理帧数据）</span></span><br><span class="line">		<span class="keyword">select</span> &#123;&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;服务器运行在 http://localhost%s\n&quot;</span>, port)</span><br><span class="line">	<span class="keyword">if</span> err := http.ListenAndServe(port, <span class="literal">nil</span>); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成Sec-WebSocket-Accept值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generateAcceptValue</span><span class="params">(challengeKey <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> magicGUID = <span class="string">&quot;258EAFA5-E914-47DA-95CA-C5AB0DC85B11&quot;</span></span><br><span class="line">	hash := sha1.New()</span><br><span class="line">	hash.Write([]<span class="type">byte</span>(challengeKey + magicGUID))</span><br><span class="line">	<span class="keyword">return</span> base64.StdEncoding.EncodeToString(hash.Sum(<span class="literal">nil</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用curl进行简单的测试</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span> curl -i -N \</span><br><span class="line">            -H <span class="string">&quot;Connection: Upgrade&quot;</span> \</span><br><span class="line">            -H <span class="string">&quot;Upgrade: websocket&quot;</span> \</span><br><span class="line">            -H <span class="string">&quot;Sec-WebSocket-Version: 13&quot;</span> \</span><br><span class="line">            -H <span class="string">&quot;Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==&quot;</span> \</span><br><span class="line">            http://localhost:9999/ws</span><br></pre></td></tr></table></figure>
+
+<h2 id="了解websocket的帧结构"><a href="#了解websocket的帧结构" class="headerlink" title="了解websocket的帧结构"></a>了解websocket的帧结构</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> 0                   1                   2                   3</span><br><span class="line"> 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">+-+-+-+-+-------+-+-------------+-------------------------------+</span><br><span class="line">|F|R|R|R| opcode|M| Payload len |    Extended payload length    |</span><br><span class="line">|I|S|S|S|  (4)  |A|     (7)     |             (16/64)           |</span><br><span class="line">|N|V|V|V|       |S|             |   (if payload len==126/127)   |</span><br><span class="line">| |1|2|3|       |K|             |                               |</span><br><span class="line">+-+-+-+-+-------+-+-------------+ - - - - - - - - - - - - - - - +</span><br><span class="line">|     Extended payload length continued, if payload len == 127  |</span><br><span class="line">+ - - - - - - - - - - - - - - - +-------------------------------+</span><br><span class="line">|                               |Masking-key, if MASK set to 1  |</span><br><span class="line">+-------------------------------+-------------------------------+</span><br><span class="line">| Masking-key (continued)       |          Payload Data         |</span><br><span class="line">+-------------------------------- - - - - - - - - - - - - - - - +</span><br><span class="line">:                     Payload Data continued ...                :</span><br><span class="line">+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +</span><br><span class="line">|                     Payload Data continued ...                |</span><br><span class="line">+---------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<h5 id="第1字节（位0-7）"><a href="#第1字节（位0-7）" class="headerlink" title="第1字节（位0-7）"></a>第1字节（位0-7）</h5><p>位 名称 说明<br>0 FIN 结束标志：1&#x3D;最后一帧，0&#x3D;后续还有帧<br>1 RSV1 保留位1：默认为0，扩展协议可使用<br>2 RSV2 保留位2：默认为0，扩展协议可使用<br>3 RSV3 保留位3：默认为0，扩展协议可使用<br>4-7 Opcode 操作码：定义帧类型</p>
+<h6 id="Opcode-类型"><a href="#Opcode-类型" class="headerlink" title="Opcode 类型"></a>Opcode 类型</h6><p>值 名称 说明<br>0x0 连续帧 分片消息的后续帧<br>0x1 文本帧 UTF-8文本数据<br>0x2 二进制帧 二进制数据<br>0x8 连接关闭 关闭连接请求<br>0x9 Ping 心跳检测请求<br>0xA Pong 心跳检测响应<br>0xB-F 保留 用于未来控制帧</p>
+<h5 id="第2字节（位8-15）"><a href="#第2字节（位8-15）" class="headerlink" title="第2字节（位8-15）"></a>第2字节（位8-15）</h5><p>位 名称 说明<br>8 MASK 掩码标志：1&#x3D;负载被掩码处理<br>9-15 Payload len 基础负载长度</p>
+<h6 id="Payload-len-解释"><a href="#Payload-len-解释" class="headerlink" title="Payload len 解释"></a>Payload len 解释</h6><p>值范围 实际负载长度表示方式<br>0-125 直接表示负载长度<br>126 后续2字节表示长度<br>127 后续8字节表示长度<br>####### 扩展负载长度<br>当基础负载长度(Payload len)为126时：<br>接下来的2字节(16位)表示实际负载长度<br>最大长度：65,535字节 (2^16 - 1)<br>当基础负载长度(Payload len)为127时：<br>接下来的8字节(64位)表示实际负载长度<br>最大长度：18,446,744,073,709,551,615字节 (2^64 - 1)<br>注意：最高位必须为0（防止长度值过大）</p>
+<h6 id="掩码键（Masking-key）"><a href="#掩码键（Masking-key）" class="headerlink" title="掩码键（Masking-key）"></a>掩码键（Masking-key）</h6><p>当MASK位为1时出现<br>固定4字节(32位)长度<br>用于对负载数据进行掩码处理<br>客户端到服务器：必须使用掩码(MASK&#x3D;1)<br>服务器到客户端：禁止使用掩码(MASK&#x3D;0)</p>
+<h5 id="帧格式解析"><a href="#帧格式解析" class="headerlink" title="帧格式解析"></a>帧格式解析</h5><p>可以简单写一个服务端的解析</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">		 简单保持连接（实际需要处理帧数据）</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			header := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">2</span>)</span><br><span class="line">			_, err := io.ReadFull(bufrw, header)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				fmt.Println(<span class="string">&quot;读取帧头错误:err&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			fin := header[<span class="number">0</span>] &amp; <span class="number">0x80</span>             <span class="comment">// 获取FIN位</span></span><br><span class="line">			opcode := header[<span class="number">0</span>] &amp; <span class="number">0x0F</span>          <span class="comment">// 获取操作码</span></span><br><span class="line">			masked := header[<span class="number">1</span>]&amp;<span class="number">0x80</span> != <span class="number">0</span>       <span class="comment">// 是否有掩码</span></span><br><span class="line">			payloadLen := <span class="type">int</span>(header[<span class="number">1</span>] &amp; <span class="number">0x7F</span>) <span class="comment">// 负载长度</span></span><br><span class="line"></span><br><span class="line">			fmt.Printf(<span class="string">&quot;收到帧: FIN=%t, Opcode=%d, Masked=%t, PayloadLen=%d\n&quot;</span>,</span><br><span class="line">				fin, opcode, masked, payloadLen)</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 处理关闭帧 (0x8)</span></span><br><span class="line">			<span class="keyword">if</span> opcode == <span class="number">0x8</span> &#123;</span><br><span class="line">				fmt.Println(<span class="string">&quot;收到关闭帧，关闭连接&quot;</span>)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> opcode == <span class="number">0x1</span> &#123;</span><br><span class="line">				<span class="comment">//读取掩码键</span></span><br><span class="line">				maskKey := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">4</span>)</span><br><span class="line">				<span class="keyword">if</span> masked &#123;</span><br><span class="line">					_, err := io.ReadFull(bufrw, maskKey)</span><br><span class="line">					<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">						fmt.Println(<span class="string">&quot;读取掩码错误:&quot;</span>, err)</span><br><span class="line">						<span class="keyword">return</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 读取负载数据</span></span><br><span class="line">				payload := <span class="built_in">make</span>([]<span class="type">byte</span>, payloadLen)</span><br><span class="line">				_, err := io.ReadFull(bufrw, payload)</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					fmt.Println(<span class="string">&quot;读取负载错误:&quot;</span>, err)</span><br><span class="line">					<span class="keyword">return</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 解掩码</span></span><br><span class="line">				<span class="keyword">if</span> masked &#123;</span><br><span class="line">					<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(payload); i++ &#123;</span><br><span class="line">						payload[i] ^= maskKey[i%<span class="number">4</span>]</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				message := <span class="type">string</span>(payload)</span><br><span class="line">				fmt.Printf(<span class="string">&quot;收到消息: %s\n&quot;</span>, message)</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 构造回显响应</span></span><br><span class="line">				response := createTextFrame(<span class="string">&quot;服务器收到: &quot;</span> + message)</span><br><span class="line">				<span class="keyword">if</span> _, err := conn.Write(response); err != <span class="literal">nil</span> &#123;</span><br><span class="line">					fmt.Println(<span class="string">&quot;发送响应错误:&quot;</span>, err)</span><br><span class="line">					<span class="keyword">return</span></span><br><span class="line">				&#125;</span><br><span class="line">				fmt.Println(<span class="string">&quot;已发送回显响应&quot;</span>)</span><br><span class="line"></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">// 跳过非文本帧</span></span><br><span class="line">				fmt.Printf(<span class="string">&quot;跳过操作码 %d 的帧\n&quot;</span>, opcode)</span><br><span class="line">				_, err := bufrw.Discard(payloadLen)</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					fmt.Println(<span class="string">&quot;跳过帧错误:&quot;</span>, err)</span><br><span class="line">					<span class="keyword">return</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建文本帧</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createTextFrame</span><span class="params">(message <span class="type">string</span>)</span></span> []<span class="type">byte</span> &#123;</span><br><span class="line">	payload := []<span class="type">byte</span>(message)</span><br><span class="line">	frame := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">2</span>+<span class="built_in">len</span>(payload))</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 设置帧头: FIN=1, Opcode=1 (文本帧)</span></span><br><span class="line">	frame[<span class="number">0</span>] = <span class="number">0x81</span> <span class="comment">// 10000001</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 设置负载长度</span></span><br><span class="line">	frame[<span class="number">1</span>] = <span class="type">byte</span>(<span class="built_in">len</span>(payload))</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 复制负载数据</span></span><br><span class="line">	<span class="built_in">copy</span>(frame[<span class="number">2</span>:], payload)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> frame</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>应用端</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  <span class="built_in">test</span> websocat ws://localhost:9999/ws</span><br><span class="line">111</span><br><span class="line">服务器收到: 111</span><br><span class="line">111</span><br><span class="line">服务器收到: 111</span><br></pre></td></tr></table></figure>
+
+<p>服务端</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">服务器运行在 http://localhost:9999</span><br><span class="line">WebSocket连接已建立</span><br><span class="line">收到帧: FIN=%!t(uint8=128), Opcode=1, Masked=<span class="literal">true</span>, PayloadLen=4</span><br><span class="line">收到消息: 111</span><br><span class="line"></span><br><span class="line">已发送回显响应</span><br><span class="line">收到帧: FIN=%!t(uint8=128), Opcode=1, Masked=<span class="literal">true</span>, PayloadLen=4</span><br><span class="line">收到消息: 111</span><br><span class="line"></span><br><span class="line">已发送回显响应</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以实现简单websocket协议了</p>
+<h2 id="如何让websocket断网重连更快"><a href="#如何让websocket断网重连更快" class="headerlink" title="如何让websocket断网重连更快"></a>如何让websocket断网重连更快</h2><h3 id="WebSocket重连过程拆解"><a href="#WebSocket重连过程拆解" class="headerlink" title="WebSocket重连过程拆解"></a>WebSocket重连过程拆解</h3><p>从三个角度进行websocket的解析<br>感知何时需要重新连接<br>快速断开连接<br>快速发起新连接</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>（1）首先：通过定时发送心跳包的方式检测当前连接是否可用，同时监测网络恢复事件，在恢复后立即发送一次心跳，快速感知当前状态，判断是否需要重连；<br>（2）其次：正常情况下由服务器断开旧连接，与服务器失去联系时直接弃用旧连接，上层模拟断开，来实现快速断开；<br>（3）最后：发起新连接时使用退避算法延迟一段时间再发起连接，同时考虑到资源浪费和重连速度，可以在网络离线时调大重连间隔，在网络正常或网络由offline变为online时缩小重连间隔，使之尽可能快地重连上。</p>
+<h2 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a>源码解析</h2><p>对于<a target="_blank" rel="noopener" href="https://github.com/gorilla/websocket">go websocket</a>,进行源码解析，分析这个websocket库</p>
+<h3 id="我们先从go-websocket的示例使用来说"><a href="#我们先从go-websocket的示例使用来说" class="headerlink" title="我们先从go-websocket的示例使用来说"></a>我们先从go-websocket的示例使用来说</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;flag&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> addr = flag.String(<span class="string">&quot;addr&quot;</span>, <span class="string">&quot;:9999&quot;</span>, <span class="string">&quot;http service address&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">serveHome</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	log.Println(r.URL)</span><br><span class="line">	<span class="keyword">if</span> r.URL.Path != <span class="string">&quot;/&quot;</span> &#123;</span><br><span class="line">		http.Error(w, <span class="string">&quot;Not found&quot;</span>, http.StatusNotFound)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> r.Method != http.MethodGet &#123;</span><br><span class="line">		http.Error(w, <span class="string">&quot;Method not allowed&quot;</span>, http.StatusMethodNotAllowed)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	http.ServeFile(w, r, <span class="string">&quot;home.html&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	flag.Parse()</span><br><span class="line">	hub := newHub()</span><br><span class="line">	<span class="keyword">go</span> hub.run()</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/&quot;</span>, serveHome)</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/ws&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		serveWs(hub, w, r)</span><br><span class="line">	&#125;)</span><br><span class="line">	err := http.ListenAndServe(*addr, <span class="literal">nil</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(<span class="string">&quot;ListenAndServe: &quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hub.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Hub <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">//register clients</span></span><br><span class="line">	clients <span class="keyword">map</span>[*Client]<span class="type">bool</span></span><br><span class="line"></span><br><span class="line">	broadcast <span class="keyword">chan</span> []<span class="type">byte</span></span><br><span class="line"></span><br><span class="line">	register <span class="keyword">chan</span> *Client</span><br><span class="line"></span><br><span class="line">	unregister <span class="keyword">chan</span> *Client</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newHub</span><span class="params">()</span></span> *Hub &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;Hub&#123;</span><br><span class="line">		clients:    <span class="built_in">make</span>(<span class="keyword">map</span>[*Client]<span class="type">bool</span>),</span><br><span class="line">		broadcast:  <span class="built_in">make</span>(<span class="keyword">chan</span> []<span class="type">byte</span>),</span><br><span class="line">		register:   <span class="built_in">make</span>(<span class="keyword">chan</span> *Client),</span><br><span class="line">		unregister: <span class="built_in">make</span>(<span class="keyword">chan</span> *Client),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *Hub)</span></span> run() &#123;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> client := &lt;-h.register:</span><br><span class="line">			h.clients[client] = <span class="literal">true</span></span><br><span class="line">		<span class="keyword">case</span> client := &lt;-h.unregister:</span><br><span class="line">			<span class="keyword">if</span> _, ok := h.clients[client]; ok &#123;</span><br><span class="line">				<span class="built_in">delete</span>(h.clients, client)</span><br><span class="line">				<span class="built_in">close</span>(client.send)</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> message := &lt;-h.broadcast:</span><br><span class="line">			<span class="keyword">for</span> client := <span class="keyword">range</span> h.clients &#123;</span><br><span class="line">				<span class="keyword">select</span> &#123;</span><br><span class="line">				<span class="keyword">case</span> client.send &lt;- message:</span><br><span class="line">				<span class="keyword">default</span>:</span><br><span class="line">					<span class="built_in">close</span>(client.send)</span><br><span class="line">					<span class="built_in">delete</span>(h.clients, client)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">//client.go</span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;bytes&quot;</span><br><span class="line">	&quot;log&quot;</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	&quot;time&quot;</span><br><span class="line"></span><br><span class="line">	&quot;github.com/gorilla/websocket&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const (</span><br><span class="line">	writeWait = 10 * time.Second</span><br><span class="line">	pongWait = 60 * time.Second</span><br><span class="line">	pingPeriod = (pongWait * 9) / 10</span><br><span class="line">	maxMessageSize = 512</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">	newline = []byte&#123;&#x27;\n&#x27;&#125;</span><br><span class="line">	space   = []byte&#123;&#x27; &#x27;&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">var upgrade = websocket.Upgrader&#123;</span><br><span class="line">	ReadBufferSize:  1024,</span><br><span class="line">	WriteBufferSize: 1024,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Client struct &#123;</span><br><span class="line">	hub *Hub</span><br><span class="line">	conn *websocket.Conn</span><br><span class="line">	send chan []byte</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (c *Client) readPump() &#123;</span><br><span class="line">	defer func() &#123;</span><br><span class="line">		c.hub.unregister &lt;- c</span><br><span class="line">		c.conn.Close()</span><br><span class="line">	&#125;()</span><br><span class="line">	c.conn.SetReadLimit(maxMessageSize)</span><br><span class="line">	c.conn.SetReadDeadline(time.Now().Add(pongWait))</span><br><span class="line">	c.conn.SetPongHandler(func(string) error &#123; //更新超时</span><br><span class="line">		c.conn.SetReadDeadline(time.Now().Add(pongWait))</span><br><span class="line">		return nil</span><br><span class="line">	&#125;)</span><br><span class="line">	for &#123;</span><br><span class="line">		_, message, err := c.conn.ReadMessage()</span><br><span class="line">		if err != nil &#123;</span><br><span class="line">			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) &#123;</span><br><span class="line">				log.Printf(&quot;error: %v&quot;, err)</span><br><span class="line">			&#125;</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		message = bytes.TrimSpace(bytes.ReplaceAll(message, newline, space))</span><br><span class="line">		c.hub.broadcast &lt;- message</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (c *Client) writePump() &#123;</span><br><span class="line">	ticker := time.NewTicker(pingPeriod) //心跳定时器</span><br><span class="line">	defer func() &#123;</span><br><span class="line">		ticker.Stop()</span><br><span class="line">		c.conn.Close()</span><br><span class="line">	&#125;()</span><br><span class="line">	for &#123;</span><br><span class="line">		select &#123;</span><br><span class="line">		case message, ok := &lt;-c.send:</span><br><span class="line">			c.conn.SetWriteDeadline(time.Now().Add(writeWait))</span><br><span class="line">			if !ok &#123;</span><br><span class="line">				c.conn.WriteMessage(websocket.CloseMessage, []byte&#123;&#125;)</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			w, err := c.conn.NextWriter(websocket.TextMessage)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			w.Write(message) //写入消息</span><br><span class="line">			for range len(c.send) &#123; //</span><br><span class="line">				w.Write(newline)</span><br><span class="line">				w.Write(&lt;-c.send)</span><br><span class="line">			&#125;</span><br><span class="line">			if err := w.Close(); err != nil &#123;</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">		//发送心跳</span><br><span class="line">		case &lt;-ticker.C:</span><br><span class="line">			c.conn.SetWriteDeadline(time.Now().Add(writeWait))</span><br><span class="line">			if err := c.conn.WriteMessage(websocket.PingMessage, nil); err != nil &#123;</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">func serveWs(hub *Hub, w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	conn, err := upgrade.Upgrade(w, r, nil)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		log.Println(err)</span><br><span class="line">		return</span><br><span class="line">	&#125;</span><br><span class="line">	client := &amp;Client&#123;hub: hub, conn: conn, send: make(chan []byte, 256)&#125;</span><br><span class="line">	client.hub.register &lt;- client</span><br><span class="line"></span><br><span class="line">	go client.writePump()</span><br><span class="line">	go client.readPump()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>home.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>chat example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> conn;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> msg = <span class="variable language_">document</span>.<span class="title function_">getelementbyid</span>(<span class="string">&quot;msg&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> log = <span class="variable language_">document</span>.<span class="title function_">getelementbyid</span>(<span class="string">&quot;log&quot;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">appendlog</span>(<span class="params">item</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">var</span> doscroll =</span></span><br><span class="line"><span class="language-javascript">            log.<span class="property">scrolltop</span> &gt; log.<span class="property">scrollheight</span> - log.<span class="property">clientheight</span> - <span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">          log.<span class="title function_">appendchild</span>(item);</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">if</span> (doscroll) &#123;</span></span><br><span class="line"><span class="language-javascript">            log.<span class="property">scrolltop</span> = log.<span class="property">scrollheight</span> - log.<span class="property">clientheight</span>;</span></span><br><span class="line"><span class="language-javascript">          &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getelementbyid</span>(<span class="string">&quot;form&quot;</span>).<span class="property">onsubmit</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">if</span> (!conn) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">          &#125;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">if</span> (!msg.<span class="property">value</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">          &#125;</span></span><br><span class="line"><span class="language-javascript">          conn.<span class="title function_">send</span>(msg.<span class="property">value</span>);</span></span><br><span class="line"><span class="language-javascript">          msg.<span class="property">value</span> = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (<span class="variable language_">window</span>[<span class="string">&quot;websocket&quot;</span>]) &#123;</span></span><br><span class="line"><span class="language-javascript">          conn = <span class="keyword">new</span> <span class="title function_">websocket</span>(<span class="string">&quot;ws://&quot;</span> + <span class="variable language_">document</span>.<span class="property">location</span>.<span class="property">host</span> + <span class="string">&quot;/ws&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">          conn.<span class="property">onclose</span> = <span class="keyword">function</span> (<span class="params">evt</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> item = <span class="variable language_">document</span>.<span class="title function_">createelement</span>(<span class="string">&quot;div&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">            item.<span class="property">innerhtml</span> = <span class="string">&quot;&lt;b&gt;connection closed.&lt;/b&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">appendlog</span>(item);</span></span><br><span class="line"><span class="language-javascript">          &#125;;</span></span><br><span class="line"><span class="language-javascript">          conn.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">evt</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> messages = evt.<span class="property">data</span>.<span class="title function_">split</span>(<span class="string">&quot;\n&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; messages.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="keyword">var</span> item = <span class="variable language_">document</span>.<span class="title function_">createelement</span>(<span class="string">&quot;div&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">              item.<span class="property">innertext</span> = messages[i];</span></span><br><span class="line"><span class="language-javascript">              <span class="title function_">appendlog</span>(item);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">          &#125;;</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">var</span> item = <span class="variable language_">document</span>.<span class="title function_">createelement</span>(<span class="string">&quot;div&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">          item.<span class="property">innerhtml</span> = <span class="string">&quot;&lt;b&gt;your browser does not support websockets.&lt;/b&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">appendlog</span>(item);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="selector-tag">html</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: gray;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="selector-id">#log</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: white;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding</span>: <span class="number">0.5em</span> <span class="number">0.5em</span> <span class="number">0.5em</span> <span class="number">0.5em</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">top</span>: <span class="number">0.5em</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">left</span>: <span class="number">0.5em</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">right</span>: <span class="number">0.5em</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">bottom</span>: <span class="number">3em</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">overflow</span>: auto;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="selector-id">#form</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">0.5em</span> <span class="number">0</span> <span class="number">0.5em</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">bottom</span>: <span class="number">1em</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">left</span>: <span class="number">0px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;log&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;form&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;send&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;msg&quot;</span> <span class="attr">size</span>=<span class="string">&quot;64&quot;</span> <span class="attr">autofocus</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>整体代码比较简单<br>1.hub有三个事件，注册，注销，广播<br>2.用户get这个ws的时候，使用hub进行注册<br>3.运行两个协程，一个监听消息，消息转发给广播，一个发送消息同时发送ping，如果不回应就结束</p>
+<p>我想知道以下细节</p>
+<ul>
+<li>ping pong</li>
+<li>websocket 升级细节</li>
+<li>conn struct</li>
+<li>if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) 这个代码</li>
+</ul>
+<h4 id="ping-pong"><a href="#ping-pong" class="headerlink" title="ping pong"></a>ping pong</h4><p>ping pong 是控制帧，OpCode。不会读取数据<br>在这个websocket的库中pong的函数需要自己设置，在<br>pong没有实现这个函数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Conn)</span></span> SetPongHandler(h <span class="function"><span class="keyword">func</span><span class="params">(appData <span class="type">string</span>)</span></span> <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> h == <span class="literal">nil</span> &#123;</span><br><span class="line">		h = <span class="function"><span class="keyword">func</span><span class="params">(<span class="type">string</span>)</span></span> <span class="type">error</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.handlePong = h</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ping 函数有pong进行处理</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Conn)</span></span> SetPingHandler(h <span class="function"><span class="keyword">func</span><span class="params">(appData <span class="type">string</span>)</span></span> <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> h == <span class="literal">nil</span> &#123;</span><br><span class="line">		h = <span class="function"><span class="keyword">func</span><span class="params">(message <span class="type">string</span>)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">			err := c.WriteControl(PongMessage, []<span class="type">byte</span>(message), time.Now().Add(writeWait))</span><br><span class="line">			<span class="keyword">if</span> err == ErrCloseSent &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> e, ok := err.(net.Error); ok &amp;&amp; e.Temporary() &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.handlePing = h</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在大部分的情况下，都是服务端ping客户端，少部分的情况下客户端ping服务端</p>
+<h4 id="websocket-升级细节"><a href="#websocket-升级细节" class="headerlink" title="websocket 升级细节"></a>websocket 升级细节</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *Upgrader)</span></span> Upgrade(w http.ResponseWriter, r *http.Request, responseHeader http.Header) (*Conn, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> badHandshake = <span class="string">&quot;websocket: the client is not using the websocket protocol: &quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> !tokenListContainsValue(r.Header, <span class="string">&quot;Connection&quot;</span>, <span class="string">&quot;upgrade&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusBadRequest, badHandshake+<span class="string">&quot;&#x27;upgrade&#x27; token not found in &#x27;Connection&#x27; header&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> !tokenListContainsValue(r.Header, <span class="string">&quot;Upgrade&quot;</span>, <span class="string">&quot;websocket&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusBadRequest, badHandshake+<span class="string">&quot;&#x27;websocket&#x27; token not found in &#x27;Upgrade&#x27; header&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> r.Method != http.MethodGet &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusMethodNotAllowed, badHandshake+<span class="string">&quot;request method is not GET&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> !tokenListContainsValue(r.Header, <span class="string">&quot;Sec-Websocket-Version&quot;</span>, <span class="string">&quot;13&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusBadRequest, <span class="string">&quot;websocket: unsupported version: 13 not found in &#x27;Sec-Websocket-Version&#x27; header&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> _, ok := responseHeader[<span class="string">&quot;Sec-Websocket-Extensions&quot;</span>]; ok &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusInternalServerError, <span class="string">&quot;websocket: application specific &#x27;Sec-WebSocket-Extensions&#x27; headers are unsupported&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	checkOrigin := u.CheckOrigin</span><br><span class="line">	<span class="keyword">if</span> checkOrigin == <span class="literal">nil</span> &#123;</span><br><span class="line">		checkOrigin = checkSameOrigin</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> !checkOrigin(r) &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusForbidden, <span class="string">&quot;websocket: request origin not allowed by Upgrader.CheckOrigin&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	challengeKey := r.Header.Get(<span class="string">&quot;Sec-Websocket-Key&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> !isValidChallengeKey(challengeKey) &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusBadRequest, <span class="string">&quot;websocket: not a websocket handshake: &#x27;Sec-WebSocket-Key&#x27; header must be Base64 encoded value of 16-byte in length&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	subprotocol := u.selectSubprotocol(r, responseHeader)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//me:是否支持压缩功能</span></span><br><span class="line">	<span class="comment">// Negotiate PMCE</span></span><br><span class="line">	<span class="keyword">var</span> compress <span class="type">bool</span></span><br><span class="line">	<span class="keyword">if</span> u.EnableCompression &#123;</span><br><span class="line">		<span class="keyword">for</span> _, ext := <span class="keyword">range</span> parseExtensions(r.Header) &#123;</span><br><span class="line">			<span class="keyword">if</span> ext[<span class="string">&quot;&quot;</span>] != <span class="string">&quot;permessage-deflate&quot;</span> &#123;</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">			compress = <span class="literal">true</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	h, ok := w.(http.Hijacker)</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusInternalServerError, <span class="string">&quot;websocket: response does not implement http.Hijacker&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> brw *bufio.ReadWriter</span><br><span class="line">	netConn, brw, err := h.Hijack()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> u.returnError(w, r, http.StatusInternalServerError, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> brw.Reader.Buffered() &gt; <span class="number">0</span> &#123;</span><br><span class="line">		netConn.Close()</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">&quot;websocket: client sent data before handshake is complete&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> br *bufio.Reader</span><br><span class="line">	<span class="keyword">if</span> u.ReadBufferSize == <span class="number">0</span> &amp;&amp; bufioReaderSize(netConn, brw.Reader) &gt; <span class="number">256</span> &#123;</span><br><span class="line">		<span class="comment">// Reuse hijacked buffered reader as connection reader.</span></span><br><span class="line">		br = brw.Reader</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	buf := bufioWriterBuffer(netConn, brw.Writer)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> writeBuf []<span class="type">byte</span></span><br><span class="line">	<span class="keyword">if</span> u.WriteBufferPool == <span class="literal">nil</span> &amp;&amp; u.WriteBufferSize == <span class="number">0</span> &amp;&amp; <span class="built_in">len</span>(buf) &gt;= maxFrameHeaderSize+<span class="number">256</span> &#123;</span><br><span class="line">		<span class="comment">// Reuse hijacked write buffer as connection buffer.</span></span><br><span class="line">		writeBuf = buf</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//me: 新建这个Conn的连接</span></span><br><span class="line">	c := newConn(netConn, <span class="literal">true</span>, u.ReadBufferSize, u.WriteBufferSize, u.WriteBufferPool, br, writeBuf)</span><br><span class="line">	c.subprotocol = subprotocol</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> compress &#123;</span><br><span class="line">		c.newCompressionWriter = compressNoContextTakeover</span><br><span class="line">		c.newDecompressionReader = decompressNoContextTakeover</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Use larger of hijacked buffer and connection write buffer for header.</span></span><br><span class="line">	p := buf</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(c.writeBuf) &gt; <span class="built_in">len</span>(p) &#123;</span><br><span class="line">		p = c.writeBuf</span><br><span class="line">	&#125;</span><br><span class="line">	p = p[:<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">	p = <span class="built_in">append</span>(p, <span class="string">&quot;HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: &quot;</span>...)</span><br><span class="line">	p = <span class="built_in">append</span>(p, computeAcceptKey(challengeKey)...)</span><br><span class="line">	p = <span class="built_in">append</span>(p, <span class="string">&quot;\r\n&quot;</span>...)</span><br><span class="line">	<span class="keyword">if</span> c.subprotocol != <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		p = <span class="built_in">append</span>(p, <span class="string">&quot;Sec-WebSocket-Protocol: &quot;</span>...)</span><br><span class="line">		p = <span class="built_in">append</span>(p, c.subprotocol...)</span><br><span class="line">		p = <span class="built_in">append</span>(p, <span class="string">&quot;\r\n&quot;</span>...)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> compress &#123;</span><br><span class="line">		p = <span class="built_in">append</span>(p, <span class="string">&quot;Sec-WebSocket-Extensions: permessage-deflate; server_no_context_takeover; client_no_context_takeover\r\n&quot;</span>...)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> k, vs := <span class="keyword">range</span> responseHeader &#123;</span><br><span class="line">		<span class="keyword">if</span> k == <span class="string">&quot;Sec-Websocket-Protocol&quot;</span> &#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> _, v := <span class="keyword">range</span> vs &#123;</span><br><span class="line">			p = <span class="built_in">append</span>(p, k...)</span><br><span class="line">			p = <span class="built_in">append</span>(p, <span class="string">&quot;: &quot;</span>...)</span><br><span class="line">			<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(v); i++ &#123;</span><br><span class="line">				b := v[i]</span><br><span class="line">				<span class="keyword">if</span> b &lt;= <span class="number">31</span> &#123;</span><br><span class="line">					<span class="comment">// prevent response splitting.</span></span><br><span class="line">					b = <span class="string">&#x27; &#x27;</span></span><br><span class="line">				&#125;</span><br><span class="line">				p = <span class="built_in">append</span>(p, b)</span><br><span class="line">			&#125;</span><br><span class="line">			p = <span class="built_in">append</span>(p, <span class="string">&quot;\r\n&quot;</span>...)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	p = <span class="built_in">append</span>(p, <span class="string">&quot;\r\n&quot;</span>...)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Clear deadlines set by HTTP server.</span></span><br><span class="line">	netConn.SetDeadline(time.Time&#123;&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//me: 设置握手写入超时</span></span><br><span class="line">	<span class="keyword">if</span> u.HandshakeTimeout &gt; <span class="number">0</span> &#123;</span><br><span class="line">		netConn.SetWriteDeadline(time.Now().Add(u.HandshakeTimeout))</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//me: p 是准备好的 WebSocket 握手响应数据（HTTP 101 状态码和协议升级头）</span></span><br><span class="line">	<span class="keyword">if</span> _, err = netConn.Write(p); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		netConn.Close()</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//me: 成功写入握手响应后，立即清除写超时设置</span></span><br><span class="line">	<span class="keyword">if</span> u.HandshakeTimeout &gt; <span class="number">0</span> &#123;</span><br><span class="line">		netConn.SetWriteDeadline(time.Time&#123;&#125;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> c, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出来，跟我们写的websocket的简单解析，有一点点的相似，不过它定义一个conn struct,进行通信的安排</p>
+<p>可以关注一下这个</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> brw *bufio.ReadWriter</span><br><span class="line">netConn, brw, err := h.Hijack()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> u.returnError(w, r, http.StatusInternalServerError, err.Error())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> brw.Reader.Buffered() &gt; <span class="number">0</span> &#123;</span><br><span class="line">	netConn.Close()</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">&quot;websocket: client sent data before handshake is complete&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> br *bufio.Reader</span><br><span class="line"><span class="keyword">if</span> u.ReadBufferSize == <span class="number">0</span> &amp;&amp; bufioReaderSize(netConn, brw.Reader) &gt; <span class="number">256</span> &#123;</span><br><span class="line">	<span class="comment">// Reuse hijacked buffered reader as connection reader.</span></span><br><span class="line">	br = brw.Reader</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用br复用http的缓冲读取器</p>
+<h4 id="conn-struct"><a href="#conn-struct" class="headerlink" title="conn struct"></a>conn struct</h4><p>查看一下conn struct</p>
+<p>中有一些比较有意思的<br>比如<br>writePool     BufferPool<br>可以自己定义一个writePool，来优化读写性能</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-07-07</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E7%BD%91%E7%BB%9C/'>
+                            网络
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/09/08/vue-%E7%9A%84%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/'>vue 的相关学习</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/05/30/docker%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">docker的简单理解</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

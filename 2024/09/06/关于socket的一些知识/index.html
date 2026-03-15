@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="关于socket的一些知识1" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    关于socket的一些知识1
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-15</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：7分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BB%8A%E5%A4%A9%E9%98%85%E8%AF%BB%E4%BA%86-Beejs%E2%80%99s-guide-to-the-NetWork-Program"><span class="post-toc-text">今天阅读了 Beejs’s guide to the NetWork Program</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Stream-socket-%E5%92%8C-Datagram-Socket"><span class="post-toc-text">Stream socket 和 Datagram Socket</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AD%97%E8%8A%82%E9%A1%BA%E5%BA%8F"><span class="post-toc-text">字节顺序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="post-toc-text">数据结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0"><span class="post-toc-text">函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#getaddrinfo"><span class="post-toc-text">getaddrinfo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#socket"><span class="post-toc-text">socket</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bind"><span class="post-toc-text">bind</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#connet"><span class="post-toc-text">connet</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#listen"><span class="post-toc-text">listen</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#accept"><span class="post-toc-text">accept</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#send-%E5%92%8C-recv"><span class="post-toc-text">send 和 recv</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#close-%E5%92%8C-shutdown"><span class="post-toc-text">close 和 shutdown</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="今天阅读了-Beejs’s-guide-to-the-NetWork-Program"><a href="#今天阅读了-Beejs’s-guide-to-the-NetWork-Program" class="headerlink" title="今天阅读了 Beejs’s guide to the NetWork Program"></a>今天阅读了 Beejs’s guide to the NetWork Program</h1><p>对于这个linux的网络接口，在linux中一且都是文件，所有跟文件一下有一个file descriptor来进行写入，读取<br>我们使用socket得到一个socket descriptor来写入读取<br>使用send() 和recv() 进行发送,更好的控制流量<br>我们在这里学习的只有两种internet Socket 除了这个还有rawSocket等<br>两种internet socket 为 Stream Socket 和 Datagram Socket</p>
+<h2 id="Stream-socket-和-Datagram-Socket"><a href="#Stream-socket-和-Datagram-Socket" class="headerlink" title="Stream socket 和 Datagram Socket"></a>Stream socket 和 Datagram Socket</h2><p>Stream Socket  是可靠的双向连接,它使用的是TCP(The Transmission Control Protocol) 传输控制协议 Datagram Socket 是无连接的，使用UDP(User Datagram Protocal) 用户数据包协议<br>我们可以使用UDP 实现可靠的传输协议吗? 是可以的<br>比如：tftp 协议会报告每个收送的数据包，到达端必须送回一个数据包表示：＂我收到了！＂［一个 ＂ACK＂数据包］。若原本数据包的传送端在五秒内没有收到回应，这表示它该重送这个数据包，直到收到 ACK 为止。在实作可靠的 SOCK_DGRAM 应用程序时，这个回报的过程很重要。</p>
+<h2 id="字节顺序"><a href="#字节顺序" class="headerlink" title="字节顺序"></a>字节顺序</h2><p>对于ip address<br>传输的字节使用的Network Byte Order 大端<br>但在在电脑会使用Host Byte Order 小端</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>比较重要的数据结构<br>socket descriptor 类型为int<br>addrinfo</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">addrinfo</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> ai_flags; <span class="comment">// AI_PASSIVE, AI_CANONNAME 等。</span></span><br><span class="line">    <span class="type">int</span> ai_family; <span class="comment">// AF_INET, AF_INET6, AF_UNSPEC</span></span><br><span class="line">    <span class="type">int</span> ai_socktype; <span class="comment">// SOCK_STREAM, SOCK_DGRAM</span></span><br><span class="line">    <span class="type">int</span> ai_protocol; <span class="comment">// 用 0 作 &quot;any&quot;</span></span><br><span class="line">    <span class="type">size_t</span> ai_addrlen; <span class="comment">// ai_addr 的大小，单位是 byte</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span> *<span class="title">ai_addr</span>;</span> <span class="comment">// struct sockaddr_in 或 _in6</span></span><br><span class="line">    <span class="type">char</span> *ai_canonname; <span class="comment">// 典型的 hostname</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">addrinfo</span> *<span class="title">ai_next</span>;</span> <span class="comment">// 链接串列</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>sockaddr 和 sockaddr_in 和 struct sockaddr_storage<br>可以互相转化</p>
+<p>sockaddr</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span> &#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">short</span> sa_family; <span class="comment">// address family, AF_xxx 2byte</span></span><br><span class="line">    <span class="type">char</span> sa_data[<span class="number">14</span>]; <span class="comment">// 14 bytes of protocol address 14byte</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>sockaddr_in<br>与这个sockaddr 对齐平等的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> &#123;</span></span><br><span class="line">    <span class="type">short</span> <span class="type">int</span> sin_family; <span class="comment">// Address family, AF_INET  2byte</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">short</span> <span class="type">int</span> sin_port; <span class="comment">// Port number 2byte</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span> <span class="title">sin_addr</span>;</span> <span class="comment">// Internet address 4byte</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> sin_zero[<span class="number">8</span>]; <span class="comment">// 與 struct sockaddr 相同的大小 8byte</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>sin_addr</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// (仅限 IPv4 — IPv6 请参考 struct in6_addr)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span> &#123;</span></span><br><span class="line">    <span class="type">uint32_t</span> s_addr; <span class="comment">// that&#x27;s a 32-bit int (4 bytes)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>还有一个可以存储这个IPv4 与 IPv6 structures<br>struct sockaddr_storage</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_storage</span> &#123;</span></span><br><span class="line">    <span class="type">sa_family_t</span> ss_family; <span class="comment">// address family</span></span><br><span class="line">    <span class="comment">// 這裡都是填充物（padding），依實作而定，請忽略它：</span></span><br><span class="line">    <span class="type">char</span> __ss_pad1[_SS_PAD1SIZE];</span><br><span class="line">    <span class="type">int64_t</span> __ss_align;</span><br><span class="line">    <span class="type">char</span> __ss_pad2[_SS_PAD2SIZE];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>简述一下函数的意思<br>tcp:<br>getaddrinfo() 通过ip或域名 得到一个addrinfo<br>socket() 得到一个socket descriptor<br>bind() 绑定一个端口<br>connect() 链接一个端口<br>listen() 监控一个端口<br>accept() 接收一个新的连接<br>send() recv() 发送数据 和接收数据<br>close() shutdown() 关闭socket descriptor<br>对于tcp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server: +-------------+                   client :+-------------+</span><br><span class="line">        |getaddrinfo()|                           |getaddrinfo()|</span><br><span class="line">        +-------------+                           +-------------+</span><br><span class="line">        |                                         |</span><br><span class="line">        +----------+                              +----------+</span><br><span class="line">        |socket()  |                              |socket () |</span><br><span class="line">        +----------+                              +----------+</span><br><span class="line">        |                                         |</span><br><span class="line">        +------+                                  +---------+</span><br><span class="line">        |bind()|                                  |connect()|</span><br><span class="line">        +------+                                  +---------+</span><br><span class="line">        |                                         |         |</span><br><span class="line">        +--------+                                +------+   +------+</span><br><span class="line">        |listen()|                                |recv()|   |send()|</span><br><span class="line">        +--------+                                +------+   +------+</span><br><span class="line">        |                                         |         |</span><br><span class="line">        +--------+                                +----- -+</span><br><span class="line">        |accept()|                                |close()|</span><br><span class="line">        +--------+                                +-------+</span><br><span class="line">        |         |</span><br><span class="line">        +------+   +------</span><br><span class="line">        |recv()|   |send()|</span><br><span class="line">        +------+   +------+</span><br><span class="line">        |         |</span><br><span class="line">        +-------+</span><br><span class="line">        |close()|</span><br><span class="line">        +-------+</span><br></pre></td></tr></table></figure>
+<h3 id="getaddrinfo"><a href="#getaddrinfo" class="headerlink" title="getaddrinfo"></a>getaddrinfo</h3><p>到这个addrinfo<br>如果有错误会返回非零的数，可以使   a _  rerror()打印出来</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> &lt;sys/t.pes.h.</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span>.</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netdb.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">getaddrinfo</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *node, <span class="comment">// 例如： &quot;www.example.com&quot; 或 IP</span></span></span><br><span class="line"><span class="params">                <span class="type">const</span> <span class="type">char</span> *service, <span class="comment">// 例如： &quot;http&quot; 或 port number</span></span></span><br><span class="line"><span class="params">                <span class="type">const</span> <span class="keyword">struct</span> addrinfo *hints,</span></span><br><span class="line"><span class="params">                <span class="keyword">struct</span> addrinfo **res)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h3><p>使用socket 返回的是socket descriptor<br>可以设定想要的类型<br>错误时返回 -1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">socket</span><span class="params">(<span class="type">int</span> domain, <span class="type">int</span> type, <span class="type">int</span> protocol)</span>;</span><br></pre></td></tr></table></figure>
+<p>example</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> s;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">addrinfo</span> <span class="title">hints</span>, *<span class="title">res</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行查询</span></span><br><span class="line"><span class="comment">// [假装我们已经填好 &quot;hints&quot; struct]</span></span><br><span class="line">getaddrinfo(<span class="string">&quot;www.example.com&quot;</span>, <span class="string">&quot;http&quot;</span>, &amp;hints, &amp;res);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [再来，你应该要对 getaddrinfo() 进行错误检查, 并走到 &quot;res&quot; 链表查询能用的资料，</span></span><br><span class="line"><span class="comment">// 而不是假设第一笔资料就是好的［像这些示例一样］</span></span><br><span class="line"><span class="comment">// 实际的示例请参考 client/server 章节。</span></span><br><span class="line">s = socket(res-&gt;ai_family, res-&gt;ai_socktype, res-&gt;ai_protocol);</span><br></pre></td></tr></table></figure>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>是为了让socket 绑定当前一个port number<br>bind() 在错误时也会返回 -1，并将 errno 设置为该错误的值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">bind</span><span class="params">(<span class="type">int</span> sockfd, <span class="comment">//socket descriptor socket() 传回的</span></span></span><br><span class="line"><span class="params">         <span class="keyword">struct</span> sockaddr *my_addr,<span class="comment">//my_addr 是指向包含你的地址资料丶名称及 IP address 的 struct sockaddr 之指针</span></span></span><br><span class="line"><span class="params">         <span class="type">int</span> addrlen)</span>;<span class="comment">//addrlen 是以 byte 为单位的地址长度</span></span><br></pre></td></tr></table></figure>
+
+<p>小tips：<br>1.另一件调用 bind() 时要小心的事情是：不要用太小的 port number。全部 1024 以下的 ports 都是保留的［除非你是系统管理员］！你可以使用任何 1024 以上的 port number，最高到 65535［提供尚未被其它程序使用的］。<br>2.时候你试着重新运行 server，而 bind() 却失败了，它声称＂Address already in use.＂（地址正在使用）。这是什么意思呢？很好，有些连接到 socket 的连接还悬在 kernel 里面，而它占据了这个 port。你可以等待它自行清除［一分钟之类］，或者在你的程序中新增代码，让它重新使用这个 port，类似这样：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> yes=<span class="number">1</span>;</span><br><span class="line"><span class="comment">//char yes=&#x27;1&#x27;; // Solaris 的用户使用这个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以跳过 &quot;Address already in use&quot; 错误信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (setsockopt(listener,SOL_SOCKET,SO_REUSEADDR,&amp;yes,<span class="keyword">sizeof</span>(<span class="type">int</span>)) == <span class="number">-1</span>) &#123;</span><br><span class="line">perror(<span class="string">&quot;setsockopt&quot;</span>);</span><br><span class="line"><span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.最后一个对 bind() 的额外小提醒：在你不愿意调用 bind() 时。若你正使用 connect() 连接到远端的机器，你可以不用管 local port 是多少（以 telnet 为例，你只管远端的 port 就好），你可以单纯地调用 connect()，它会检查 socket 是否尚未绑定（unbound），并在有需要的时候自动将 socket bind() 到一个尚未使用的 local port</p>
+<h3 id="connet"><a href="#connet" class="headerlink" title="connet"></a>connet</h3><p>确定有检查 connect() 返回的值，它在错误时会返回 -1，并设定 errno 变量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">connect</span><span class="params">(<span class="type">int</span> sockfd, <span class="keyword">struct</span> sockaddr *serv_addr, <span class="type">int</span> addrlen)</span>;</span><br></pre></td></tr></table></figure>
+<p>小tips<br>使用connect()不在意本地port number 系统会帮我们选择一个的</p>
+<h3 id="listen"><a href="#listen" class="headerlink" title="listen"></a>listen</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">listen</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">int</span> backlog)</span>;</span><br><span class="line">listen() 会返回 <span class="number">-1</span> 并在错误时设置 errno</span><br></pre></td></tr></table></figure>
+<p>sockfd 是指 socket descriptor<br>backlog 是指 backlog 是进入的队列（incoming queue）中所允许的连接数目,连接将会在这个队列中排队等待，直到你 accept()</p>
+<h3 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h3><p>accept() 在错误发生时返回 -1 并设置 errno</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">accept</span><span class="params">(<span class="type">int</span> sockfd, <span class="keyword">struct</span> sockaddr *addr, <span class="type">socklen_t</span> *addrlen)</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="send-和-recv"><a href="#send-和-recv" class="headerlink" title="send 和 recv"></a>send 和 recv</h3><p>错误时会返回 -1，并将 errno 设置为错误码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">send</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">const</span> <span class="type">void</span> *msg, <span class="type">int</span> len, <span class="type">int</span> flags)</span>;</span><br></pre></td></tr></table></figure>
+<p>错误时返回 -1［并设置相对的 errno］。<br>对面关闭时 返回 0</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">recv</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">void</span> *buf, <span class="type">int</span> len, <span class="type">int</span> flags)</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="close-和-shutdown"><a href="#close-和-shutdown" class="headerlink" title="close 和 shutdown"></a>close 和 shutdown</h3><p>体现出socket descriptor 是一文件描述符<br>UNIX file descriptor close()</p>
+<p>成功时返回0 不成功时返回 -1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">shutdown</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">int</span> how)</span>;</span><br></pre></td></tr></table></figure>
+<p>how可以一选择<br>0 不允许再接收数据<br>1 不允许再传送数据<br>2 不允许再传送与接收数据［就像 close()］<br>重要的是 shutdown() 实际上没有关闭 file descriptor，它只是改变了它的可用性。如果要释放 socket descriptor，你还是需要使用 close()。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-09-06</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/learn/'>
+                            learn
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2024/09/07/%E5%85%B3%E4%BA%8Esocket%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%862/'>关于socket的一些知识2</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/09/02/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E4%B8%AAshell/">如何写一个shell</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

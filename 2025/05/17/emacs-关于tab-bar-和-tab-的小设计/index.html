@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="emacs 关于tab-bar 和 tab 的小设计" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    emacs 关于tab-bar 和 tab 的小设计
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-15</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：5分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="post-toc-text">界面展示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8C%85"><span class="post-toc-text">使用的包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h2><p><a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/emacs_tab_bar_sort_tab.gif?q-sign-algorithm=sha1&q-ak=AKIDlagCt3FJNcgEUcNUdSj36qLR6ZCQGMH2FDkkeQ9vRYfi1V5S0KyKwG2fc7DPcTX4&q-sign-time=1747465431;1747469031&q-key-time=1747465431;1747469031&q-header-list=host&q-url-param-list=ci-process&q-signature=f6487bed1091ba054db521f4f3d14cade5252f8f&x-cos-security-token=kqcvHDsliEGAge4jQBVSQObqR010fhca89af51320ff8bfdca4a18bf7d6d267bcKFcMfx9qaloawkZo33D9qsXm1UwlGHgCqZ4rwvtSiQrvcgZccQql5IQmmDDsUyHIQzLIpTiOh5TrHJ6DnviF2gijKGcFr620xmDnxnraqvj-sKiWGloA_h8oi6l5MXHK7AyndPIiFOek4TacIbzHT2_gNNKtLcgrVErCFD1kiFRWiC9hhgDJL47SaClcgmHW_tcakiFphj4Wg3hFcptSrq9zitz8MylhAUVSV6ULmdAbYjyqU4MGXY4AgBwYdwzVeyRjPRppTMvV2_NpQR8BUg&ci-process=originImage" title="我的emacs界面" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/emacs_tab_bar_sort_tab.gif?q-sign-algorithm=sha1&q-ak=AKIDlagCt3FJNcgEUcNUdSj36qLR6ZCQGMH2FDkkeQ9vRYfi1V5S0KyKwG2fc7DPcTX4&q-sign-time=1747465431;1747469031&q-key-time=1747465431;1747469031&q-header-list=host&q-url-param-list=ci-process&q-signature=f6487bed1091ba054db521f4f3d14cade5252f8f&x-cos-security-token=kqcvHDsliEGAge4jQBVSQObqR010fhca89af51320ff8bfdca4a18bf7d6d267bcKFcMfx9qaloawkZo33D9qsXm1UwlGHgCqZ4rwvtSiQrvcgZccQql5IQmmDDsUyHIQzLIpTiOh5TrHJ6DnviF2gijKGcFr620xmDnxnraqvj-sKiWGloA_h8oi6l5MXHK7AyndPIiFOek4TacIbzHT2_gNNKtLcgrVErCFD1kiFRWiC9hhgDJL47SaClcgmHW_tcakiFphj4Wg3hFcptSrq9zitz8MylhAUVSV6ULmdAbYjyqU4MGXY4AgBwYdwzVeyRjPRppTMvV2_NpQR8BUg&ci-process=originImage" alt="我的emacs界面"></a></p>
+<h2 id="使用的包"><a href="#使用的包" class="headerlink" title="使用的包"></a>使用的包</h2><p>我使用了<a target="_blank" rel="noopener" href="https://github.com/mclear-tools/tabspaces">tabsapces</a> 和 <a target="_blank" rel="noopener" href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html">tab-bar</a> 和 <a target="_blank" rel="noopener" href="https://github.com/manateelazycat/sort-tab">sort-tab</a></p>
+<p>在最上面一行是tab-bar 管理个个项目,我在tab-bar设置使用是super + 1、2、3、4 进行项目跳转。<br>再然后是sort-tab 可以通过自己的设置使用按键进行快速跳转,这个sort-tab 可以 <strong>按照使用频率进行排序</strong>,我在sort-tab 是使用space + 1、2、3、4 数字进行buffer的跳转。</p>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>tab-bar</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">;;基本照抄https://emacs-china.org/t/tab-bar/26008,自己进行一点小的更改</span><br><span class="line">(use-package tab-bar</span><br><span class="line">  :hook (window-setup . tab-bar-mode)</span><br><span class="line">  :custom</span><br><span class="line">  (tab-bar-tab-hints nil)</span><br><span class="line">  :config</span><br><span class="line">  (setq tab-bar-separator &quot;&quot;</span><br><span class="line">        tab-bar-new-tab-choice &quot;*scratch*&quot;</span><br><span class="line">        tab-bar-tab-name-truncated-max 20</span><br><span class="line">        tab-bar-auto-width nil</span><br><span class="line">        tab-bar-close-button-show nil)</span><br><span class="line"></span><br><span class="line">  ;; 使用 super-1 super-2 ... 来切换 tab</span><br><span class="line">  (customize-set-variable &#x27;tab-bar-select-tab-modifiers &#x27;(super))</span><br><span class="line"></span><br><span class="line">  ;; 自动截取 tab name，并且添加在每个 tab 上添加数字，方便用快捷键切换</span><br><span class="line">  (setq tab-bar-tab-name-function</span><br><span class="line">        (lambda () (let* ((raw-tab-name (buffer-name (window-buffer (minibuffer-selected-window))))</span><br><span class="line">                     (count (length (window-list-1 nil &#x27;nomini)))</span><br><span class="line">                     (truncated-tab-name (if (&lt; (length raw-tab-name)</span><br><span class="line">                                                tab-bar-tab-name-truncated-max)</span><br><span class="line">                                             raw-tab-name</span><br><span class="line">                                           (truncate-string-to-width raw-tab-name</span><br><span class="line">                                                                     tab-bar-tab-name-truncated-max</span><br><span class="line">                                                                     nil nil tab-bar-tab-name-ellipsis))))</span><br><span class="line">                truncated-tab-name)))</span><br><span class="line"></span><br><span class="line">  ;; 给 tab 两边加上空格，更好看</span><br><span class="line">  (setq tab-bar-tab-name-format-function</span><br><span class="line">        (lambda (tab i)</span><br><span class="line">          (let ((face (funcall tab-bar-tab-face-function tab)))</span><br><span class="line">            (concat</span><br><span class="line">             (propertize &quot;&quot; &#x27;face face)</span><br><span class="line">             ;; (propertize (number-to-string i) &#x27;face `(:inherit ,face :weight ultra-bold :underline t));;去除前面的1，2,3</span><br><span class="line">             (propertize (concat &quot; &quot; (alist-get &#x27;name tab) &quot; &quot;) &#x27;face face)))))</span><br><span class="line"></span><br><span class="line">  (setq tab-bar-format &#x27;(tab-bar-format-tabs))</span><br><span class="line"></span><br><span class="line">  (tab-bar--update-tab-bar-lines)</span><br><span class="line"></span><br><span class="line">  ;; WORKAROUND: update tab-bar for daemon</span><br><span class="line">  (when (daemonp)</span><br><span class="line">    (add-hook &#x27;after-make-frame-functions</span><br><span class="line">              #&#x27;(lambda (&amp;rest _) (force-mode-line-update))))</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">(use-package tabspaces</span><br><span class="line">  :ensure t</span><br><span class="line">  :hook (after-init . tabspaces-mode) ;; use this only if you want the minor-mode loaded at startup.</span><br><span class="line">  :commands (tabspaces-switch-or-create-workspace</span><br><span class="line">             tabspaces-open-or-create-project-and-workspace)</span><br><span class="line">  :general</span><br><span class="line">  (:keymaps &#x27;override</span><br><span class="line">   :states &#x27;(normal visual)</span><br><span class="line">   :prefix  &quot;SPC&quot;</span><br><span class="line">    &quot;p&quot; &#x27;(:ignore t :wk &quot;project&quot;)</span><br><span class="line">    &quot;p p&quot; &#x27;(tabspaces-open-or-create-project-and-workspace :wk &quot;find project&quot;)</span><br><span class="line">    &quot;p q&quot; &#x27;(tabspaces-kill-buffers-close-workspace :wk&quot;kill project buffer&quot;)</span><br><span class="line">    &quot;p s&quot; &#x27;(tabspaces-save-current-project-session :wk&quot;save project sessions&quot;)</span><br><span class="line">    &quot;p r&quot; &#x27;(tabspaces-restore-session :wk&quot;restore project sessions&quot;)</span><br><span class="line">  )</span><br><span class="line">  :custom</span><br><span class="line">  (tabspaces-use-filtered-buffers-as-default t)</span><br><span class="line">  (tabspaces-default-tab &quot;Default&quot;)</span><br><span class="line">  (tabspaces-remove-to-default t)</span><br><span class="line">  (tabspaces-include-buffers &#x27;(&quot;*scratch*&quot;))</span><br><span class="line">  (tabspaces-initialize-project-with-todo nil)</span><br><span class="line">  ;; (tabspaces-todo-file-name &quot;project-todo.org&quot;)</span><br><span class="line">  ;; sessions</span><br><span class="line">  ;; (tabspaces-session t)</span><br><span class="line">  ;; (tabspaces-session-auto-restore t)</span><br><span class="line">  (tab-bar-new-tab-choice &quot;*scratch*&quot;))</span><br><span class="line">  :config</span><br><span class="line">(with-eval-after-load &#x27;consult</span><br><span class="line">;; hide full buffer list (still available with &quot;b&quot; prefix)</span><br><span class="line">(consult-customize consult--source-buffer :hidden t :default nil)</span><br><span class="line"></span><br><span class="line">(defun consult--filter-sort-tab-buffers (buf)</span><br><span class="line">  &quot;Filter out the *sort-tab* buffer and check if buffer is local to tabspace.&quot;</span><br><span class="line">  (and (not (string= (buffer-name buf) &quot;*sort-tab*&quot;))</span><br><span class="line">       (tabspaces--local-buffer-p buf)))</span><br><span class="line"></span><br><span class="line">;; set consult-workspace buffer list</span><br><span class="line">(defvar consult--source-workspace</span><br><span class="line">  (list :name     &quot;Workspace Buffers&quot;</span><br><span class="line">        :narrow   ?w</span><br><span class="line">        :history  &#x27;buffer-name-history</span><br><span class="line">        :category &#x27;buffer</span><br><span class="line">        :state    #&#x27;consult--buffer-state</span><br><span class="line">        :default  t</span><br><span class="line">        :items    (lambda () (consult--buffer-query</span><br><span class="line">                         :predicate #&#x27;consult--filter-sort-tab-buffers</span><br><span class="line">                         :sort &#x27;visibility</span><br><span class="line">                         :as #&#x27;buffer-name)))</span><br><span class="line"></span><br><span class="line">  &quot;Set workspace buffer list for consult-buffer.&quot;)</span><br><span class="line">(add-to-list &#x27;consult-buffer-sources &#x27;consult--source-workspace))</span><br></pre></td></tr></table></figure>
+<p>sort-tab</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(use-package sort-tab</span><br><span class="line">  :load-path &quot;./site-lisp/my-fork-sort-tab/&quot;</span><br><span class="line">  :after doom-modeline</span><br><span class="line">  :custom</span><br><span class="line">  (sort-tab-separator &quot;&quot;)</span><br><span class="line">  (sort-tab-name-max-length 20)</span><br><span class="line">  :config</span><br><span class="line">  (setq sort-tab-hide-function &#x27;(lambda (buf) (with-current-buffer buf (derived-mode-p &#x27;dired-mode))))</span><br><span class="line">  (setq sort-tab-show-index-number t)</span><br><span class="line">   (sort-tab-mode 1)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>sort-tab进行了自己一点小小的更改，在sort-tab的源代码之上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">;;sort-tab.el</span><br><span class="line">(defun sort-tab-get-buffer-list ()</span><br><span class="line">  (sort (cl-remove-if</span><br><span class="line">         #&#x27;sort-tab-buffer-need-hide-p</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         (buffer-list))</span><br><span class="line">        #&#x27;sort-tab-buffer-freq-higher-p))</span><br><span class="line"></span><br><span class="line">;;改成，隐藏不是在tabspace--local-buffer-p的buffer</span><br><span class="line">(defun sort-tab-get-buffer-list ()</span><br><span class="line">  (sort (cl-remove-if</span><br><span class="line">         (lambda (buf)</span><br><span class="line">           (or (sort-tab-buffer-need-hide-p buf)</span><br><span class="line">               (not (tabspaces--local-buffer-p buf))))</span><br><span class="line">         (buffer-list))</span><br><span class="line">        #&#x27;sort-tab-buffer-freq-higher-p))</span><br></pre></td></tr></table></figure>
+<p>添加在tab-bar 切换的使用更新sort-tab的list</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">;;sort-tab.el</span><br><span class="line">;; 切换函数，因为tab-bar-tab-post-select-functions 需要接受old-tab new-tab,</span><br><span class="line">(defun sort-tab-tab-bar-select-function (old-tab new-tab)</span><br><span class="line">  &quot;sort-tab tab-bar change use *sort-tab-update-list*&quot;</span><br><span class="line">   (sort-tab-update-list))</span><br><span class="line"></span><br><span class="line">(defun sort-tab-turn-on ()</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  (add-hook &#x27;tab-bar-tab-post-select-functions #&#x27;sort-tab-tab-bar-select-function)</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">(defun sort-tab-turn-off ()</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  (remove-hook &#x27;tab-bar-tab-post-select-functions #&#x27;sort-tab-tab-bar-select-function)</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这样就可以将project管理 tab-space 和 sort-tab 进行一个结合，可以十分流畅的进行不同项目，不同 buffer 的切换了</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-05-17</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/emacs/'>
+                            emacs
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/05/30/docker%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/'>docker的简单理解</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/05/12/clojurescript-%E4%B8%AD-shadow-cljs%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0tailwindcss-%E6%94%AF%E6%8C%81/">clojurescript 中 shadow cljs如何添加tailwindcss 支持</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

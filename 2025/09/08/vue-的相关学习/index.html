@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="vue 的相关学习" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    vue 的相关学习
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-09-08</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：805</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：3分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue-%E6%A1%86%E6%9E%B6%E6%98%AF%E5%AF%B9js-html-%E7%9A%84%E5%B0%81%E8%A3%85"><span class="post-toc-text">vue 框架是对js html 的封装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E8%99%9A%E6%8B%9Fdom"><span class="post-toc-text">框架使用的虚拟dom</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6-%E7%BC%96%E8%AF%91%E6%97%B6"><span class="post-toc-text">运行时 编译时</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="vue-框架是对js-html-的封装"><a href="#vue-框架是对js-html-的封装" class="headerlink" title="vue 框架是对js html 的封装"></a>vue 框架是对js html 的封装</h2><p>在框架设计中，需要权衡设计</p>
+<p>在范式上，视图的显示通常分为两个命令式和声明式<br>比如更新一个内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先选择一个元素</span></span><br><span class="line"><span class="keyword">const</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line"><span class="comment">//设置文本内容</span></span><br><span class="line">div.<span class="property">innertText</span> = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"><span class="comment">//添加点击事件</span></span><br><span class="line">div.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="function">()=&gt;</span>&#123;<span class="title function_">alert</span>(<span class="string">&#x27;ok&#x27;</span>)&#125;)</span><br></pre></td></tr></table></figure>
+<p>像一个命令一样，先获得元素，再改变元素</p>
+<p>将还有一种是声明式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div @click=&#x27;()=&gt; alert(&#x27;ok&#x27;)&gt; hello world &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>通过声明html模版来绑定数据，实现的结果，通过框架来实现<br>有一点像sql 语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> <span class="operator">*</span> <span class="keyword">where</span></span><br></pre></td></tr></table></figure>
+<p>只需要输入一段sql语句，至于sql 编译器如何得到想要的数据，什么磁盘读取，不用关心<br>因为输入的是声明，sql编译器会不断的帮我们进行优化，这也是vue会在写前端进行帮助，会帮助优化。<br>但是由于声明式会被翻译成命令式，在vue内部，即使帮助优化，但是声明式的性能不会由于命令式代码的性能<br>在某种程度上，声明式最好的性能就是最少必要修改的命令式</p>
+<p>所以vue这种框架的优势不在于性能，而在于可维护性和易用性上<br>所以说在框架的目的是</p>
+<blockquote>
+<p>在保持可维护性的同时让性能损失最小化</p>
+</blockquote>
+<h2 id="框架使用的虚拟dom"><a href="#框架使用的虚拟dom" class="headerlink" title="框架使用的虚拟dom"></a>框架使用的虚拟dom</h2><p>目前常用的框架<br>vue 或 react 都是使用虚拟dom，为什么使用虚拟dom，为什么不使用dom？<br>原生dom的操作代价十分巨大,远远超过 js语言所维护的dom<br>虚拟dom 就是 js所描述的UI,通过虚拟dom，进行UI变化的比较，找到最优的更新方法，就是框架所做的事</p>
+<h2 id="运行时-编译时"><a href="#运行时-编译时" class="headerlink" title="运行时 编译时"></a>运行时 编译时</h2><p>编译时，写入数据，经过编译成直接运行的</p>
+<p>运行时，运行的时候，才能显示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">tag</span>: <span class="string">&quot;div&quot;</span>,</span><br><span class="line">  <span class="attr">children</span>: [&#123; <span class="attr">tag</span>: <span class="string">&quot;span&quot;</span>, <span class="attr">children</span>: <span class="string">&quot;hello world&quot;</span> &#125;],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Render</span>(<span class="params">obj, root</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> el = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(obj.<span class="property">tag</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj.<span class="property">chidren</span> === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> text = <span class="variable language_">document</span>.<span class="title function_">createTreeNode</span>(obj.<span class="property">children</span>);</span><br><span class="line">    el.<span class="title function_">appendChild</span>(text);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj.<span class="property">children</span>) &#123;</span><br><span class="line">    obj.<span class="property">childern</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">child</span>) =&gt;</span> <span class="title class_">Render</span>(child, el));</span><br><span class="line">  &#125;</span><br><span class="line">  root.<span class="title function_">appendChild</span>(el);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个代码没有写对</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> html = <span class="string">`</span></span><br><span class="line"><span class="string">&lt;div&gt;</span></span><br><span class="line"><span class="string">  &lt;span&gt;hello world&lt;/span&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Compiler</span>(<span class="params">html</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> tag = html.<span class="title function_">match</span>(<span class="regexp">/&lt;\w+&gt;/</span>)[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">1</span>,-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">const</span> text = tag.<span class="title function_">match</span>(<span class="regexp">/&lt;\w+&gt;(.*)&lt;\/\w+&gt;/</span>)[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">const</span> children = html.<span class="title function_">match</span>(<span class="regexp">/&lt;\w+&gt;(.*)&lt;\/\w+&gt;/</span>)[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">const</span> childrenTag = children.<span class="title function_">match</span>(<span class="regexp">/&lt;\w+&gt;/</span>)[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">1</span>,-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">const</span> childrenText = children.<span class="title function_">match</span>(<span class="regexp">/&lt;\w+&gt;(.*)&lt;\/\w+&gt;/</span>)[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        tag,</span><br><span class="line">        <span class="attr">children</span>: &#123;</span><br><span class="line">            <span class="attr">tag</span>: childrenTag,</span><br><span class="line">            <span class="attr">children</span>: childrenText</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输入html这种tag类型，经过编译器的编译,再经过render的渲染，就可以使用来<br>这就是运行时+编译时</p>
+<p>如果直接将内容编译成可以运行的，<br>这就是编译时</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其中命令式更加关注过程，而声明式更加关注结果<br>声明式的更新性能消耗 &#x3D; 找出差异的性能消耗 + 直接修改的性能消耗。虚拟DOM 的意义就在于使找出差异的性能消耗最小化。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-09-08</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/09/10/%E5%88%86%E7%89%87%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%AE%9E%E7%8E%B0/'>分片上传的实现</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/07/07/websocket-%E4%B8%8Ehttp/">websocket</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

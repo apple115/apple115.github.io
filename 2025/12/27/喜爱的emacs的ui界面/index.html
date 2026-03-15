@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="喜爱的emacs的ui界面" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    喜爱的emacs的ui界面
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-15</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：8分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#UI%E5%9B%BE"><span class="post-toc-text">UI图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BC%98%E5%8C%96%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="post-toc-text">优化的目的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B0%86doom-modeline-%E6%8D%A2%E6%88%90-header-line"><span class="post-toc-text">将doom-modeline 换成 header-line</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%87%AA%E5%B7%B1%E5%AE%9A%E4%B9%89%E4%BA%86%E4%B8%80%E4%B8%AA%E4%B8%BB%E9%A2%98"><span class="post-toc-text">自己定义了一个主题</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><p>最近花了很多时间开始查看emacs ui，这是一个成果总结</p>
+<h2 id="UI图"><a href="#UI图" class="headerlink" title="UI图"></a>UI图</h2><h2 id="优化的目的"><a href="#优化的目的" class="headerlink" title="优化的目的"></a>优化的目的</h2><p>目的是为了优化这个emacs的ui显示，使其变得更加简洁，减少一些不必要的东西</p>
+<div style="text-align: center; margin: 30px 0;">
+    <a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/Screenshot%202025-12-27%20at%2021.39.01.png" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/Screenshot%202025-12-27%20at%2021.39.01.png"
+       style="width: 85%; max-width: 1200px; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></a>
+  <p style="color: #888; font-size: 0.9em; margin-top: 10px;">markdown</p>
+</div>
+
+<div style="text-align: center; margin: 30px 0;">
+    <a target="_blank" rel="noopener" href="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/Screenshot%202025-12-27%20at%2021.39.57.png" class="gallery-item" style="box-shadow: none;"> <img src="https://apple115blog-1312191790.cos.ap-singapore.myqcloud.com/blog/Screenshot%202025-12-27%20at%2021.39.57.png"
+    style="width: 85%; max-width: 1200px; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></a>
+  <p style="color: #888; font-size: 0.9em; margin-top: 10px;">代码</p>
+</div>
+
+<h3 id="将doom-modeline-换成-header-line"><a href="#将doom-modeline-换成-header-line" class="headerlink" title="将doom-modeline 换成 header-line"></a>将doom-modeline 换成 header-line</h3><p>主要原因是在emacs doom-modeline有点卡，不过大概率是因为vc git 在windows太慢了,同时突然感觉 doom-modeline的大部分功能我好像也不太需要，我就将其去除，开始尝试更加简洁，我尝试smart-mode-line 和 mini-mode-line，发现会影响我使用的 consult，感觉也不太美观,最后我发现了 nove theme 他使用header-line 替代 modeline，我感觉这个非常不错,就用ai 帮我写了一个 header-line的东西</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">defun</span> my-header-line-vc ()</span><br><span class="line">  (<span class="name">if</span> (<span class="name">and</span> (<span class="name">boundp</span> &#x27;vc-mode) vc-mode)</span><br><span class="line">      (<span class="name">concat</span> <span class="string">&quot; #&quot;</span> (<span class="name">substring</span> vc-mode <span class="number">5</span>)) <span class="comment">;; 直接截取分支名</span></span><br><span class="line">    <span class="string">&quot;&quot;</span>))</span><br><span class="line"><span class="comment">;; --- 2. 状态块颜色逻辑 (保持 Evil 用户的直观感) ---</span></span><br><span class="line">(<span class="name">defun</span> my-header-line-evil-face ()</span><br><span class="line">  (<span class="name">cond</span> ((<span class="name">evil-normal-state-p</span>) &#x27;(<span class="symbol">:background</span> <span class="string">&quot;#d5c4a1&quot;</span> <span class="symbol">:foreground</span> <span class="string">&quot;#3c3836&quot;</span> ))</span><br><span class="line">        ((<span class="name">evil-insert-state-p</span>) &#x27;(<span class="symbol">:background</span> <span class="string">&quot;#b8bb26&quot;</span> <span class="symbol">:foreground</span> <span class="string">&quot;#fbf1c7&quot;</span> ))</span><br><span class="line">        ((<span class="name">evil-visual-state-p</span>) &#x27;(<span class="symbol">:background</span> <span class="string">&quot;#d3869b&quot;</span> <span class="symbol">:foreground</span> <span class="string">&quot;#fbf1c7&quot;</span> ))</span><br><span class="line">        (<span class="name">t</span> &#x27;(<span class="symbol">:background</span> <span class="string">&quot;#ebdbb2&quot;</span> <span class="symbol">:foreground</span> <span class="string">&quot;#3c3836&quot;</span>))))</span><br><span class="line"></span><br><span class="line">(<span class="name">defun</span> my-header-line-render ()</span><br><span class="line">  (<span class="name">let*</span> ((<span class="name">buffer-name</span> (<span class="name">propertize</span> (<span class="name">format-mode-line</span> <span class="string">&quot; %b &quot;</span>) &#x27;face &#x27;(<span class="symbol">:weight</span> bold)))</span><br><span class="line">         (<span class="name">git-info</span> (<span class="name">propertize</span> (<span class="name">my-header-line-vc</span>) &#x27;face &#x27;(<span class="symbol">:foreground</span> <span class="string">&quot;#ecbe7b&quot;</span>)))</span><br><span class="line">         (<span class="name">evil-tag</span> (<span class="name">propertize</span> (<span class="name">concat</span> <span class="string">&quot; &quot;</span> (<span class="name">upcase</span> (<span class="name">symbol-name</span> evil-state)) <span class="string">&quot; &quot;</span>)</span><br><span class="line">                               &#x27;face (<span class="name">my-header-line-evil-face</span>))))</span><br><span class="line">    (<span class="name">concat</span></span><br><span class="line">     evil-tag      <span class="comment">; Evil 模式块</span></span><br><span class="line">     buffer-name   <span class="comment">; 文件名</span></span><br><span class="line">     git-info      <span class="comment">; Git 分支</span></span><br><span class="line">     <span class="comment">;; 将行列号推到最右侧</span></span><br><span class="line">     (<span class="name">propertize</span> <span class="string">&quot; &quot;</span> &#x27;display `(space <span class="symbol">:align-to</span> (- right <span class="number">8</span>)))</span><br><span class="line">     (<span class="name">format-mode-line</span> <span class="string">&quot;%l:%c&quot;</span>))))</span><br><span class="line"></span><br><span class="line"><span class="comment">;; --- 4. 设置与隐藏 ---</span></span><br><span class="line">(<span class="name">setq-default</span> header-line-format &#x27;((:eval (my-header-line-render))))</span><br><span class="line">(<span class="name">setq-default</span> mode-line-format <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">;; 只有在这些动作发生时才更新，而不是每次移动光标都更新</span></span><br><span class="line">(<span class="name">dolist</span> (<span class="name">hook</span> &#x27;(evil-normal-state-entry-hook</span><br><span class="line">                evil-insert-state-entry-hook</span><br><span class="line">                evil-visual-state-entry-hook</span><br><span class="line">                after-save-hook      ;; 保存后更新</span><br><span class="line">                window-configuration-change-hook)) <span class="comment">;; 切换窗口后更新</span></span><br><span class="line">  (<span class="name">add-hook</span> hook #&#x27;force-mode-line-update))</span><br></pre></td></tr></table></figure>
+
+<p>感觉是非常不错呢</p>
+<h3 id="自己定义了一个主题"><a href="#自己定义了一个主题" class="headerlink" title="自己定义了一个主题"></a>自己定义了一个主题</h3><p>最近看了<a target="_blank" rel="noopener" href="https://github.com/tonsky/sublime-scheme-alabaster">alabaster</a>关于写代码的主题讲解, 我在之前没有这个的时候，使用cursor 选择了这个主题，发现非常适合写go语言，同时这个哲学我也非常喜欢,if for 这种关键最没有必要高亮，本身就是代码的一部分 ,string bool 这种值才是重要的，还有定义的函数名这些都是非常重要的 ,不过他的字体好像是不使用字体变形，我是非常喜欢字体变形的,而且一些花式斜体会给代码带来一种美感, 所以我可能会将比如注释什么的使用字体作为区别，而不是高亮,而且我又非常喜欢gruvbox light 主题，所以我做了一个mini版，自己用, 欢迎大家尝试</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;; Gruvbox Light Minimal Theme - 基于Alabaster设计理念</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;; Gruvbox Light 配色</span></span><br><span class="line">(<span class="name">defconst</span> my-gruvbox-colors</span><br><span class="line">  &#x27;((bg       . <span class="string">&quot;#fbf1c7&quot;</span>)    ; 背景</span><br><span class="line">    (fg       . <span class="string">&quot;#3c3836&quot;</span>)    ; 前景</span><br><span class="line">    (bg-hard  . <span class="string">&quot;#f9f5d7&quot;</span>)    ; 硬背景</span><br><span class="line">    (bg-soft  . <span class="string">&quot;#f2e5bc&quot;</span>)    ; 软背景</span><br><span class="line">    (bg-more-soft . <span class="string">&quot;#f7efd0&quot;</span>);更浅</span><br><span class="line">    (string   . <span class="string">&quot;#79740e&quot;</span>)    ; 绿色 - 字符串</span><br><span class="line">    (const    . <span class="string">&quot;#8f3f71&quot;</span>)    ; 紫色 - 常量</span><br><span class="line">    (comment  . <span class="string">&quot;#458588&quot;</span>)    ; 蓝色 - 注释(高对比度)</span><br><span class="line">    (def      . <span class="string">&quot;#af3a03&quot;</span>)    ; 橙色 - 全局定义</span><br><span class="line">    (dim      . <span class="string">&quot;#928374&quot;</span>)    ; 灰色 - UI元素</span><br><span class="line">    (error    . <span class="string">&quot;#cc241d&quot;</span>)    ; 红色</span><br><span class="line">    (warning  . <span class="string">&quot;#d79921&quot;</span>)    ; 黄色</span><br><span class="line">    (search    . <span class="string">&quot;#d79921&quot;</span>)    ; 搜索背景))</span><br><span class="line">    ))</span><br><span class="line"></span><br><span class="line"><span class="comment">;; 应用主题设置</span></span><br><span class="line">(<span class="name">defun</span> my-gruvbox-minimal-setup ()</span><br><span class="line">  <span class="string">&quot;设置Gruvbox Minimal主题&quot;</span></span><br><span class="line">  (<span class="name">interactive</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">;; 基础设置</span></span><br><span class="line">  (<span class="name">set-background-color</span> (<span class="name">cdr</span> (<span class="name">assoc</span> &#x27;bg my-gruvbox-colors)))</span><br><span class="line">  (<span class="name">set-foreground-color</span> (<span class="name">cdr</span> (<span class="name">assoc</span> &#x27;fg my-gruvbox-colors)))</span><br><span class="line">  (<span class="name">set-cursor-color</span> (<span class="name">cdr</span> (<span class="name">assoc</span> &#x27;fg my-gruvbox-colors)))</span><br><span class="line"></span><br><span class="line">  <span class="comment">;; 自定义face设置 - Alabaster风格的4类高亮</span></span><br><span class="line">  (<span class="name">custom-set-faces</span></span><br><span class="line">   <span class="comment">;; 基础</span></span><br><span class="line">   `(default ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg my-gruvbox-colors))</span><br><span class="line">                        :foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   `(region ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-soft my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; Mode line</span></span><br><span class="line">   `(mode-line ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-hard my-gruvbox-colors))</span><br><span class="line">                        :foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))</span><br><span class="line">                        :box <span class="literal">nil</span>))))</span><br><span class="line">   `(mode-line-inactive ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-soft my-gruvbox-colors))</span><br><span class="line">                              :foreground ,(cdr (assoc &#x27;dim my-gruvbox-colors))</span><br><span class="line">                              :box <span class="literal">nil</span>))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 1. 字符串 - 绿色，最突出</span></span><br><span class="line">   `(font-lock-string-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;string my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 2. 静态常量 - 紫色</span></span><br><span class="line">   `(font-lock-constant-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;const my-gruvbox-colors))))))</span><br><span class="line">   `(font-lock-number-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;const my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 3. 注释 - 蓝色，高对比度</span></span><br><span class="line">   `(font-lock-comment-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;comment my-gruvbox-colors))))))</span><br><span class="line">   `(font-lock-comment-delimiter-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;comment my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 4. 全局定义 - 橙色</span></span><br><span class="line">   `(font-lock-function-name-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;def my-gruvbox-colors))))))</span><br><span class="line">   `(font-lock-variable-name-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;def my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 不高亮标准语言关键词 - 使用默认前景色</span></span><br><span class="line">   `(font-lock-keyword-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line">   `(font-lock-type-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line">   `(font-lock-builtin-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line">   `(font-lock-operator-face ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 错误和警告</span></span><br><span class="line">   `(error ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;error my-gruvbox-colors))))))</span><br><span class="line">   `(warning ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;warning my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 其他UI</span></span><br><span class="line">   `(fringe ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg my-gruvbox-colors))))))</span><br><span class="line">   `(line-number ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;dim my-gruvbox-colors))</span><br><span class="line">                        :background ,(cdr (assoc &#x27;bg my-gruvbox-colors))))))</span><br><span class="line">   `(line-number-current-line ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))</span><br><span class="line">                                  :background ,(cdr (assoc &#x27;bg-soft my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 搜索</span></span><br><span class="line">   `(isearch ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;search my-gruvbox-colors))</span><br><span class="line">                    :foreground ,(cdr (assoc &#x27;bg my-gruvbox-colors))))))</span><br><span class="line">   `(lazy-highlight ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-soft my-gruvbox-colors))</span><br><span class="line">                          :foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; 括号匹配</span></span><br><span class="line">   `(show-paren-match ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-soft my-gruvbox-colors))))))</span><br><span class="line">   `(show-paren-mismatch ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;error my-gruvbox-colors))</span><br><span class="line">                               :foreground ,(cdr (assoc &#x27;bg my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; Minibuffer</span></span><br><span class="line">   `(minibuffer-prompt ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;const my-gruvbox-colors))))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;; Org-mode (最小化)</span></span><br><span class="line">   `(org-level-1 ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line">   `(org-level-2 ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line">   `(org-level-3 ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line">   `(org-link ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;const my-gruvbox-colors)) :underline <span class="literal">t</span>))))</span><br><span class="line">   `(org-code ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;string my-gruvbox-colors))))))</span><br><span class="line">   `(org-verbatim ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;const my-gruvbox-colors))))))</span><br><span class="line">   `(org-comment ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;comment my-gruvbox-colors))))))</span><br><span class="line">   `(org-todo ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;error my-gruvbox-colors))))))</span><br><span class="line">   `(org-done ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;string my-gruvbox-colors))))))</span><br><span class="line">   `(org-block ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-hard my-gruvbox-colors))</span><br><span class="line">                                :foreground ,(cdr (assoc &#x27;fg my-gruvbox-colors))))))</span><br><span class="line">   `(hl-line ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-more-soft my-gruvbox-colors)) :extend <span class="literal">t</span>))))</span><br><span class="line">   `(header-line ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-soft my-gruvbox-colors))</span><br><span class="line">                                  :foreground,(cdr (assoc &#x27;fg my-gruvbox-colors))</span><br><span class="line">                                  :box <span class="literal">nil</span></span><br><span class="line">                                  :underline <span class="literal">nil</span></span><br><span class="line">                                  :inherit <span class="literal">nil</span></span><br><span class="line">                                  ))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;;consult</span></span><br><span class="line">   `(consult-highlight-line ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-more-soft my-gruvbox-colors)) :extend <span class="literal">t</span>))))</span><br><span class="line">   `(consult-preview-match ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;comment my-gruvbox-colors)) :background <span class="literal">nil</span>))))</span><br><span class="line">   `(completions-common-part ((<span class="literal">t</span> (:foreground ,(cdr (assoc &#x27;const my-gruvbox-colors)) :weight normal))))</span><br><span class="line">   `(completions-first-difference ((<span class="literal">t</span> (:foreground ,(assoc-default &#x27;fg my-gruvbox-colors) :weight normal))))</span><br><span class="line"></span><br><span class="line">   <span class="comment">;;vertice</span></span><br><span class="line">   `(vertico-current ((<span class="literal">t</span> (:background ,(cdr (assoc &#x27;bg-soft my-gruvbox-colors)) :extend <span class="literal">t</span>))))</span><br><span class="line">  ))</span><br><span class="line"></span><br><span class="line"><span class="comment">;; 禁用字体变体</span></span><br><span class="line">(<span class="name">setq</span> font-lock-maximum-decoration <span class="literal">nil</span></span><br><span class="line">      font-lock-use-default-fonts <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">;; 自动启用主题</span></span><br><span class="line">(<span class="name">my-gruvbox-minimal-setup</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">;; 提供重新加载函数</span></span><br><span class="line">(<span class="name">defun</span> my-gruvbox-minimal-reload ()</span><br><span class="line">  <span class="string">&quot;重新加载Gruvbox Minimal主题&quot;</span></span><br><span class="line">  (<span class="name">interactive</span>)</span><br><span class="line">  (<span class="name">my-gruvbox-minimal-setup</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name">provide</span> &#x27;init-my-theme)</span><br></pre></td></tr></table></figure>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-12-27</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/emacs/'>
+                            emacs
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/12/28/2025%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/'>2025年度总结</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/12/22/emacs%E5%9C%A8windows%E4%B8%8A%E9%85%8D%E7%BD%AE%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/">emacs在windows上配置一些记录</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

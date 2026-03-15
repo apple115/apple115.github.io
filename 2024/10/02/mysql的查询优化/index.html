@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="mysql的查询优化" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    mysql的查询优化
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-15</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：7分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%94%E5%9B%9E%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="post-toc-text">返回的数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%89%AB%E6%8F%8F"><span class="post-toc-text">查询的扫描</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4"><span class="post-toc-text">响应时间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%89%AB%E6%8F%8F%E8%A1%8C%E6%95%B0%E5%92%8C-%E8%BF%94%E5%9B%9E%E7%9A%84%E8%A1%8C%E6%95%B0"><span class="post-toc-text">扫描行数和 返回的行数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%89%AB%E6%8F%8F%E7%9A%84%E8%A1%8C%E6%95%B0%E5%92%8C%E8%AE%BF%E9%97%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">扫描的行数和访问类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%82%E6%9E%9C%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%9C%80%E8%A6%81%E6%89%AB%E6%8F%8F%E5%A4%A7%E9%87%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BD%86%E5%8F%AA%E8%BF%94%E5%9B%9E%E5%B0%91%E6%95%B0%E8%A1%8C"><span class="post-toc-text">如果发现查询需要扫描大量的数据但只返回少数行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%8D%E6%9E%84%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">重构查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%8D%E6%9D%82%E7%9A%84%E6%9F%A5%E8%AF%A2%E8%BF%98%E6%98%AF%E5%A4%9A%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">复杂的查询还是多个简单的查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%87%E5%88%86%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">切分查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E8%A7%A3%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">分解连接查询</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="post-toc-text">查询优化的基础</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>最近在读&lt;&lt;高性能mysql(第四版)&gt;&gt;<br>学习了一下这个mysql的查询优化<br>我们应该明确:优化应该三管齐下:不做,少做,快速的做</p>
+<p>对一查询,真正重要的是响应时间</p>
+<blockquote>
+<p>如果把查询看作一个任务，那么它由一系列子任务组成，每个子任务都会消耗一定的时间。如果要优化查询，实际上要优化其子任务，要么消除其中一些子任务，要么减少子任务的执行次数，要么让子任务运行得更快。<br>那我们应该查看查询的生命周期(大概)<br>客户端 -&gt; 服务端 -&gt; 语法解析-&gt; 生成执行计划-&gt; 执行 -&gt; 返回客户端</p>
+</blockquote>
+<p>下面开始分析</p>
+<h2 id="返回的数据"><a href="#返回的数据" class="headerlink" title="返回的数据"></a>返回的数据</h2><p> 一条查询如果性能差的话 大概是因为访问了太多的数据,在这一步需要考虑</p>
+<ol>
+<li>确认应用程序是否检索的了大量且不要的数据,比如太多的行 和 太多的列</li>
+<li>mysql服务层是否分析了大量的不需要的数据行</li>
+</ol>
+<p>如果查询了大量超过实际需求的数据,多余的数据会被应用程序丢弃,也会给mysql 服务带来大量的无用的网络开销,也会消耗服务器的cpu和存储<br>可以举出常见的例子</p>
+<ol>
+<li>查询了不需要的记录.<br>比如先用select 语言查询全部的行,再取出需要的10条数据(比如你问一个聚会上的所有人,然后再自己判断是不是自己想找的人)<br>我们可以直接使用limit(直接问你是不是谁谁谁,找到之后就不用找了)</li>
+<li>多表联接时返回全部列<br>比如你想查询所有这个电影中出现的演员,你需要两张表联合查询,你直接读取全部的列 使用select * from 什么什么<br>这个是多余的,应该直接读取你所需要的数据 比如 select name from 什么什么</li>
+<li>当我们多次查询相同的数据<br>如何我需要一个列的全部数据,可以先读取全部的数据,放入缓存中,在需要的时候使用,减少多次调用查询</li>
+</ol>
+<h2 id="查询的扫描"><a href="#查询的扫描" class="headerlink" title="查询的扫描"></a>查询的扫描</h2><p>在确认了查询只返回需要的数据<br>下一步是 查询返回结果是不是扫描了过多的行<br>可以通过 三个简单的数据指标 <strong>大概</strong> 确认是否扫描了过多的数据</p>
+<ul>
+<li>响应时间</li>
+<li>扫描的行数</li>
+<li>返回行数</li>
+</ul>
+<h3 id="响应时间"><a href="#响应时间" class="headerlink" title="响应时间"></a>响应时间</h3><p>响应时间分为服务时间(数据库查询) 和 排队时间(等待i&#x2F;o的消耗,等待行锁等造成的时间)<br>我们只需要确认这个响应时间是个合理的数据就可以了<br>我们可以通过</p>
+<blockquote>
+<p>了解这个查询需要哪些索引以及它的执行计划是什么，然后计算大概需要多少个顺序和随机I&#x2F;O，再用其乘以在具体硬件条件下一次I&#x2F;O的消耗时间。最后把这些消耗都加起来，就可以获得一个大概参考值来判断当前响应时间是不是一个合理的值。</p>
+</blockquote>
+<h3 id="扫描行数和-返回的行数"><a href="#扫描行数和-返回的行数" class="headerlink" title="扫描行数和 返回的行数"></a>扫描行数和 返回的行数</h3><p>最好扫描的行数 最接近返回的行数</p>
+<h3 id="扫描的行数和访问类型"><a href="#扫描的行数和访问类型" class="headerlink" title="扫描的行数和访问类型"></a>扫描的行数和访问类型</h3><p>我们可以使用explain 来查询访问类型,<br>查看type 的值</p>
+<blockquote>
+<p>访问类型有很多种，从全表扫描到索引扫描、范围扫描、唯一索引查询、常数引用等<br>如果不是合适的访问类型, 通常添加一索引</p>
+</blockquote>
+<blockquote>
+<p>一般地，MySQL能够使用如下三种方式应用WHERE条件，从好到坏依次为：<br>●在索引中使用WHERE条件来过滤不匹配的记录。这是在存储引擎层完成的。<br>●使用索引覆盖扫描（在Extra列中出现了Using index）来返回记录，直接从索引中过滤不需要的记录并返回命中的结果。这是在MySQL服务器层完成的，但无须再回表查询记录。<br>●从数据表中返回数据，然后过滤不满足条件的记录（在Extra列中出现Usingwhere）​。这在MySQL服务器层完成，MySQL需要先从数据表中读出记录然后过滤。<br>这个是书中的<br>但是我认为最快的方法使用索引覆盖扫描,书中认为这个 索引中使用where 是最好的,可能是因为不要添加额外的索引</p>
+</blockquote>
+<h3 id="如果发现查询需要扫描大量的数据但只返回少数行"><a href="#如果发现查询需要扫描大量的数据但只返回少数行" class="headerlink" title="如果发现查询需要扫描大量的数据但只返回少数行"></a>如果发现查询需要扫描大量的数据但只返回少数行</h3><p>可以通过以下的方法优化</p>
+<ol>
+<li>使用索引覆盖扫描</li>
+<li>改变库结构,使用单独的汇总表</li>
+<li>重写复杂的查询</li>
+</ol>
+<h2 id="重构查询"><a href="#重构查询" class="headerlink" title="重构查询"></a>重构查询</h2><h3 id="复杂的查询还是多个简单的查询"><a href="#复杂的查询还是多个简单的查询" class="headerlink" title="复杂的查询还是多个简单的查询"></a>复杂的查询还是多个简单的查询</h3><p>在书中说</p>
+<blockquote>
+<p>但是这样的想法对于MySQL并不适用，因为MySQL从设计上让连接和断开连接都很轻量，在返回一个小的查询结果方面很高效。现代的网络速度比以前要快很多，能在很大程度上降低延迟。在某些版本的MySQL中，即使在一台通用服务器上，也能够运行每秒超过10万次的简单查询，即使是一个千兆网卡也能轻松满足每秒超过2000次的查询。所以运行多个小查询现在已经不是大问题了。</p>
+</blockquote>
+<p>认为是可以将一个复杂的查询分成多个简单的查询<br>书中还说</p>
+<blockquote>
+<p>在设计应用的时候，如果在一个查询能够胜任时还将其写成多个独立的查询是不明智的。例如，我们看到有些应用对一个数据表做10次独立的查询来返回10行数据，每个查询返回一条结果，查询10次，这时可以使用单个查询获取10行数据。有的应用甚至每次只查询一个字段，获取一行数据就需要执行多次查询。<br>在一个查询可以胜任的时候,是不要分成多个简单的查询</p>
+</blockquote>
+<h3 id="切分查询"><a href="#切分查询" class="headerlink" title="切分查询"></a>切分查询</h3><p>有时候对于一个大查询，我们需要“分而治之”​，将大查询切分成小查询，每个查询的功能完全一样，只完成一小部分，每次只返回一小部分查询结果。</p>
+<blockquote>
+<p>删除旧的数据就是一个很好的例子。定期清除大量数据时，如果用一个大的语句一次性完成的话，则可能需要一次锁住很多数据、占满整个事务日志、耗尽系统资源、阻塞很多小的但重要的查询。<br>我们可以将一个查询拆分多个较小的查询,尽可能的小的影响mysql的性能,和mysql的复制的延迟<br>一次删除一万行数据一般来说是一个比较高效而且对服务器影响最小的做法（如果是事务型引擎，很多时候小事务能够更高效）​。同时，需要注意的是，如果每次删除数据后，都暂停一会儿再做下一次删除，也可以将服务器上原本一次性的压力分散到一个很长的时间段中，可以大大降低对服务器的影响，还可以大大减少删除时锁的持有时间。<br>需要将 一次压力分散 可以使用 切分查询</p>
+</blockquote>
+<h3 id="分解连接查询"><a href="#分解连接查询" class="headerlink" title="分解连接查询"></a>分解连接查询</h3><blockquote>
+<p>很多高性能的应用都会对联接查询进行分解。简单地说，可以对每一个表进行一次单表查询，然后将结果在应用程序中进行联接<br>在应用程序中进行连接,而不是在数据中</p>
+</blockquote>
+<ul>
+<li>让缓存的效率更高 方便的使用缓存</li>
+<li>将查询分解后，执行单个查询可以减少锁的竞争</li>
+<li>在应用层做联接，可以更容易对数据库进行拆分，更容易做到高性能和可扩展</li>
+<li>查询本身的效率也可能会有所提升</li>
+<li>可以减少对冗余记录的访问</li>
+</ul>
+<h2 id="查询优化的基础"><a href="#查询优化的基础" class="headerlink" title="查询优化的基础"></a>查询优化的基础</h2><p>mysql 客户端 和服务端使用是”半双工”<br>在任何时刻，要么是由服务器向客户端发送数据，要么是由客户端向服务器发送数据，这两个动作不能同时发生。<br>我们无法也无须将一个消息切成小块来独立发送。<br>那么客户端接收服务端时候,一般使用的缓存存储所有的数据,再读取<br>所以我们也可以不缓存<br>mw</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-10-02</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2024/11/08/vim%E4%B8%AD%E7%9A%84insert-mode%E7%AB%9F%E7%84%B6%E8%BF%98%E6%9C%89%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/'>vim中的insert-mode竟然还有一些操作</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/09/21/docker%E7%9A%84%E4%BD%BF%E7%94%A8/">docker的使用</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

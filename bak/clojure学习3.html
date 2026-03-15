@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="clojure学习3" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+
+    <div class="post-md">
+        
+            
+        
+        <div class=".article-gallery"><h2 id="Function-Functions"><a href="#Function-Functions" class="headerlink" title="Function Functions"></a>Function Functions</h2><h3 id="complement"><a href="#complement" class="headerlink" title="complement"></a>complement</h3><p>一个布尔函数的否定返回</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defn identify-humans  [social-security-numbers]</span><br><span class="line">(filter #(not (vampire? %))</span><br><span class="line">(map vampire-related-details social-security-numbers)))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(def not-vampire? (complement vampire?))</span><br><span class="line">;;可以使用complement</span><br><span class="line">(defn identify-humans  [social-security-numbers]</span><br><span class="line">(filter not-vampire?</span><br><span class="line">(map vampire-related-details social-security-numbers)))</span><br></pre></td></tr></table></figure>
+
+
+<h3 id=""><a href="#" class="headerlink" title="#"></a>#</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defn parse  &quot;Convert a CSV into rows of columns&quot;  [string]</span><br><span class="line">    (map #(clojure.string/split % #&quot;,&quot;)</span><br><span class="line">    (clojure.string/split string #&quot;\n&quot;)))</span><br></pre></td></tr></table></figure>
+<p><code>#&quot;,&quot;</code> 是这个于创建正则表达式字面量</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">(ns fwpd.core)</span><br><span class="line"></span><br><span class="line">(def filename &quot;suspects.csv&quot;)</span><br><span class="line"></span><br><span class="line">(def vamp-keys [:name :glitter-index])</span><br><span class="line"></span><br><span class="line">(defn str-&gt;int [str] (Integer. str))</span><br><span class="line"></span><br><span class="line">(def conversions &#123;:name identity, :glitter-index str-&gt;int&#125;)</span><br><span class="line"></span><br><span class="line">(Defn convert [vamp-key value] ((get conversions vamp-key) value))</span><br><span class="line"></span><br><span class="line">(defn parse</span><br><span class="line">  &quot;Convert a CSV into rows of columns&quot;</span><br><span class="line">  [string]</span><br><span class="line">  (map #(clojure.string/split % #&quot;,&quot;) (clojure.string/split string #&quot;\n&quot;)))</span><br><span class="line"></span><br><span class="line">(defn mapify</span><br><span class="line">  &quot;Return a seq of maps like &#123;:name \&quot;Edward Cullen\&quot; :glitter-index 10&#125;&quot;</span><br><span class="line">  [rows]</span><br><span class="line">  (map (fn [unmapped-row]</span><br><span class="line">         (reduce (fn [row-map [vamp-key value]]</span><br><span class="line">                   (assoc row-map vamp-key (convert vamp-key value)))</span><br><span class="line">           &#123;&#125;</span><br><span class="line">           (map vector vamp-keys unmapped-row)))</span><br><span class="line">    rows))</span><br><span class="line"></span><br><span class="line">(defn glitter-filter  [minimum-glitter records]</span><br><span class="line">  (filter #(&gt;= (:glitter-index %) minimum-glitter) records))</span><br><span class="line"></span><br><span class="line">(glitter-filter 3 (mapify (parse (slurp filename))))</span><br><span class="line"></span><br><span class="line">;; (&#123;:name &quot;Edward Cullen&quot;, :glitter-index 10&#125; &#123;:name &quot;Jacob Black&quot;, :glitter-index 3&#125; &#123;:name &quot;Carlisle Cullen&quot;, :glitter-index 6&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="prue-function"><a href="#prue-function" class="headerlink" title="prue function"></a>prue function</h2><ol>
+<li>如果给定相同的参数，则始终返回相同的结果</li>
+<li>它不会引起任何副作用(该函数不能进行任何可在函数本身之外观察到的更改)</li>
+</ol>
+<h3 id="Living-with-Immutable-Data-Structures"><a href="#Living-with-Immutable-Data-Structures" class="headerlink" title="Living with Immutable Data Structures"></a>Living with Immutable Data Structures</h3><p>不可变的数据结构可确保您的代码不会产生副作用</p>
+<h3 id="Recursion-Instead-of-for-while"><a href="#Recursion-Instead-of-for-while" class="headerlink" title="Recursion Instead of for&#x2F;while"></a>Recursion Instead of for&#x2F;while</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wrestlers = <span class="title function_">getAlligatorWrestlers</span>();</span><br><span class="line"><span class="keyword">var</span> totalBites = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> l = wrestlers.<span class="property">length</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; l; i++)&#123;</span><br><span class="line">    totalBites += wrestlers[i].<span class="property">timesBitten</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对totalBites 会产生副作用,但是是内部的，无害的，没有跟改外部的</p>
+<p>但clojure的核心数据结构甚至不允许这些无害的更改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(def great-baby-name &quot;Rosanthony&quot;) great-baby-name</span><br><span class="line">; =&gt; &quot;Rosanthony&quot;(let [great-baby-name &quot;Bloodthunder&quot;]  great-baby-name); =&gt; &quot;Bloodthunder&quot;great-baby-name; =&gt; &quot;Rosanthony&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="clojure-执行递归使用recur"><a href="#clojure-执行递归使用recur" class="headerlink" title="clojure 执行递归使用recur"></a>clojure 执行递归使用recur</h3><p>clojure 不提供尾优化</p>
+<h2 id="Function-Composition-Instead-of-Attribute-Mutation"><a href="#Function-Composition-Instead-of-Attribute-Mutation" class="headerlink" title="Function Composition Instead of Attribute Mutation"></a>Function Composition Instead of Attribute Mutation</h2><p>函数组合而不是属性更改</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GlamourShotCaption</span></span><br><span class="line"><span class="built_in">attr_reader</span> <span class="symbol">:text</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">initialize</span>(<span class="params">text</span>)</span><br><span class="line"><span class="variable">@text</span> = text    clean!  <span class="keyword">end</span>  <span class="keyword">private</span>  <span class="keyword">def</span> <span class="title function_">clean!</span>    text.trim!    text.gsub!(<span class="regexp">/lol/</span>, <span class="string">&quot;LOL&quot;</span>)</span><br><span class="line">endendbest = <span class="title class_">GlamourShotCaption</span>.new(<span class="string">&quot;My boa constrictor is so sassy lol!  &quot;</span>)best.text</span><br><span class="line">; =&gt; <span class="string">&quot;My boa constrictor is so sassy LOL!&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">require</span> &#x27;[clojure.string <span class="symbol">:as</span> s])</span><br><span class="line">(<span class="keyword">defn</span> <span class="title">clean</span>  [text]  (<span class="name">s/replace</span> (<span class="name">s/trim</span> text) <span class="regex">#&quot;lol&quot;</span> <span class="string">&quot;LOL&quot;</span>))</span><br><span class="line">(<span class="name">clean</span> <span class="string">&quot;My boa constrictor is so sassy lol!  &quot;</span>)</span><br><span class="line"><span class="comment">; =&gt; &quot;My boa constrictor is so sassy LOL!&quot;</span></span><br></pre></td></tr></table></figure>
+<p>通过函数组合,而不是属性更改</p>
+<p>像这样组合函数（以便将一个函数的返回值作为参数传递给另一个函数）称为函数组合<br>通常，函数式编程鼓励您通过组合更简单的函数来构建更复杂的函数</p>
+<p>一旦您有信心使用不可变数据结构来完成工作，您就会感到更加自信，因为您不必担心哪些肮脏的代码可能会沾上您珍贵的可变变量</p>
+<h3 id="comp"><a href="#comp" class="headerlink" title="comp"></a>comp</h3><p>creating a new function from the composition of any number of functions</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((comp inc *)2 3); =&gt; 7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(def character  &#123;:name &quot;Smooches McCutes&quot;</span><br><span class="line">:attributes &#123;:intelligence 10    :strength 4     :dexterity 5&#125;&#125;)</span><br><span class="line"></span><br><span class="line">(def c-int (comp :intelligence :attributes))</span><br><span class="line">(def c-str (comp :strength :attributes))</span><br><span class="line">(def c-dex (comp :dexterity :attributes))</span><br><span class="line"></span><br><span class="line">(c-int character); =&gt; 10</span><br><span class="line">(c-str character); =&gt; 4</span><br><span class="line">(c-dex character); =&gt; 5</span><br><span class="line"></span><br><span class="line">(fn [c] (:strength (:attributes c)))</span><br><span class="line"></span><br><span class="line">(defn spell-slots  [char]  (int (inc (/ (c-int char) 2))))</span><br><span class="line"></span><br><span class="line">(def spell-slots-comp (comp int inc #(/ % 2) c-int))</span><br><span class="line"></span><br><span class="line">(spell-slots character)</span><br><span class="line">; =&gt; 6</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(defn two-comp  [f g]  (fn [&amp; args]    (f (apply g args))))</span><br></pre></td></tr></table></figure>
+<h3 id="memoize"><a href="#memoize" class="headerlink" title="memoize"></a>memoize</h3><p>记忆化</p>
+<p>(+ 3 (+ 5 8))</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defn sleepy-identity</span><br><span class="line">&quot;Returns the given value after 1 second&quot;</span><br><span class="line">[x]  (Thread/sleep 1000)  x)</span><br><span class="line">(sleepy-identity &quot;Mr. Fantastico&quot;) ; =&gt; &quot;Mr. Fantastico&quot; after 1 second</span><br><span class="line">(sleepy-identity &quot;Mr. Fantastico&quot;) ; =&gt; &quot;Mr. Fantastico&quot; after 1 second</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(def memo-sleepy-identity (memoize sleepy-identity))</span><br><span class="line"></span><br><span class="line">(memo-sleepy-identity &quot;Mr. Fantastico&quot;); =&gt; &quot;Mr. Fantastico&quot; after 1 second</span><br><span class="line">(memo-sleepy-identity &quot;Mr. Fantastico&quot;); =&gt; &quot;Mr. Fantastico&quot; immediately</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>未完待续……</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

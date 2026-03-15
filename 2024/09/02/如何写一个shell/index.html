@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="如何写一个shell" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    如何写一个shell
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-15</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：944</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：4分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#shell-%E7%9A%84%E7%89%B9%E5%BE%81"><span class="post-toc-text">shell 的特征</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#shell-%E7%9A%84%E7%BB%84%E6%88%90"><span class="post-toc-text">shell 的组成</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%A0%E9%99%90%E8%BF%90%E8%A1%8Cshell%E7%9A%84%E5%87%BD%E6%95%B0"><span class="post-toc-text">无限运行shell的函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%BB%E5%8F%96%E4%B8%80%E8%A1%8C%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%9A%84%E5%87%BD%E6%95%B0"><span class="post-toc-text">读取一行用户输入的函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E6%9E%90%E4%B8%80%E8%A1%8C%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="post-toc-text">解析一行的数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8C%E8%BE%93%E5%85%A5%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="post-toc-text">执行输入的数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="post-toc-text">后记</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>今天我写了一个简单的shell<br>按照github上面的<a target="_blank" rel="noopener" href="https://github.com/brenns10/lsh">ish</a>写的</p>
+<h2 id="shell-的特征"><a href="#shell-的特征" class="headerlink" title="shell 的特征"></a>shell 的特征</h2><ul>
+<li>输入一行 输出一行</li>
+<li>可以一直输入 输出 输入 输出</li>
+<li>输入exit 或 ctrl-c 会退出</li>
+<li>输入命令 输出结果</li>
+</ul>
+<h2 id="shell-的组成"><a href="#shell-的组成" class="headerlink" title="shell 的组成"></a>shell 的组成</h2><p>可以认为shell 是一无线循环中<br>遇到exit 和 ctrl-c 退出<br>需要读取数据和解析数据 执行数据 </p>
+<p>我们可以分为几个函数<br>1.无限运行shell的函数<br>2.读取一行用户输入的函数<br>3.解析输入的函数<br>4.执行输入的数据</p>
+<h3 id="无限运行shell的函数"><a href="#无限运行shell的函数" class="headerlink" title="无限运行shell的函数"></a>无限运行shell的函数</h3><p>1.while循环<br>2.输出’&gt;’<br>3.读取一行的数据<br>4.解析一行的数据<br>5.执行一行的数据<br>如何判断需要退出呢?<br>设置一个状态status 为0的时候退出 为1的时候继续<br>如何存储一行输入的数据呢？<br>使用char* line<br>如何存储解析完的数据呢？<br>使用char** tokens<br>循环一次 free一次</p>
+<h3 id="读取一行用户输入的函数"><a href="#读取一行用户输入的函数" class="headerlink" title="读取一行用户输入的函数"></a>读取一行用户输入的函数</h3><p>用户输入一行的数据 读取一行的数据 返回一行的数据</p>
+<h3 id="解析一行的数据"><a href="#解析一行的数据" class="headerlink" title="解析一行的数据"></a>解析一行的数据</h3><p>将一行的输入按照空格进行分开解析成</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tokens[<span class="number">0</span>]=<span class="string">&quot;ls&quot;</span>;</span><br><span class="line">tokens[<span class="number">1</span>]=<span class="string">&quot;-al&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行输入的数据"><a href="#执行输入的数据" class="headerlink" title="执行输入的数据"></a>执行输入的数据</h3><p>使用fork 和 exec 执行 执行成功返回1 结束返回0 错误返回-1 </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">lsh_loop</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"><span class="type">char</span> *<span class="title function_">lsh_read_line</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"><span class="type">char</span> **<span class="title function_">lsh_splite_line</span><span class="params">(<span class="type">char</span> *line)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_launch</span><span class="params">(<span class="type">char</span> **args)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_execute</span><span class="params">(<span class="type">char</span> **args)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_cd</span><span class="params">(<span class="type">char</span> **args)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_help</span><span class="params">(<span class="type">char</span> **args)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_exit</span><span class="params">(<span class="type">char</span> **args)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_num_builtins</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *builtin_str[]= &#123;</span><br><span class="line">    <span class="string">&quot;cd&quot;</span>,</span><br><span class="line">    <span class="string">&quot;help&quot;</span>,</span><br><span class="line">    <span class="string">&quot;exit&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> (*builtion_func[])(<span class="type">char</span> **)= &#123;</span><br><span class="line">    &amp;lsh_cd,</span><br><span class="line">    &amp;lsh_help,</span><br><span class="line">    &amp;lsh_exit</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> **argv)</span> &#123;</span><br><span class="line">    lsh_loop();</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">lsh_loop</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> *line;</span><br><span class="line">    <span class="type">char</span> **args;</span><br><span class="line">    <span class="type">int</span> status;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;&gt;&quot;</span>);</span><br><span class="line">        line = lsh_read_line();</span><br><span class="line">        args = lsh_splite_line(line);</span><br><span class="line">        status = lsh_execute(args);</span><br><span class="line">        <span class="built_in">free</span>(line);</span><br><span class="line">        <span class="built_in">free</span>(args);</span><br><span class="line">    &#125; <span class="keyword">while</span>(status);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* #define LSH_RL_BUFSIZE 1024 */</span></span><br><span class="line"><span class="comment">/* char *lsh_read_line(void) &#123; */</span></span><br><span class="line"><span class="comment">/*     int bufsize = LSH_RL_BUFSIZE; */</span></span><br><span class="line"><span class="comment">/*     int position = 0; */</span></span><br><span class="line"><span class="comment">/*     char *buffer = malloc(sizeof(char)*bufsize); */</span></span><br><span class="line"><span class="comment">/*     int c; */</span></span><br><span class="line"><span class="comment">/*     if(!buffer) &#123; */</span></span><br><span class="line"><span class="comment">/*         perror(&quot;lsh: allocation error\n&quot;); */</span></span><br><span class="line"><span class="comment">/*         exit(EXIT_FAILURE); */</span></span><br><span class="line"><span class="comment">/*     &#125; */</span></span><br><span class="line"><span class="comment">/*     while(1) &#123; */</span></span><br><span class="line"><span class="comment">/*         c = getchar(); */</span></span><br><span class="line"><span class="comment">/*         if(c==EOF || c==&#x27;\n&#x27;) &#123; */</span></span><br><span class="line"><span class="comment">/*             buffer[position] = &#x27;\0&#x27;; */</span></span><br><span class="line"><span class="comment">/*             return buffer; */</span></span><br><span class="line"><span class="comment">/*         &#125; else &#123; */</span></span><br><span class="line"><span class="comment">/*             buffer[position]=c; */</span></span><br><span class="line"><span class="comment">/*         &#125; */</span></span><br><span class="line"><span class="comment">/*         position++; */</span></span><br><span class="line"><span class="comment">/*         if(position &gt;= bufsize) &#123; */</span></span><br><span class="line"><span class="comment">/*             bufsize += LSH_RL_BUFSIZE; */</span></span><br><span class="line"><span class="comment">/*             buffer = realloc(buffer,bufsize); */</span></span><br><span class="line"><span class="comment">/*             if(!buffer) &#123; */</span></span><br><span class="line"><span class="comment">/*                 perror(&quot;lsh: allocation error\n&quot;); */</span></span><br><span class="line"><span class="comment">/*                 exit(EXIT_FAILURE); */</span></span><br><span class="line"><span class="comment">/*             &#125; */</span></span><br><span class="line"><span class="comment">/*         &#125; */</span></span><br><span class="line"><span class="comment">/*     &#125; */</span></span><br><span class="line"><span class="comment">/* &#125; */</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *<span class="title function_">lsh_read_line</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">char</span> *line = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="type">ssize_t</span> bufsize = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(getline(&amp;line,&amp;bufsize,<span class="built_in">stdin</span>)==<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(feof(<span class="built_in">stdin</span>)) &#123;</span><br><span class="line">            <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            perror(<span class="string">&quot;lsh: getline\n&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> line;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LSK_TOK_BUFSIZE 64</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LSK_TOK_DELIM <span class="string">&quot; \t\r\n\a&quot;</span></span></span><br><span class="line"><span class="type">char</span> **<span class="title function_">lsh_splite_line</span><span class="params">(<span class="type">char</span> *line)</span> &#123;</span><br><span class="line">    <span class="type">int</span> bufsize = LSK_TOK_BUFSIZE;</span><br><span class="line">    <span class="type">int</span> position =<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> **tokens = <span class="built_in">malloc</span>(bufsize*<span class="keyword">sizeof</span>(<span class="type">char</span>*));</span><br><span class="line">    <span class="type">char</span> *token;</span><br><span class="line">    <span class="keyword">if</span>(!tokens) &#123;</span><br><span class="line">        perror(<span class="string">&quot;lsh: allocation error\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">    token = strtok(line, LSK_TOK_DELIM);</span><br><span class="line">    <span class="keyword">while</span>(token!=<span class="literal">NULL</span>) &#123;</span><br><span class="line">        tokens[position]=token;</span><br><span class="line">        position++;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(position&gt;bufsize) &#123;</span><br><span class="line">            bufsize += LSK_TOK_BUFSIZE;</span><br><span class="line">            tokens =<span class="built_in">realloc</span>(tokens, <span class="keyword">sizeof</span>(bufsize*<span class="keyword">sizeof</span>(<span class="type">char</span>*)));</span><br><span class="line">            <span class="keyword">if</span>(!tokens) &#123;</span><br><span class="line">                perror(<span class="string">&quot;Lsh: allocation error\n&quot;</span>);</span><br><span class="line">                <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        token = strtok(<span class="literal">NULL</span>, LSK_TOK_DELIM);</span><br><span class="line">    &#125;</span><br><span class="line">    tokens[position] = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> tokens;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_launch</span><span class="params">(<span class="type">char</span> **args)</span> &#123;</span><br><span class="line">    <span class="type">pid_t</span> pid,wpid;</span><br><span class="line">    <span class="type">int</span> status;</span><br><span class="line">    pid=fork();</span><br><span class="line">    <span class="keyword">if</span>(pid==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(execvp(args[<span class="number">0</span>],args)==<span class="number">-1</span>) &#123;</span><br><span class="line">            perror(<span class="string">&quot;lsh&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(pid&lt;<span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;lsh: fork error\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            wpid = waitpid(pid,&amp;status,WUNTRACED);</span><br><span class="line">        &#125; <span class="keyword">while</span>(!WIFEXITED(status)&amp;&amp;!WIFSIGNALED(status));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_execute</span><span class="params">(<span class="type">char</span> **args)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(args[<span class="number">0</span>]==<span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;lsh_num_builtins();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(args[<span class="number">0</span>],builtin_str[i])==<span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> (*builtion_func[i])(args);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lsh_launch(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_cd</span><span class="params">(<span class="type">char</span> **args)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(args[<span class="number">1</span>]==<span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">&quot;lsh: expected argument to \&quot;cd\&quot;\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(chdir(args[<span class="number">1</span>])!=<span class="number">0</span>) &#123;</span><br><span class="line">            perror(<span class="string">&quot;lsh&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_exit</span><span class="params">(<span class="type">char</span> **args)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_num_builtins</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">sizeof</span>(builtin_str) / <span class="keyword">sizeof</span>(<span class="type">char</span> *);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">lsh_help</span><span class="params">(<span class="type">char</span> **args)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;This is a simple shell&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;This following are built in:&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;lsh_num_builtins(); i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,builtin_str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Use the man command for information on other programs.\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ul>
+<li><input disabled="" type="checkbox"> 可以尝试完善一下管道这个 </li>
+<li><input disabled="" type="checkbox"> 可以尝试完成重定向</li>
+</ul>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-09-02</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2024/09/06/%E5%85%B3%E4%BA%8Esocket%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86/'>关于socket的一些知识1</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/08/04/fcitx-rime-%E5%8F%91%E7%8E%B0%E4%BD%BF%E7%94%A8%E6%97%B6-no-available/">fcitx-rime 发现使用时 no available</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

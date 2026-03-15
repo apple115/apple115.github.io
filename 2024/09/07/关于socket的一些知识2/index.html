@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="关于socket的一些知识2" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    关于socket的一些知识2
+                </div>
+            
+        
+
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-15</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：9分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sendto-%E5%92%8C-recvfrom"><span class="post-toc-text">sendto 和 recvfrom</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%B2%E8%A7%A3%E4%B8%80%E4%B8%AAblocking"><span class="post-toc-text">讲解一个blocking</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#poll"><span class="post-toc-text">poll</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="sendto-和-recvfrom"><a href="#sendto-和-recvfrom" class="headerlink" title="sendto 和 recvfrom"></a>sendto 和 recvfrom</h2><p>这两个是用于在UDP中使用的<br>我们可以看一下 不需要什么绑定 直接发送到地址<br>不需要什么绑定 直接读取internal 地址</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sendto</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">const</span> <span class="type">void</span> *msg, <span class="type">int</span> len, <span class="type">unsigned</span> <span class="type">int</span> flags,</span></span><br><span class="line"><span class="params">           <span class="type">const</span> <span class="keyword">struct</span> sockaddr *to, <span class="type">socklen_t</span> tolen)</span>;</span><br><span class="line"><span class="comment">// to  是指向本地struct sockaddr_storage的指针，该结构将填充原始计算机的 IP 地址和端口</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">recvfrom</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">void</span> *buf, <span class="type">int</span> len, <span class="type">unsigned</span> <span class="type">int</span> flags,</span></span><br><span class="line"><span class="params">             <span class="keyword">struct</span> sockaddr *from, <span class="type">int</span> *fromlen)</span>;</span><br><span class="line"><span class="comment">// from是指向本地struct sockaddr_storage的指针，该结构将填充原始计算机的 IP 地址和端口</span></span><br><span class="line"><span class="comment">// fromlen是一个指向本地int的指针，应将其初始化为sizeof *from或 sizeof(struct sockaddr_storage)</span></span><br><span class="line"><span class="comment">//当函数返回时， fromlen将包含实际存储在from中的地址的长度</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="讲解一个blocking"><a href="#讲解一个blocking" class="headerlink" title="讲解一个blocking"></a>讲解一个blocking</h2><p>blocking的如果没有新的客户端连接请求到来，线程会被挂起（暂停执行）</p>
+<p>套接字阻塞模式</p>
+<ul>
+<li><p>连接建立阶段<br>当调用accept()函数等待客户端连接时，在阻塞模式下，如果没有新的客户端连接请求到来，线程会被挂起（暂停执行）<br>例如，服务器程序在执行accept()后，会一直停在这一步，直到有客户端尝试连接，操作系统内核才会唤醒该线程继续执行后续代码。</p>
+</li>
+<li><p>数据接收阶段<br>对于数据接收函数，如recv()或recvfrom()，如果接收缓冲区中没有数据，调用这些函数的线程同样会被阻塞<br>例如，在一个简单的网络聊天程序中，当客户端调用recv()等待服务器发送消息时，如果服务器还没有发送数据，客户端程序就会在recv()函数处暂停，不执行后续操作，直到服务器发送的数据到达接收缓冲区</p>
+</li>
+<li><p>数据发送阶段<br>虽然不太常见，但在某些情况下，当发送缓冲区已满时，发送操作也可能阻塞<br>比如在一个网络文件传输程序中，如果网络带宽有限，而发送的数据量很大，导致发送缓冲区被填满，后续的发送操作（如send()函数调用）可能会被阻塞，直到缓冲区有足够的空间容纳新的数据。</p>
+</li>
+</ul>
+<p>non-blocking 的时候会马上判断当年，接收缓冲区没有数据，函数同样会立即返回错误值</p>
+<ul>
+<li><p>连接建立阶段<br>在非阻塞模式下，调用accept()函数时，如果没有新的连接请求，函数会立即返回一个错误值（通常是-1），并且设置errno为EWOULDBLOCK或EAGAIN。这意味着程序需要不断地调用accept()函数进行检查（通常在一个循环中），或者使用更高效的事件驱动机制（如select、poll、epoll等）来等待连接事件<br>例如，在一个高并发的网络服务器中，使用非阻塞accept()可以避免单个线程因为等待连接而被长时间阻塞，提高服务器对大量并发连接的处理能力。</p>
+</li>
+<li><p>数据接收阶段<br>当使用非阻塞模式调用recv()或recvfrom()函数时，如果接收缓冲区没有数据，函数同样会立即返回错误值，并设置errno。程序可以根据返回值判断是否需要再次尝试接收数据<br>例如，在一个实时网络监控系统中，传感器数据通过网络发送到监控服务器，服务器使用非阻塞接收函数可以在没有数据时快速处理其他任务，如更新监控界面、检查设备状态等，同时持续尝试接收新的数据。</p>
+</li>
+<li><p>数据发送阶段<br>当发送缓冲区满时，非阻塞模式下的发送函数（如send()）会立即返回错误，程序可以选择稍后重试或者采取其他策略<br>比如在一个网络游戏中，玩家的操作数据需要快速发送到服务器，如果发送缓冲区满，非阻塞模式可以让客户端程序快速做出反应，可能会暂时缓存数据或者调整发送策略，以确保游戏的实时性。</p>
+</li>
+</ul>
+<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><p>作用在什么地方呢?<br>当你想通过某种方式同时监视一堆套接字的时候? 可以帮我减少轮询</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;poll.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">poll</span><span class="params">(<span class="keyword">struct</span> pollfd fds[], <span class="type">nfds_t</span> nfds, <span class="type">int</span> timeout)</span>;</span><br><span class="line"><span class="comment">//要监视哪些套接字</span></span><br><span class="line"><span class="comment">//数组中的计数元素</span></span><br><span class="line"><span class="comment">//以毫秒为单位的计时</span></span><br></pre></td></tr></table></figure>
+<p>再看看这个pollfs </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pollfd</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> fd;         <span class="comment">// socket descripter</span></span><br><span class="line">    <span class="type">short</span> events;   <span class="comment">// bitmap 你感兴趣的事件</span></span><br><span class="line">    <span class="type">short</span> revents;  <span class="comment">// when poll() returns, bitmap of events that occurred </span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>events</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POLLIN  当数据准备好在此套接字上的recv()时提醒我。</span><br><span class="line">POLLOUT 当我可以在不阻塞的情况下将数据send()到此套接字时提醒我</span><br></pre></td></tr></table></figure>
+<p>我们来看看如何使用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">add_to_pfds</span><span class="params">(<span class="keyword">struct</span> pollfd *pfds[],<span class="type">int</span> newfd,<span class="type">int</span> *fd_count,<span class="type">int</span> *fd_size)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(*fd_count==*fd_size) &#123;</span><br><span class="line">        *fd_size = <span class="number">2</span>*(*fd_size);</span><br><span class="line">        *pfds = <span class="built_in">realloc</span>(*pfds, <span class="keyword">sizeof</span>((**pfds)) * (*fd_size));</span><br><span class="line">    &#125;</span><br><span class="line">    (*pfds)[*fd_count].fd = newfd;</span><br><span class="line">    (*pfds)[*fd_count].events = POLLIN;</span><br><span class="line">    (*fd_count)++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">del_from_pfds</span><span class="params">(<span class="keyword">struct</span> pollfd *pfds,<span class="type">int</span> i,<span class="type">int</span> *fd_count)</span> &#123;</span><br><span class="line"><span class="comment">// Copy the one from the end over this one</span></span><br><span class="line">    pfds[i] = pfds[*fd_count<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">    (*fd_count)--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于pollfd结构题的添加和删除</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pfds[<span class="number">0</span>].fd = listener;</span><br><span class="line">pfds[<span class="number">0</span>].events = POLLIN;</span><br><span class="line">fd_count++;</span><br></pre></td></tr></table></figure>
+<p>现将这个这个我监听的listener socket放入 pfds<br>然后我们在初始化一下poll</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="type">int</span> poll_count = poll(pfds,fd_count,<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">if</span>(poll_count == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;poll&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在通过不断的循环检查</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">.....<span class="comment">//初始化</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;fd_count; i++) &#123;</span><br><span class="line">        <span class="comment">// 检查POLLIN 当数据准备好在此套接字上的recv()时提醒我。</span></span><br><span class="line">            <span class="keyword">if</span>(pfds[i].revents&amp;POLLIN) &#123;</span><br><span class="line">            .... <span class="comment">//进行其他操作</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netdb.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/poll.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;poll.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PORT <span class="string">&quot;3490&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> *<span class="title function_">get_in_addr</span><span class="params">(<span class="keyword">struct</span> sockaddr *sa)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(sa-&gt;sa_family==AF_INET) &#123;</span><br><span class="line">        <span class="keyword">return</span> &amp;(((<span class="keyword">struct</span> sockaddr_in*)sa)-&gt;sin_addr);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &amp;(((<span class="keyword">struct</span> sockaddr_in6*)sa)-&gt;sin6_addr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">get_listen_socket</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">int</span> sockfd;</span><br><span class="line">    <span class="type">int</span> yes=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> rv;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">addrinfo</span> *<span class="title">servinfo</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">addrinfo</span> <span class="title">hints</span>;</span></span><br><span class="line">    <span class="built_in">memset</span>(&amp;hints, <span class="number">0</span>, <span class="keyword">sizeof</span>(hints));</span><br><span class="line">    hints.ai_family=AF_UNSPEC;</span><br><span class="line">    hints.ai_socktype =SOCK_STREAM;</span><br><span class="line">    hints.ai_flags = AI_PASSIVE;</span><br><span class="line">    <span class="keyword">if</span>((rv=getaddrinfo(<span class="literal">NULL</span>,PORT,&amp;hints,&amp;servinfo))!=<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;getaddrinfo:%s\n&quot;</span>,gai_strerror(rv) );</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">addrinfo</span> *<span class="title">p</span>;</span></span><br><span class="line">    <span class="keyword">for</span>(p=servinfo; p!=<span class="literal">NULL</span>; p=p-&gt;ai_next) &#123;</span><br><span class="line">        <span class="keyword">if</span>((sockfd=(socket(p-&gt;ai_family,p-&gt;ai_socktype, p-&gt;ai_protocol)))==<span class="number">-1</span>) &#123;</span><br><span class="line">            perror(<span class="string">&quot;socket:error&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &amp;yes, <span class="keyword">sizeof</span>(<span class="type">int</span>))==<span class="number">-1</span>) &#123;</span><br><span class="line">            perror(<span class="string">&quot;setsockopt&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(bind(sockfd,p-&gt;ai_addr,p-&gt;ai_addrlen)==<span class="number">-1</span>) &#123;</span><br><span class="line">            close(sockfd);</span><br><span class="line">            perror(<span class="string">&quot;server:bind&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(p==<span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">&quot;server:failed to bind\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    freeaddrinfo(servinfo);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(listen(sockfd,<span class="number">10</span>)==<span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;listen&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sockfd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">add_to_pfds</span><span class="params">(<span class="keyword">struct</span> pollfd *pfds[],<span class="type">int</span> newfd,<span class="type">int</span> *fd_count,<span class="type">int</span> *fd_size)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(*fd_count==*fd_size) &#123;</span><br><span class="line">        *fd_size = <span class="number">2</span>*(*fd_size);</span><br><span class="line">        *pfds = <span class="built_in">realloc</span>(*pfds, <span class="keyword">sizeof</span>((**pfds)) * (*fd_size));</span><br><span class="line">    &#125;</span><br><span class="line">    (*pfds)[*fd_count].fd = newfd;</span><br><span class="line">    (*pfds)[*fd_count].events = POLLIN;</span><br><span class="line">    (*fd_count)++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">del_from_pfds</span><span class="params">(<span class="keyword">struct</span> pollfd *pfds,<span class="type">int</span> i,<span class="type">int</span> *fd_count)</span> &#123;</span><br><span class="line"><span class="comment">// Copy the one from the end over this one</span></span><br><span class="line">    pfds[i] = pfds[*fd_count<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">    (*fd_count)--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> listener;</span><br><span class="line">    <span class="type">int</span> newfd;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_storage</span> <span class="title">remoteaddr</span>;</span></span><br><span class="line">    <span class="type">socklen_t</span> addrlen;</span><br><span class="line">    <span class="type">char</span> remoteIP[INET6_ADDRSTRLEN];</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">256</span>];</span><br><span class="line">    <span class="type">int</span> fd_count =<span class="number">0</span> ;</span><br><span class="line">    <span class="type">int</span> fd_size = <span class="number">5</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">pollfd</span> *<span class="title">pfds</span> =</span> <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(*pfds) * fd_size);</span><br><span class="line">    listener = get_listen_socket();</span><br><span class="line">    <span class="keyword">if</span> (listener == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;error getting listening socket\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    pfds[<span class="number">0</span>].fd = listener;</span><br><span class="line">    pfds[<span class="number">0</span>].events = POLLIN;</span><br><span class="line">    fd_count++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="type">int</span> poll_count = poll(pfds,fd_count,<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span>(poll_count == <span class="number">-1</span>) &#123;</span><br><span class="line">            perror(<span class="string">&quot;poll&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;fd_count; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(pfds[i].revents&amp;POLLIN) &#123;</span><br><span class="line">                <span class="keyword">if</span>(pfds[i].fd == listener) &#123;</span><br><span class="line">                    addrlen = <span class="keyword">sizeof</span> remoteaddr;</span><br><span class="line">                    newfd = accept(listener,(<span class="keyword">struct</span> sockaddr *)&amp;remoteaddr,&amp;addrlen);</span><br><span class="line">                    <span class="keyword">if</span>(newfd == <span class="number">-1</span>) &#123;</span><br><span class="line">                        perror(<span class="string">&quot;accept&quot;</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        add_to_pfds(&amp;pfds,newfd,&amp;fd_count,&amp;fd_size);</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;pollserver: new connection from %s on &quot;</span></span><br><span class="line">                               <span class="string">&quot;socket %d\n&quot;</span>,</span><br><span class="line">                               inet_ntop(remoteaddr.ss_family,</span><br><span class="line">                                         get_in_addr((<span class="keyword">struct</span> sockaddr*)&amp;remoteaddr),</span><br><span class="line">                                         remoteIP, INET6_ADDRSTRLEN),</span><br><span class="line">                               newfd);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="type">int</span> nbt = recv(pfds[i].fd,buffer,<span class="keyword">sizeof</span>(buffer),<span class="number">0</span>);</span><br><span class="line">                    <span class="type">int</span> sender_fd = pfds[i].fd;</span><br><span class="line">                    <span class="keyword">if</span> (nbt &lt;=<span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(nbt==<span class="number">0</span>) &#123;</span><br><span class="line">                            <span class="built_in">printf</span>(<span class="string">&quot;pollserver: socket %d hung up\n&quot;</span>,sender_fd);</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            perror(<span class="string">&quot;recv&quot;</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                        close(pfds[i].fd);</span><br><span class="line">                        del_from_pfds(pfds, i, &amp;fd_count);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;fd_count; j++) &#123;</span><br><span class="line">                            <span class="type">int</span> dest_fd = pfds[j].fd;</span><br><span class="line">                            <span class="keyword">if</span>(dest_fd != listener &amp;&amp; dest_fd != sender_fd) &#123;</span><br><span class="line">                                <span class="keyword">if</span>(send(dest_fd,buffer,nbt,<span class="number">0</span>)==<span class="number">-1</span>) &#123;</span><br><span class="line">                                    perror(<span class="string">&quot;send&quot;</span>);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-09-07</span>
+            
+                <span>该篇文章被 apple115</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/learn/'>
+                            learn
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2024/09/08/HTTP%E5%AD%A6%E4%B9%A0/'>HTTP学习1</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/09/06/%E5%85%B3%E4%BA%8Esocket%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86/">关于socket的一些知识1</a>
+                    </span>
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

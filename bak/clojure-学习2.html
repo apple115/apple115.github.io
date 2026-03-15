@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="clojure-学习2" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+
+    <div class="post-md">
+        
+            
+        
+        <div class=".article-gallery"><h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>Create a new scope</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="built_in">let</span></span> [[part &amp; remaining] remaining-asym-parts]</span><br><span class="line">(<span class="name"><span class="built_in">recur</span></span> remaining</span><br><span class="line">(<span class="name"><span class="built_in">into</span></span> final-body-parts</span><br><span class="line">(<span class="name">set</span> [part (<span class="name">matching-part</span> part)]))))</span><br></pre></td></tr></table></figure>
+
+<h2 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h2><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="built_in">loop</span></span> [iteration <span class="number">0</span>]</span><br><span class="line">(<span class="name">println</span> (<span class="name"><span class="built_in">str</span></span> <span class="string">&quot;Iteration &quot;</span> iteration))</span><br><span class="line">(<span class="name"><span class="built_in">if</span></span> (<span class="name"><span class="built_in">&gt;</span></span> iteration <span class="number">3</span>)</span><br><span class="line">(<span class="name">println</span> <span class="string">&quot;Goodbye!&quot;</span>)</span><br><span class="line">(<span class="name"><span class="built_in">recur</span></span> (<span class="name"><span class="built_in">inc</span></span> iteration))))</span><br><span class="line"><span class="comment">; =&gt; Iteration 0</span></span><br><span class="line"><span class="comment">; =&gt; Iteration 1</span></span><br><span class="line"><span class="comment">; =&gt; Iteration 2</span></span><br><span class="line"><span class="comment">; =&gt; Iteration 3</span></span><br><span class="line"><span class="comment">; =&gt; Iteration 4</span></span><br><span class="line"><span class="comment">; =&gt; Goodbye!</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="cond"><a href="#cond" class="headerlink" title="cond"></a>cond</h2><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">defn</span> <span class="title">pos-neg-or-zero</span></span><br><span class="line">  <span class="string">&quot;Determines whether or not n is positive, negative, or zero&quot;</span></span><br><span class="line">  [n]</span><br><span class="line">  (<span class="name"><span class="built_in">cond</span></span></span><br><span class="line">    (<span class="name"><span class="built_in">&lt;</span></span> n <span class="number">0</span>) <span class="string">&quot;negative&quot;</span></span><br><span class="line">    (<span class="name"><span class="built_in">&gt;</span></span> n <span class="number">0</span>) <span class="string">&quot;positive&quot;</span></span><br><span class="line">    <span class="symbol">:else</span> <span class="string">&quot;zero&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Regular-Expressions"><a href="#Regular-Expressions" class="headerlink" title="Regular Expressions"></a>Regular Expressions</h2><p>re-find</p>
+<h2 id="Better-Symmetrizer-with-reduce"><a href="#Better-Symmetrizer-with-reduce" class="headerlink" title="Better Symmetrizer with reduce"></a>Better Symmetrizer with reduce</h2><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;; sum with reduce(reduce + [1 2 3 4]); =&gt; 10</span></span><br><span class="line">like this</span><br><span class="line">(<span class="name"><span class="built_in">+</span></span> (<span class="name"><span class="built_in">+</span></span> (<span class="name"><span class="built_in">+</span></span> <span class="number">1</span> <span class="number">2</span>) <span class="number">3</span>) <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">you can</span><br><span class="line">(<span class="name"><span class="built_in">reduce</span></span> + <span class="number">15</span> [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="into-repeat"><a href="#into-repeat" class="headerlink" title="into repeat"></a>into repeat</h2><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">def</span> <span class="title">websites</span></span><br><span class="line">  <span class="comment">;; code</span></span><br><span class="line">  (<span class="name"><span class="built_in">into</span></span> [](<span class="name"><span class="built_in">repeat</span></span> <span class="number">1000</span> <span class="string">&quot;codewars&quot;</span>))</span><br><span class="line">)</span><br><span class="line"><span class="comment">;;;[&quot;codewars&quot;,&quot;codewars&quot;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="seq"><a href="#seq" class="headerlink" title="seq"></a>seq</h2><p>Returns a seq on the collection. If the collection is<br>  empty, returns nil.  (seq nil) returns nil. seq also works on<br>  Strings, native Java arrays (of reference types) and any objects<br>  that implement Iterable.</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="built_in">seq</span></span> &#x27;(<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>))</span><br><span class="line"><span class="comment">; =&gt; (1 2 3)</span></span><br><span class="line">(<span class="name"><span class="built_in">seq</span></span> [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>])</span><br><span class="line"><span class="comment">; =&gt; (1 2 3)</span></span><br><span class="line">(<span class="name"><span class="built_in">seq</span></span> #&#123;<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>&#125;)</span><br><span class="line"><span class="comment">; =&gt; (1 2 3)</span></span><br><span class="line">(<span class="name"><span class="built_in">seq</span></span> &#123;<span class="symbol">:name</span> <span class="string">&quot;Bill Compton&quot;</span> <span class="symbol">:occupation</span> <span class="string">&quot;Dead mopey guy&quot;</span>&#125;)</span><br><span class="line"><span class="comment">; =&gt; ([:name &quot;Bill Compton&quot;] [:occupation &quot;Dead mopey guy&quot;])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(map inc [1 2 3]); =&gt; (2 3 4)</span><br><span class="line"></span><br><span class="line">(map str [&quot;a&quot; &quot;b&quot; &quot;c&quot;] [&quot;A&quot; &quot;B&quot; &quot;C&quot;]); =&gt; (&quot;aA&quot; &quot;bB&quot; &quot;cC&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(reduce + 15 [1 2 3 4])</span><br></pre></td></tr></table></figure>
+
+<h2 id="take"><a href="#take" class="headerlink" title="take"></a>take</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(take 3 [1 2 3 4 5 6 7 8 9 10])</span><br><span class="line">; =&gt; (1 2 3)</span><br><span class="line">(drop 3 [1 2 3 4 5 6 7 8 9 10])</span><br><span class="line">; =&gt; (4 5 6 7 8 9 10)</span><br></pre></td></tr></table></figure>
+
+<h2 id="take-while"><a href="#take-while" class="headerlink" title="take-while"></a>take-while</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(take-while #(&lt; (:month %) 3) food-journal)</span><br><span class="line">; =&gt; (&#123;:month 1 :day 1 :human 5.3 :critter 2.3&#125;</span><br><span class="line">&#123;:month 1 :day 2 :human 5.1 :critter 2.0&#125;</span><br><span class="line">&#123;:month 2 :day 1 :human 4.9 :critter 2.1&#125;</span><br><span class="line">&#123;:month 2 :day 2 :human 5.0 :critter 2.5&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="drop-while"><a href="#drop-while" class="headerlink" title="drop-while"></a>drop-while</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(drop-while #(&lt; (:month %) 3) food-journal)</span><br><span class="line">; =&gt; (&#123;:month 3 :day 1 :human 4.2 :critter 3.3&#125;</span><br><span class="line">&#123;:month 3 :day 2 :human 4.0 :critter 3.8&#125;</span><br><span class="line">&#123;:month 4 :day 1 :human 3.7 :critter 3.9&#125;</span><br><span class="line">&#123;:month 4 :day 2 :human 3.7 :critter 3.6&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(filter #(&lt; (:human %) 5) food-journal)</span><br><span class="line">; =&gt; (&#123;:month 2 :day 1 :human 4.9 :critter 2.1&#125;</span><br><span class="line">&#123;:month 3 :day 1 :human 4.2 :critter 3.3&#125;</span><br><span class="line">&#123;:month 3 :day 2 :human 4.0 :critter 3.8&#125;</span><br><span class="line">&#123;:month 4 :day 1 :human 3.7 :critter 3.9&#125;</span><br><span class="line">&#123;:month 4 :day 2 :human 3.7 :critter 3.6&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="some"><a href="#some" class="headerlink" title="some"></a>some</h2><p>a collection contains any values that test true for a predicate function</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">some</span> #(<span class="name"><span class="built_in">&gt;</span></span> (<span class="symbol">:critter</span> %) <span class="number">5</span>) food-journal)</span><br><span class="line"><span class="comment">; =&gt; nil</span></span><br><span class="line">(<span class="name">some</span> #(<span class="name"><span class="built_in">&gt;</span></span> (<span class="symbol">:critter</span> %) <span class="number">3</span>) food-journal)</span><br><span class="line"><span class="comment">; =&gt; true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="sort-and-sort-by"><a href="#sort-and-sort-by" class="headerlink" title="sort and sort-by"></a>sort and sort-by</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(sort [3 1 2])</span><br><span class="line">; (1 2 3)</span><br><span class="line">(sort-by count [&quot;aaa&quot; &quot;c&quot; &quot;bb&quot;])</span><br><span class="line">; =&gt; (&quot;c&quot; &quot;bb&quot; &quot;aaa&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(cancat [1 2] [3 4])</span><br><span class="line">; =&gt; (1 2 3 4)</span><br></pre></td></tr></table></figure>
+
+<h2 id="lazy-seq"><a href="#lazy-seq" class="headerlink" title="lazy-seq"></a>lazy-seq</h2><p> A lazy seq is a seq whose members aren’t computed until you try to access them.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(def vampire-database</span><br><span class="line">&#123;0 &#123;:makes-blood-puns? false, :has-pulse? true  :name &quot;McFishwich&quot;&#125;</span><br><span class="line">1 &#123;:makes-blood-puns? false, :has-pulse? true  :name &quot;McMackson&quot;&#125;</span><br><span class="line">2 &#123;:makes-blood-puns? true,  :has-pulse? false :name &quot;Damon Salvatore&quot;&#125;</span><br><span class="line">3 &#123;:makes-blood-puns? true,  :has-pulse? true  :name &quot;Mickey Mouse&quot;&#125;&#125;)</span><br><span class="line"></span><br><span class="line">(defn vampire-related-details</span><br><span class="line">[social-security-number]  (Thread/sleep 1000)</span><br><span class="line">(get vampire-database social-security-number))</span><br><span class="line"></span><br><span class="line">(defn vampire?  [record]</span><br><span class="line">(and (:makes-blood-puns? record)</span><br><span class="line">(not (:has-pulse? Record))       record))</span><br><span class="line"></span><br><span class="line">(defn identify-vampire  [social-security-numbers]</span><br><span class="line">(first (filter vampire?</span><br><span class="line">(map vampire-related-details social-security-numbers))))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Infinite-Sequences"><a href="#Infinite-Sequences" class="headerlink" title="Infinite Sequences"></a>Infinite Sequences</h2><h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(concat (take 8 (repeat &quot;na&quot;)) [&quot;Batman!&quot;])</span><br><span class="line">; =&gt; (&quot;na&quot; &quot;na&quot; &quot;na&quot; &quot;na&quot; &quot;na&quot; &quot;na&quot; &quot;na&quot; &quot;na&quot; &quot;Batman!&quot;)</span><br><span class="line">(take 3 (repeatedly (fn [] (rand-int 10))))</span><br><span class="line">; =&gt; (1 4 0)</span><br><span class="line">(defn even-numbers  ([] (even-numbers 0))</span><br><span class="line">                    ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))</span><br><span class="line"></span><br><span class="line">(take 10 (even-numbers)); =&gt; (0 2 4 6 8 10 12 14 16 18)</span><br><span class="line"></span><br><span class="line">(cons 0 &#x27;(2 4 6)); =&gt; (0 2 4 6)</span><br></pre></td></tr></table></figure>
+
+<h2 id="The-Collection-Abstraction"><a href="#The-Collection-Abstraction" class="headerlink" title="The Collection Abstraction"></a>The Collection Abstraction</h2><p>The collection abstraction is closely related to the sequence abstraction.</p>
+<h3 id="empty"><a href="#empty" class="headerlink" title="empty"></a>empty</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(empty? [])</span><br><span class="line">; =&gt; true</span><br><span class="line">(empty? [&quot;no!&quot;])</span><br><span class="line">; =&gt; false</span><br></pre></td></tr></table></figure>
+<h3 id="into"><a href="#into" class="headerlink" title="into"></a>into</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(map identity &#123;:sunlight-reaction &quot;Glitter!&quot;&#125;)</span><br><span class="line">; =&gt; ([:sunlight-reaction &quot;Glitter!&quot;])</span><br><span class="line"></span><br><span class="line">(into &#123;&#125; (map identity &#123;:sunlight-reaction &quot;Glitter!&quot;&#125;))</span><br><span class="line">; =&gt; &#123;:sunlight-reaction &quot;Glitter!&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="conj"><a href="#conj" class="headerlink" title="conj"></a>conj</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(conj [0] [1])</span><br><span class="line">; =&gt; [0 [1]]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Function-Functions"><a href="#Function-Functions" class="headerlink" title="Function Functions"></a>Function Functions</h2><h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(max 0 1 2)</span><br><span class="line">; =&gt; 2</span><br><span class="line"></span><br><span class="line">(max [0 1 2])</span><br><span class="line">; =&gt; [0 1 2]</span><br><span class="line"></span><br><span class="line">(apply max [0 1 2])</span><br><span class="line">; =&gt; 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="partial"><a href="#partial" class="headerlink" title="partial"></a>partial</h3><p>像一个闭包一样保存着环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">(def add10 (partial + 10))</span><br><span class="line">(add10 3)</span><br><span class="line">; =&gt; 13</span><br><span class="line">(add10 5)</span><br><span class="line">; =&gt; 15</span><br><span class="line"></span><br><span class="line">(def add-missing-elements</span><br><span class="line">(partial conj [&quot;water&quot; &quot;earth&quot; &quot;air&quot;]))</span><br><span class="line"></span><br><span class="line">(add-missing-elements &quot;unobtainium&quot; &quot;adamantium&quot;)</span><br><span class="line">; =&gt; [&quot;water&quot; &quot;earth&quot; &quot;air&quot; &quot;unobtainium&quot; &quot;adamantium&quot;]</span><br><span class="line"></span><br><span class="line">(defn lousy-logger</span><br><span class="line">[log-level message]</span><br><span class="line">(condp = log-level</span><br><span class="line">:warn (clojure.string/lower-case message)</span><br><span class="line">:emergency (clojure.string/upper-case message)))</span><br><span class="line"></span><br><span class="line">(def warn (partial lousy-logger :warn))</span><br><span class="line"></span><br><span class="line">(warn &quot;Red light ahead&quot;); =&gt; &quot;red light ahead&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="slurp"><a href="#slurp" class="headerlink" title="slurp"></a>slurp</h2><p>读取文件的函数</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

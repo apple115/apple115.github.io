@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="clojure 初学习" />
+    <meta name="hexo-theme-A4" content="v1.9.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>apple115的blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' />
+    <!-- Heti 中文排版增强 -->
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="apple115的blog" type="application/atom+xml">
+</head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+        
+
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">apple115的blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/todo/">在做</a></li>
+            
+        
+            
+                <li><a href="/fragment/">碎片</a></li>
+            
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+
+    <div class="post-md">
+        
+            
+        
+        <div class=".article-gallery"><h2 id="Syntas"><a href="#Syntas" class="headerlink" title="Syntas"></a>Syntas</h2><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="built_in">+</span></span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+ 1 2 3)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Control-Flows"><a href="#Control-Flows" class="headerlink" title="Control Flows"></a>Control Flows</h2><p>if</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="built_in">if</span></span> boolean-form</span><br><span class="line">   then-form</span><br><span class="line">   optional-else-form)</span><br></pre></td></tr></table></figure>
+<p>do</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(if true  (do</span><br><span class="line">          (println &quot;Success!&quot;)</span><br><span class="line">          &quot;By Zeus&#x27;s hammer!&quot;)</span><br><span class="line">          (do (println &quot;Failure!&quot;)</span><br><span class="line">          &quot;By Aquaman&#x27;s trident!&quot;))</span><br><span class="line">; =&gt; Success!; =&gt; &quot;By Zeus&#x27;s hammer!&quot;</span><br></pre></td></tr></table></figure>
+
+<p>when</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(when true  (println &quot;Success!&quot;)  &quot;abra cadabra&quot;)</span><br><span class="line">; =&gt; Success!; =&gt; &quot;abra cadabra&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="Data-Structures"><a href="#Data-Structures" class="headerlink" title="Data Structures"></a>Data Structures</h2><p>Number<br><code>934/5</code><br>Strings</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Lord Voldemort&quot;</span><span class="string">&quot;\&quot;He who must not be named\&quot;&quot;</span><span class="string">&quot;\&quot;Great cow of Moscow!\&quot; - Hermes Conrad&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Maps<br><code>&#123; &#125;</code><br><code>&#123;:first-name &quot;Charlie&quot; :last-name &quot;McFishwich&quot;&#125;</code><br>Keywords</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="symbol">:a</span> &#123;<span class="symbol">:a</span> <span class="number">1</span> <span class="symbol">:b</span> <span class="number">2</span> <span class="symbol">:c</span> <span class="number">3</span>&#125;)<span class="comment">; =&gt; 1</span></span><br><span class="line">(<span class="name"><span class="built_in">get</span></span> &#123;<span class="symbol">:a</span> <span class="number">1</span> <span class="symbol">:b</span> <span class="number">2</span> <span class="symbol">:c</span> <span class="number">3</span>&#125; <span class="symbol">:a</span>)<span class="comment">; =&gt; 1</span></span><br></pre></td></tr></table></figure>
+<p>Vectors</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">3</span> <span class="number">2</span> <span class="number">1</span>]</span><br><span class="line">(<span class="name"><span class="built_in">get</span></span> [<span class="number">3</span> <span class="number">2</span> <span class="number">1</span>] <span class="number">0</span>)<span class="comment">; =&gt; 3</span></span><br><span class="line">(<span class="name"><span class="built_in">vector</span></span> <span class="string">&quot;creepy&quot;</span> <span class="string">&quot;full&quot;</span> <span class="string">&quot;moon&quot;</span>)<span class="comment">; =&gt; [&quot;creepy&quot; &quot;full&quot; &quot;moon&quot;]</span></span><br><span class="line">(<span class="name"><span class="built_in">conj</span></span> [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>] <span class="number">4</span>)<span class="comment">; =&gt; [1 2 3 4]</span></span><br></pre></td></tr></table></figure>
+<p>Lists</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)<span class="comment">; =&gt; (1 2 3 4)</span></span><br><span class="line">(<span class="name"><span class="built_in">nth</span></span> &#x27;(<span class="symbol">:a</span> <span class="symbol">:b</span> <span class="symbol">:c</span>) <span class="number">0</span>)<span class="comment">; =&gt; :a(nth &#x27;(:a :b :c) 2); =&gt; :c</span></span><br><span class="line">(<span class="name"><span class="built_in">list</span></span> <span class="number">1</span> <span class="string">&quot;two&quot;</span> &#123;<span class="number">3</span> <span class="number">4</span>&#125;)<span class="comment">; =&gt; (1 &quot;two&quot; &#123;3 4&#125;)</span></span><br></pre></td></tr></table></figure>
+<h2 id="When-should-you-use-a-list-and-when-should-you-use-a-vector"><a href="#When-should-you-use-a-list-and-when-should-you-use-a-vector" class="headerlink" title="When should you use a list and when should you use a vector?"></a>When should you use a list and when should you use a vector?</h2><p>A good rule of thumb is that if you need to easily add items to the beginning of a sequence or if you’re writing a macro, you should use a list.<br>Otherwise,you should use a vector.</p>
+<p>Sets</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#&#123;<span class="string">&quot;kurt vonnegut&quot;</span> <span class="number">20</span> <span class="symbol">:icicle</span>&#125;</span><br><span class="line">(<span class="name"><span class="built_in">hash-set</span></span> <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span>)<span class="comment">; =&gt; #&#123;1 2&#125;</span></span><br><span class="line">(<span class="name"><span class="built_in">conj</span></span> #&#123;<span class="symbol">:a</span> <span class="symbol">:b</span>&#125; <span class="symbol">:b</span>)<span class="comment">; =&gt; #&#123;:a :b&#125;</span></span><br><span class="line">(<span class="name">set</span> [<span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">4</span> <span class="number">4</span>])<span class="comment">; =&gt; #&#123;3 4&#125;</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="built_in">contains?</span></span> #&#123;<span class="symbol">:a</span> <span class="symbol">:b</span>&#125; <span class="symbol">:a</span>)</span><br><span class="line"><span class="comment">; =&gt; true</span></span><br><span class="line">(<span class="name"><span class="built_in">contains?</span></span> #&#123;<span class="symbol">:a</span> <span class="symbol">:b</span>&#125; <span class="number">3</span>)</span><br><span class="line"><span class="comment">; =&gt; false</span></span><br><span class="line">(<span class="name"><span class="built_in">contains?</span></span> #&#123;<span class="literal">nil</span>&#125; <span class="literal">nil</span>)</span><br><span class="line"><span class="comment">; =&gt; true</span></span><br><span class="line"></span><br><span class="line">(<span class="symbol">:a</span> #&#123;<span class="symbol">:a</span> <span class="symbol">:b</span>&#125;)<span class="comment">; =&gt; :a</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="built_in">get</span></span> #&#123;<span class="symbol">:a</span> <span class="symbol">:b</span>&#125; <span class="symbol">:a</span>)<span class="comment">; =&gt; :a</span></span><br><span class="line">(<span class="name"><span class="built_in">get</span></span> #&#123;<span class="symbol">:a</span> <span class="literal">nil</span>&#125; <span class="literal">nil</span>)<span class="comment">; =&gt; nil</span></span><br><span class="line">(<span class="name"><span class="built_in">get</span></span> #&#123;<span class="symbol">:a</span> <span class="symbol">:b</span>&#125; <span class="string">&quot;kurt vonnegut&quot;</span>)<span class="comment">; =&gt; nil</span></span><br></pre></td></tr></table></figure>
+<p>Functions</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➊ (<span class="keyword">defn</span> <span class="title">too-enthusiastic</span>➋</span><br><span class="line"><span class="string">&quot;Return a cheer that might be a bit too enthusiastic&quot;</span>➌</span><br><span class="line">[name]➍</span><br><span class="line">(<span class="name"><span class="built_in">str</span></span> <span class="string">&quot;OH. MY. GOD! &quot;</span> name <span class="string">&quot; YOU ARE MOST DEFINITELY LIKE THE BEST &quot;</span>     <span class="string">&quot;MAN SLASH WOMAN EVER I LOVE YOU AND WE SHOULD RUN AWAY SOMEWHERE&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">;;use this functions</span></span><br><span class="line">(<span class="name">too-enthusiastic</span> <span class="string">&quot;Zelda&quot;</span>)</span><br><span class="line"><span class="comment">; =&gt; &quot;OH. MY. GOD! Zelda YOU ARE MOST DEFINITELY LIKE THE BEST MAN SLASH WOMAN   EVER I LOVE YOU AND WE SHOULD RUN AWAY SOMEWHERE&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">defn</span> <span class="title">multi-arity</span>  <span class="comment">;; 3-arity arguments and body</span></span><br><span class="line">([first-arg second-arg third-arg]     (<span class="name">do-things</span> first-arg second-arg third-arg))  <span class="comment">;; 2-arity arguments and body</span></span><br><span class="line">([first-arg second-arg] (<span class="name">do-things</span> first-arg second-arg))  <span class="comment">;; 1-arity arguments and body</span></span><br><span class="line">([first-arg]     (<span class="name">do-things</span> first-arg)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;; Return the first element of a collection</span></span><br><span class="line">(<span class="keyword">defn</span> <span class="title">my-first</span>  [[first-thing]] <span class="comment">; Notice that first-thing is within a vector  first-thing)</span></span><br><span class="line">(<span class="name">my-first</span> [<span class="string">&quot;oven&quot;</span> <span class="string">&quot;bike&quot;</span> <span class="string">&quot;war-axe&quot;</span>])<span class="comment">; =&gt; &quot;oven&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Destructuring</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">defn</span> <span class="title">announce-treasure-location</span>➊    [&#123;lat <span class="symbol">:lat</span> lng <span class="symbol">:lng</span>&#125;]</span><br><span class="line">(<span class="name">println</span> (<span class="name"><span class="built_in">str</span></span> <span class="string">&quot;Treasure lat: &quot;</span> lat))</span><br><span class="line">(<span class="name">println</span> (<span class="name"><span class="built_in">str</span></span> <span class="string">&quot;Treasure lng: &quot;</span> lng)))</span><br><span class="line"></span><br><span class="line">(<span class="name">announce-treasure-location</span> &#123;<span class="symbol">:lat</span> <span class="number">28.22</span> <span class="symbol">:lng</span> <span class="number">81.33</span>&#125;)   <span class="comment">; =&gt; Treasure lat: 100   ; =&gt; Treasure lng: 50</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>Anonymous Functions</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(fn [param-list]  function body)</span><br><span class="line"></span><br><span class="line">#(* % 3)</span><br></pre></td></tr></table></figure>
+
+<p>clojure的入门如此的复杂，而构成是如此的简单，对于一个简单的执行<br>(function arg arg arg) 就是一段执行的函数。使用do作为将一堆函数放在一起，形成一个form<br>使用Destructuring 进行参数的结构。<br>clojure的数据类型又是如此复杂。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+        </i>
+    </div>
+    <br>
+
+    
+        
+            
+
+            <div class="post-footer-pre-next">
+                
+
+                
+            </div>
+
+        
+    
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs';
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline.apple115.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '留下你的评论吧。',
+                    sofa: ''
+                },
+            });
+
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    
+    </div>
+
+
+    
+</div>
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2023-2027 China 
+
+            
+                
+
+            
+                
+                    / <a href="/service/"> 服务 </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>
